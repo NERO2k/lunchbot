@@ -46,7 +46,8 @@ if (process.env.ALLOW_COMMAND)
 				await download(url, date);
 				const data = await ocr(date);
 				embed(message.channel, data, url);
-			} catch {
+			} catch(error) {
+				log('ERROR', error, '#ff0000');
 				message.channel.send(":fork_knife_plate: Kunde inte hitta menyn för denna vecka.");
 			}
 		}

@@ -18,12 +18,17 @@ export default async (url, date) =>
 			responseType: 'stream'
 		});
 
-		response.data.pipe(writer)
+		if (response.status === 200)
+		{
+			response.data.pipe(writer)
+		} else {
+			reject('Failed to fetch eatery menu.');
+		}
 
 		return new Promise((resolve, reject) => {
 			writer.on('finish', resolve)
 			writer.on('error', () => {
-				log('ERROR', 'Failed to fetch eatery menu.', '#ff0000');
+				log('ERROR', 'Failed to write eatery menu.', '#ff0000');
 				reject();
 			})
 		})
