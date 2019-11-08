@@ -31,7 +31,7 @@ async function runScheduleJob() {
       for (let i = 0; i < sub.length; i++) {
         let userChannel = client.users.get(sub[i].discordId)
         if (userChannel) embed(userChannel, data, url)
-        log('LOG', `Send eatery menu to ${sub[i].discordId}`)
+        log('LOG', `Send Eatery menu to ${sub[i].discordId}`)
       }
     })
   } catch (error) {
@@ -62,7 +62,7 @@ client.on('message', async message => {
         if (!subx) {
           Subscriptions.create({ discordId: author.id }).then(async user => {
             log('LOG', `${author.username} subscribed.`)
-            message.reply('Du är nu på listan. :inbox_tray:')
+            message.reply('Du är nu på listan :inbox_tray:')
             const date = moment()
             const url = `https://i0.wp.com/eatery.se/wp-content/uploads/${date.format(
               'YYYY/MM'
@@ -83,7 +83,7 @@ client.on('message', async message => {
             }
           }).then(() => {
             log('LOG', `${author.username} unsubscribed.`)
-            message.reply('Du har blivit borttagen från listan. :outbox_tray:')
+            message.reply('Du har tagits bort från listan :outbox_tray:')
           })
         }
       })
