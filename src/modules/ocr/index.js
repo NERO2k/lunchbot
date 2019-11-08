@@ -1,6 +1,6 @@
 import tesseract from 'node-tesseract-ocr'
 import fs from 'fs'
-import { log } from '../'
+import log from '../log'
 
 export default async prepdate => {
   const date = prepdate.format('YYYY-WW')

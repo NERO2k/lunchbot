@@ -1,10 +1,15 @@
-require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
 
 import '@babel/polyfill'
 import Discord from 'discord.js'
 import moment from 'moment'
 import schedule from 'node-schedule'
-import { log, download, ocr, embed } from './modules'
+
+import log from './modules/log';
+import download from './modules/download';
+import ocr from './modules/ocr';
+import embed from './modules/embed';
 
 const client = new Discord.Client()
 
