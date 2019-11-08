@@ -1,9 +1,8 @@
-import path from 'path'
 import axios from 'axios'
 import fs from 'fs'
-import moment from 'moment'
-
 import log from '../log'
+import moment from 'moment'
+import path from 'path'
 
 export default async (url, date) => {
   const fpath = `tmp/eatery-${date.format('YYYY-WW')}.png`

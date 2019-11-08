@@ -1,15 +1,14 @@
-import dotenv from 'dotenv'
-dotenv.config()
-
 import Discord from 'discord.js'
+import Subscription from './db'
+import dotenv from 'dotenv'
+import download from './modules/download'
+import embed from './modules/embed'
+import log from './modules/log'
 import moment from 'moment'
+import ocr from './modules/ocr'
 import schedule from 'node-schedule'
 
-import log from './modules/log'
-import download from './modules/download'
-import ocr from './modules/ocr'
-import embed from './modules/embed'
-import Subscription from './db'
+dotenv.config()
 
 const client = new Discord.Client()
 
@@ -18,9 +17,8 @@ client.on('ready', () => {
   client.user.setActivity(process.env.BOT_STATUS)
 })
 
-async function runScheduleJob()
-{
-  const date = moment();
+async function runScheduleJob() {
+  const date = moment()
   const url = `https://i0.wp.com/eatery.se/wp-content/uploads/${date.format(
     'YYYY/MM'
   )}/kista-nod-lunch-v${date.week()}.png`
@@ -32,21 +30,24 @@ async function runScheduleJob()
     Subscription.findAll().then(sub => {
       for (let i = 0; i < sub.length; i++) {
         let userChannel = client.users.get(sub[i].discordId)
-        if (userChannel) embed(userChannel, data, url);
-        log('LOG', "Send eatery menu to "+sub[i].discordId);
+        if (userChannel) embed(userChannel, data, url)
+        log('LOG', `Send eatery menu to ${sub[i].discordId}`)
       }
-    });
-  } catch(error) {
-    log('ERROR', 'Kunde inte hitta menyn för vecka ' + moment().week())
-    log('ERROR', error);
+    })
+  } catch (error) {
+    log('ERROR', `Kunde inte hitta menyn för vecka ${moment().week()}`)
+    log('ERROR', error)
   }
 }
 
 if (process.env.SCHEDULE_MESSAGE) {
   const time = process.env.SCHEDULE_TIME.split(':')
-  var j = schedule.scheduleJob({ hour: time[0], minute: time[1], dayOfWeek: process.env.SCHEDULE_DAY }, async function() {
-    runScheduleJob();
-  })
+  const j = schedule.scheduleJob(
+    { hour: time[0], minute: time[1], dayOfWeek: process.env.SCHEDULE_DAY },
+    async () => {
+      runScheduleJob()
+    }
+  )
 }
 
 client.on('message', async message => {
@@ -57,13 +58,12 @@ client.on('message', async message => {
 
   if (process.env.ALLOW_SUB_COMMAND) {
     if (command === process.env.SUB_COMMAND) {
-      Subscription.findOne({ discordId:  author.id }).then(subx => {
-        if (!subx)
-        {
-          Subscription.create({ discordId: author.id }).then(async function (user) {
-            log('LOG', author.username+" subscribed.")
-            message.reply("Du är nu på listan. :inbox_tray:")
-            const date = moment();
+      Subscription.findOne({ discordId: author.id }).then(subx => {
+        if (!subx) {
+          Subscription.create({ discordId: author.id }).then(async user => {
+            log('LOG', `${author.username} subscribed.`)
+            message.reply('Du är nu på listan. :inbox_tray:')
+            const date = moment()
             const url = `https://i0.wp.com/eatery.se/wp-content/uploads/${date.format(
               'YYYY/MM'
             )}/kista-nod-lunch-v${date.week()}.png`
@@ -75,18 +75,18 @@ client.on('message', async message => {
               log('ERROR', error, '#ff0000')
               message.channel.send(':fork_knife_plate: Kunde inte hitta menyn för denna vecka.')
             }
-          });
+          })
         } else {
           Subscription.destroy({
             where: {
               discordId: author.id
             }
           }).then(() => {
-            log('LOG', author.username+" unsubscribed.")
-            message.reply("Du har blivit borttagen från listan. :outbox_tray:")
-          });
+            log('LOG', `${author.username} unsubscribed.`)
+            message.reply('Du har blivit borttagen från listan. :outbox_tray:')
+          })
         }
-      });
+      })
     }
   }
 
@@ -111,12 +111,10 @@ client.on('message', async message => {
     }
   }
 
-  if (command === "<debug")
-  {
-    if (author.id === process.env.OWNER_ID)
-    {
-      runScheduleJob();
-      message.reply("Ran schedule job.");
+  if (command === '<debug') {
+    if (author.id === process.env.OWNER_ID) {
+      runScheduleJob()
+      message.reply('Ran schedule job.')
     }
   }
 })

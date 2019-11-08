@@ -5,9 +5,9 @@
   "repository": "git@github.com:NERO2k/eatery-bot.git",
   "license": "AGPL-3.0",
   "author": "NERO2k <nero2k@outlook.com>",
-  "type": "module",
   "main": "dist/main.js",
   "scripts": {
+    "format": "prettier --write **/*",
     "start": "node --experimental-modules --es-module-specifier-resolution=node src/index.js",
     "start-dev": "nodemon --experimental-modules --es-module-specifier-resolution=node src/index.js"
   },
@@ -37,9 +37,8 @@
     "tweetnacl": "^1.0.1"
   },
   "devDependencies": {
-    "husky": "^3.0.9",
     "nodemon": "^1.19.4",
-    "prettier": "^1.18.2",
-    "pretty-quick": "^2.0.1"
-  }
+    "prettier": "^1.18.2"
+  },
+  "type": "module"
 }
