@@ -14,10 +14,10 @@ export default (channel, data, url) => {
     .setURL(url)
     .setTitle(menu[2])
     .setFooter(
-      `Lunchbot 1.0 | För att få lunchmenyn i dina PM's, skriv ${process.env.SUB_COMMAND}.`,
+      `Lunchbot 1.0 | För att få lunchmenyn i dina DM:s, skriv ${process.env.SUB_COMMAND}.`,
       'https://i.imgur.com/QCfAJ9S.png'
     )
-    .setColor(0x000000)
+    .setColor(0x7289da)
   for (let i = 3; i < menu.length; i++) {
     if (menu[i] !== '' && menu[i] !== null) {
       let msgSplit = menu[i].split(' ')
