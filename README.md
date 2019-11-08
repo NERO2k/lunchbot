@@ -10,8 +10,7 @@ The premier discord bot for tracking your favorite lunch establishment.
 4. Copy the .env.preset preset and rename it to .env
 5. Edit it to your liking
 6. Set ENV to production if you are placing the bot a on a server
-7. `yarn run build`
-8. `yarn run start`
-9. Done.
+7. `yarn run start`
+8. Done.
 
 Or just run `sudo sh ./install.sh`
