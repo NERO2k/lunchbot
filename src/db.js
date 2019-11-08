@@ -1,4 +1,4 @@
-import Sequelize from 'Sequelize'
+import Sequelize from 'sequelize'
 import log from './modules/log'
 
 const sequelize = new Sequelize({
