@@ -7,7 +7,7 @@
 ## Quick Start
 
 ```sh
-sudo ./install.sh
+sudo sh ./install.sh
 ```
 
 Make sure to edit the `.env` file with your desired values.
