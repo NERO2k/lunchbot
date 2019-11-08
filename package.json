@@ -1,11 +1,6 @@
 {
-  "name": "eatery-bot",
-  "version": "1.0.0",
-  "description": "The premier discord bot for tracking your favorite lunch establishment.",
-  "repository": "git@github.com:NERO2k/eatery-bot.git",
+  "name": "lunchbot",
   "license": "AGPL-3.0",
-  "author": "NERO2k <nero2k@outlook.com>",
-  "main": "dist/main.js",
   "scripts": {
     "format": "prettier --write **/*",
     "start": "node --experimental-modules --es-module-specifier-resolution=node src/index.js",
