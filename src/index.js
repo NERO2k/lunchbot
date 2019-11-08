@@ -83,7 +83,7 @@ client.on('message', async message => {
             }
           }).then(() => {
             log('LOG', author.username+" unsubscribed.")
-            message.reply("Du har bivit borttagen från listan. :outbox_tray:")
+            message.reply("Du har blivit borttagen från listan. :outbox_tray:")
           });
         }
       });
