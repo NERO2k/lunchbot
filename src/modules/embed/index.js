@@ -14,8 +14,8 @@ export default (channel, data, url) => {
     .setURL(url)
     .setTitle(menu[2])
     .setFooter(
-      `Eatery Bot 1.0 | För att få lunchmenyn i dina PM's, skriv ${process.env.SUB_COMMAND}.`,
-      'https://i.imgur.com/eRgnofO.png'
+      `Lunchbot 1.0 | För att få lunchmenyn i dina PM's, skriv ${process.env.SUB_COMMAND}.`,
+      'https://i.imgur.com/QCfAJ9S.png'
     )
     .setColor(0x000000)
   for (let i = 3; i < menu.length; i++) {
