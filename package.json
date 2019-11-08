@@ -2,22 +2,32 @@
   "name": "eatery-bot",
   "version": "1.0.0",
   "description": "The premier discord bot for tracking your favorite lunch establishment.",
-  "main": "dist/main.js",
   "repository": "git@github.com:NERO2k/eatery-bot.git",
-  "author": "NERO2k <nero2k@outlook.com>",
   "license": "AGPL-3.0",
-  "private": false,
+  "author": "NERO2k <nero2k@outlook.com>",
+  "main": "dist/main.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start-dev": "nodemon dist/main.js",
-    "start": "node dist/main.js"
+    "start": "node dist/main.js",
+    "start-dev": "nodemon dist/main.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "nodemonConfig": {
+    "delay": "200",
     "ignore": [
       "node_modules/*",
       "src/*"
-    ],
-    "delay": "200"
+    ]
+  },
+  "prettier": {
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2
   },
   "dependencies": {
     "@babel/cli": "^7.7.0",
@@ -39,7 +49,10 @@
     "webpack": "^4.41.2"
   },
   "devDependencies": {
+    "husky": "^3.0.9",
     "nodemon": "^1.19.4",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^2.0.1",
     "webpack-cli": "^3.3.10"
   }
 }
