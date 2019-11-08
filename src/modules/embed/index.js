@@ -4,6 +4,9 @@ function isUpperCase(str) {
   return str === str.toUpperCase()
 }
 
+const blockedWords = ["Lunchen", "VÄLKOMMEN", "Nybakat"];
+const allowedTitles = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag"];
+
 export default (channel, data, url) => {
   let menu = data.split('\n')
   let embedData = []
@@ -23,14 +26,19 @@ export default (channel, data, url) => {
       let msgSplit = menu[i].split(' ')
       if (!isUpperCase(msgSplit[0])) {
         if (msgSplit.length === 1) {
-          embedData[menu[i]] = ''
-          current = menu[i]
-          i = i + 1
+          if (allowedTitles.includes(msgSplit[0]))
+          {
+            embedData[menu[i]] = ''
+            current = menu[i]
+            i = i + 1
+          } else {
+            if (blockedWords.includes(msgSplit[0])) embedData[current] = `${embedData[current] + menu[i]}\n`
+          }
         } else {
-          if (msgSplit[0] !== 'Lunchen') embedData[current] = `${embedData[current] + menu[i]}\n`
+          if (blockedWords.includes(msgSplit[0])) embedData[current] = `${embedData[current] + menu[i]}\n`
         }
       } else {
-        if (msgSplit[0] !== 'VÄLKOMMEN') extras = `${extras + menu[i]}\n`
+        if (blockedWords.includes(msgSplit[0])) extras = `${extras + menu[i]}\n`
       }
     }
   }
