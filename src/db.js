@@ -21,6 +21,25 @@ Subscriptions.init(
   }
 )
 
+class Servers extends Sequelize.Model {}
+Servers.init(
+  {
+    // attributes
+    serverId: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    channelId: {
+      type: Sequelize.STRING,
+      allowNull: false
+    }
+  },
+  {
+    sequelize,
+    modelName: 'subscriptions'
+  }
+)
+
 sequelize
   .authenticate()
   .then(() => {
@@ -33,4 +52,4 @@ sequelize
     log('ERROR', err, '#ff0000')
   })
 
-export default Subscriptions
+export { Subscriptions, Servers }

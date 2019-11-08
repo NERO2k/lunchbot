@@ -1,5 +1,5 @@
 import Discord from 'discord.js'
-import Subscription from './db'
+import { Subscriptions } from './db'
 import dotenv from 'dotenv'
 import download from './modules/download'
 import embed from './modules/embed'
@@ -27,7 +27,7 @@ async function runScheduleJob() {
     const data = await ocr(date)
     const channel = client.channels.get(process.env.SCHEDULE_CHANNEL)
     if (channel) embed(channel, data, url)
-    Subscription.findAll().then(sub => {
+    Subscriptions.findAll().then(sub => {
       for (let i = 0; i < sub.length; i++) {
         let userChannel = client.users.get(sub[i].discordId)
         if (userChannel) embed(userChannel, data, url)
@@ -58,9 +58,9 @@ client.on('message', async message => {
 
   if (process.env.ALLOW_SUB_COMMAND) {
     if (command === process.env.SUB_COMMAND) {
-      Subscription.findOne({ where: { discordId: author.id } }).then(subx => {
+      Subscriptions.findOne({ where: { discordId: author.id } }).then(subx => {
         if (!subx) {
-          Subscription.create({ discordId: author.id }).then(async user => {
+          Subscriptions.create({ discordId: author.id }).then(async user => {
             log('LOG', `${author.username} subscribed.`)
             message.reply('Du är nu på listan. :inbox_tray:')
             const date = moment()
@@ -77,7 +77,7 @@ client.on('message', async message => {
             }
           })
         } else {
-          Subscription.destroy({
+          Subscriptions.destroy({
             where: {
               discordId: author.id
             }
