@@ -1,6 +1,7 @@
 # Welcome to Lunchbot 👋
 
-[![License: AGPL--3.0](https://img.shields.io/badge/License-AGPL--3.0-yellow.svg)](./LICENSE)
+[![Code Style: Prettier](https://img.shields.io/badge/Code_Style-Prettier-ff69b4.svg)](https://prettier.io)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-yellow.svg)](./LICENSE)
 
 > The Premier Discord Bot for Tracking Your Favorite Lunch Establishment.
 
