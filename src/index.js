@@ -97,7 +97,7 @@ client.on('message', async message => {
       log('LOG', `${author.username} requested the menu from week ${date.week()}.`)
       try {
         const fpath = `tmp/eatery-${date.format('YYYY-WW')}.txt`
-        if (!fs.existsSync(fpath)) {
+        if (!parse[1]) {
           const url = await scrape();
           await download(url, date)
         }
