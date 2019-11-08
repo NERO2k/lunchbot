@@ -58,7 +58,7 @@ client.on('message', async message => {
 
   if (process.env.ALLOW_SUB_COMMAND) {
     if (command === process.env.SUB_COMMAND) {
-      Subscription.findOne({ discordId: author.id }).then(subx => {
+      Subscription.findOne({where: { discordId: author.id }}).then(subx => {
         if (!subx) {
           Subscription.create({ discordId: author.id }).then(async user => {
             log('LOG', `${author.username} subscribed.`)
