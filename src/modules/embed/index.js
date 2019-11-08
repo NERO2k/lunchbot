@@ -13,7 +13,7 @@ export default (channel, data, url) => {
   const embed = new Discord.RichEmbed()
     .setURL(url)
     .setTitle(menu[2])
-    .setFooter('Eatery Bot 1.0.0', 'https://i.imgur.com/eRgnofO.png')
+    .setFooter('Eatery Bot 1.0 | För att få lunchmenyn i dina PM\'s, skriv '+process.env.SUB_COMMAND+'.', 'https://i.imgur.com/eRgnofO.png')
     .setColor(0x000000)
   for (let i = 3; i < menu.length; i++) {
     if (menu[i] !== '' && menu[i] !== null) {
