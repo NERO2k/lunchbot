@@ -1,16 +1,32 @@
-# Lunchbot
+# Welcome to Lunchbot 👋
 
-The premier discord bot for tracking your favorite lunch establishment.
+[![Code Style: Prettier](https://img.shields.io/badge/Code_Style-Prettier-ff69b4.svg)](https://prettier.io)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-yellow.svg)](./LICENSE)
 
-## How to build.
+> The Premier Discord Bot for Tracking Your Favorite Lunch Establishment.
 
-1. `apt-get install tesseract-ocr`
-2. [Download the training data](https://github.com/tesseract-ocr/tessdata/raw/4.00/swe.traineddata) and add it to /usr/share/tesseract-ocr/4.00/tessdata
-3. `yarn install`
-4. Copy the .env.preset preset and rename it to .env
-5. Edit it to your liking
-6. Set ENV to production if you are placing the bot a on a server
-7. `yarn run start`
-8. Done.
+## Quick Start
 
-Or just run `sudo sh ./install.sh`
+```sh
+sudo sh ./install.sh
+```
+
+Make sure to edit the `.env` file with your desired values.
+
+## Author
+
+👤 **NERO2k**
+
+- Github: [@NERO2k](https://github.com/NERO2k)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/NERO2k/lunchbot/issues).
+
+## 📝 License
+
+Copyright © 2019 [NERO2k](https://github.com/NERO2k).
+
+This project is [AGPL-3.0](./LICENSE) licensed.

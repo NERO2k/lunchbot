@@ -17,7 +17,7 @@ export default (channel, data) => {
 
   const embed = new Discord.RichEmbed()
     .setFooter(
-      `Lunchbot 1.0 | För att få lunchmenyn i dina DM:s, skriv ${process.env.SUB_COMMAND}.`,
+      `Lunchbot – För att få lunchmenyn direkt i dina DM:s, skriv ${process.env.SUB_COMMAND}.`,
       'https://i.imgur.com/QCfAJ9S.png'
     )
     .setColor(0x7289da)

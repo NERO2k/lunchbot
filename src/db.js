@@ -9,8 +9,25 @@ const sequelize = new Sequelize({
 class Subscriptions extends Sequelize.Model {}
 Subscriptions.init(
   {
-    // attributes
     discordId: {
+      type: Sequelize.STRING,
+      allowNull: false
+    }
+  },
+  {
+    sequelize,
+    modelName: 'subscriptions'
+  }
+)
+
+class Servers extends Sequelize.Model {}
+Servers.init(
+  {
+    serverId: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    channelId: {
       type: Sequelize.STRING,
       allowNull: false
     }
@@ -24,7 +41,7 @@ Subscriptions.init(
 sequelize
   .authenticate()
   .then(() => {
-    log('LOG', 'DB connection established successfully.')
+    log('LOG', 'DB connection successfully established.')
     Subscriptions.sync({ force: false }).then(() => {
       log('LOG', 'Synced subscription model with database.')
     })
@@ -33,4 +50,4 @@ sequelize
     log('ERROR', err, '#ff0000')
   })
 
-export default Subscriptions
+export { Subscriptions, Servers }
