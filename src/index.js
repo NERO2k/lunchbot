@@ -6,7 +6,9 @@ import embed from './modules/embed'
 import log from './modules/log'
 import moment from 'moment'
 import ocr from './modules/ocr'
+import scrape from './modules/scrape'
 import schedule from 'node-schedule'
+import fs from 'fs'
 
 dotenv.config()
 
@@ -19,10 +21,8 @@ client.on('ready', () => {
 
 async function runScheduleJob() {
   const date = moment()
-  const url = `https://i0.wp.com/eatery.se/wp-content/uploads/${date.format(
-    'YYYY/MM'
-  )}/kista-nod-lunch-v${date.week()}.png`
   try {
+    const url = await scrape();
     await download(url, date)
     const data = await ocr(date)
     const channel = client.channels.get(process.env.SCHEDULE_CHANNEL)
@@ -64,10 +64,8 @@ client.on('message', async message => {
             log('LOG', `${author.username} subscribed.`)
             message.reply('Du är nu på listan. :inbox_tray:')
             const date = moment()
-            const url = `https://i0.wp.com/eatery.se/wp-content/uploads/${date.format(
-              'YYYY/MM'
-            )}/kista-nod-lunch-v${date.week()}.png`
             try {
+              const url = await scrape();
               await download(url, date)
               const data = await ocr(date)
               embed(message.author, data, url)
@@ -97,13 +95,14 @@ client.on('message', async message => {
         .day(moment().format('DD'))
         .week(args)
       log('LOG', `${author.username} requested the menu from week ${date.week()}.`)
-      const url = `https://i0.wp.com/eatery.se/wp-content/uploads/${date.format(
-        'YYYY/MM'
-      )}/kista-nod-lunch-v${date.week()}.png`
       try {
-        await download(url, date)
+        const fpath = `tmp/eatery-${date.format('YYYY-WW')}.txt`
+        if (!fs.existsSync(fpath)) {
+          const url = await scrape();
+          await download(url, date)
+        }
         const data = await ocr(date)
-        embed(message.channel, data, url)
+        embed(message.channel, data)
       } catch (error) {
         log('ERROR', error, '#ff0000')
         message.channel.send(':fork_knife_plate: Kunde inte hitta menyn för denna vecka.')
@@ -111,7 +110,7 @@ client.on('message', async message => {
     }
   }
 
-  if (command === '<debug') {
+  if (command === '<dispatch') {
     if (author.id === process.env.OWNER_ID) {
       runScheduleJob()
       message.reply('Ran schedule job.')
