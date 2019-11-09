@@ -34,7 +34,7 @@ Servers.init(
   },
   {
     sequelize,
-    modelName: 'subscriptions'
+    modelName: 'servers'
   }
 )
 
@@ -44,6 +44,9 @@ sequelize
     log('LOG', 'DB connection successfully established.')
     Subscriptions.sync({ force: false }).then(() => {
       log('LOG', 'Synced subscription model with database.')
+    })
+    Servers.sync({ force: false }).then(() => {
+      log('LOG', 'Synced server model with database.')
     })
   })
   .catch(err => {

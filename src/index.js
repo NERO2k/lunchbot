@@ -1,5 +1,5 @@
 import Discord from 'discord.js'
-import { Subscriptions } from './db'
+import { Subscriptions, Servers } from './db'
 import dotenv from 'dotenv'
 import download from './modules/download'
 import embed from './modules/embed'
@@ -23,7 +23,7 @@ async function runScheduleJob() {
   const date = moment()
   try {
     const url = await scrape();
-    await download(url, date)
+    await download(url, date);
     const data = await ocr(date)
     const channel = client.channels.get(process.env.SCHEDULE_CHANNEL)
     if (channel) embed(channel, data, url)
@@ -31,7 +31,14 @@ async function runScheduleJob() {
       for (let i = 0; i < sub.length; i++) {
         let userChannel = client.users.get(sub[i].discordId)
         if (userChannel) embed(userChannel, data, url)
-        log('LOG', `Send Eatery menu to ${sub[i].discordId}`)
+        log('LOG', `Sent Eatery menu to ${sub[i].discordId}`)
+      }
+    })
+    Servers.findAll().then(sub => {
+      for (let i = 0; i < sub.length; i++) {
+        let channelGuild = client.channels.get(sub[i].channelId)
+        if (channelGuild) embed(channelGuild, data, url)
+        log('LOG', `Sent Eatery menu to ${sub[i].channelId} in ${sub[i].serverId}`)
       }
     })
   } catch (error) {
@@ -110,7 +117,47 @@ client.on('message', async message => {
     }
   }
 
-  if (command === '<dispatch') {
+  if (process.env.ALLOW_LINK_COMMANDS) {
+    if (message.guild.owner.id === author.id) //|| process.env.OWNER_ID === author.id)
+    {
+      if (command === process.env.LINK_COMMAND) {
+        Servers.findOne({ where: { serverId: message.guild.id } }).then(subx => {
+          if (!subx) {
+            Servers.create({ serverId: message.guild.id, channelId: message.channel.id }).then(async user => {
+              log('LOG', `${author.username} added ${message.guild.name} to automatic messaging.`)
+              message.reply('Kanalen är nu ansluten :bulb:')
+              const date = moment()
+              try {
+                const url = await scrape();
+                await download(url, date)
+                const data = await ocr(date)
+                embed(message.channel, data, url)
+              } catch (error) {
+                log('ERROR', error, '#ff0000')
+                message.channel.send(':fork_knife_plate: Kunde inte hitta menyn för denna vecka.')
+              }
+            })
+          } else {
+            message.reply('En kanal är redan ansluten :warning:')
+          }
+        })
+      }
+      if (command === process.env.UNLINK_COMMAND) {
+        Servers.destroy({
+          where: {
+            serverId: message.guild.id
+          }
+        }).then(() => {
+          log('LOG', `${author.username} removed ${message.guild.name} from automatic messaging.`)
+          message.reply('Den anslutna kanalen är inte längre ansluten :electric_plug:')
+        })
+      }
+    } else {
+      message.reply('Endast ägaren av servern kan använda detta kommando :no_entry_sign:')
+    }
+  }
+
+  if (command === process.env.DISPATCH_COMMAND) {
     if (author.id === process.env.OWNER_ID) {
       runScheduleJob()
       message.reply('Ran schedule job.')
