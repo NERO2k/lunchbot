@@ -184,7 +184,7 @@ client.on('message', async message => {
           {
             name: 'Länkning',
             value:
-              'Som serverägare har du tillgång till kommandot <link och <unlink dessa commandon används för att ansluta en kanal i din server till att ta emot lunchmenyn. <unlink kan användas i alla kanaler av serverägaren men <link kommandot måste användas i kanalen du vill ta emot meddelanden i.'
+              'Som serverägare har du tillgång till kommandot <link och <unlink, dessa commandon används för att ansluta en kanal i din server till att ta emot lunchmenyn. <unlink kan användas i alla kanaler av serverägaren men <link kommandot måste användas i kanalen du vill ta emot meddelanden i.'
           }
         ]
       }
