@@ -7,7 +7,8 @@ function isUpperCase(str) {
 const blockedWords = ["Lunchen", "VÄLKOMMEN", "Nybakat", "KISTA"];
 const allowedTitles = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag"];
 
-export default (channel, data) => {
+export default (channel, data, extURL) => {
+  let url = extURL || "https://eatery.se";
   let menu = data.split('\n')
   let embedData = []
   let extras = ''
@@ -21,6 +22,8 @@ export default (channel, data) => {
       'https://i.imgur.com/QCfAJ9S.png'
     )
     .setColor(0x7289da)
+
+  if (url) embed.setURL(url);
 
   for (let i = 0; i < menu.length; i++) {
     if (menu[i] !== ' ' && menu[i] !== '' && menu[i] !== null) {
