@@ -174,17 +174,17 @@ client.on('message', async message => {
           {
             name: 'Lunchmenyn',
             value:
-              'Du kan använda kommandot <lunch {alternativt veckonummer} för att skriva ut lunchmenyn i chatten du skriver i.'
+              'Du kan använda kommandot `<lunch {alternativt veckonummer}` för att skriva ut lunchmenyn i chatten du skriver i.'
           },
           {
             name: 'Prenumerera',
             value:
-              'Kommandot <sub prenumererar ditt konto till att ta emot lunchmenyn direkt via dina direktmeddelanden varje måndag. Du kan också avprenumerera genom att använda samma kommando igen.'
+              'Kommandot `<sub` prenumererar ditt konto till att ta emot lunchmenyn direkt via dina direktmeddelanden varje måndag. Du kan också avprenumerera genom att använda samma kommando igen.'
           },
           {
             name: 'Länkning',
             value:
-              'Som serverägare har du tillgång till kommandot <link och <unlink, dessa commandon används för att ansluta en kanal i din server till att ta emot lunchmenyn. <unlink kan användas i alla kanaler av serverägaren men <link kommandot måste användas i kanalen du vill ta emot meddelanden i.'
+              'Som serverägare har du tillgång till kommandot `<link` och `<unlink`, dessa kommandon används för att ansluta en kanal i din server till att ta emot lunchmenyn. `<unlink` kan användas i alla kanaler men `<link` måste användas i kanalen du vill ta emot meddelanden i.'
           }
         ]
       }
