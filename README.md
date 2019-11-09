@@ -1,7 +1,8 @@
 # Welcome to Lunchbot 👋
 
-[![Code Style: Prettier](https://img.shields.io/badge/Code_Style-Prettier-ff69b4.svg)](https://prettier.io)
-[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-yellow.svg)](./LICENSE)
+[![Chat: Discord](https://img.shields.io/badge/Chat-Discord-7289DA)](https://discord.gg/tBRjGFd)
+[![Code Style: Prettier](https://img.shields.io/badge/Code_Style-Prettier-ff69b4)](https://prettier.io)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-yellow)](./LICENSE)
 
 > The Premier Discord Bot for Tracking Your Favorite Lunch Establishment.
 
@@ -13,11 +14,7 @@ sudo sh ./install.sh
 
 Make sure to edit the `.env` file with your desired values.
 
-## Author
-
-👤 **NERO2k**
-
-- Github: [@NERO2k](https://github.com/NERO2k)
+If you prefer a hosted version, [add it to your Discord server](https://discordapp.com/oauth2/authorize?client_id=642020950853943306&scope=bot&permissions=67226688).
 
 ## 🤝 Contributing
 
