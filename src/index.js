@@ -27,18 +27,18 @@ async function runScheduleJob() {
     const data = await ocr(date)
     const channel = client.channels.get(process.env.SCHEDULE_CHANNEL)
     if (channel) embed(channel, data, url)
-    Subscriptions.findAll().then(sub => {
-      for (let i = 0; i < sub.length; i++) {
-        let userChannel = client.users.get(sub[i].discordId)
-        if (userChannel) embed(userChannel, data, url)
-        log('LOG', `Sent Eatery menu to ${sub[i].discordId}`)
-      }
-    })
+      Subscriptions.findAll().then(sub => {
+        for (let i = 0; i < sub.length; i++) {
+          let userChannel = client.users.get(sub[i].discordId)
+          if (userChannel) embed(userChannel, data, url)
+            log('LOG', `Sent Eatery menu to ${sub[i].discordId}`)
+        }
+      })
     Servers.findAll().then(sub => {
       for (let i = 0; i < sub.length; i++) {
         let channelGuild = client.channels.get(sub[i].channelId)
         if (channelGuild) embed(channelGuild, data, url)
-        log('LOG', `Sent Eatery menu to ${sub[i].channelId} in ${sub[i].serverId}`)
+          log('LOG', `Sent Eatery menu to ${sub[i].channelId} in ${sub[i].serverId}`)
       }
     })
   } catch (error) {
@@ -54,12 +54,12 @@ if (process.env.SCHEDULE_MESSAGE) {
     async () => {
       runScheduleJob()
     }
-  )
+    )
 }
 
 client.on('message', async message => {
   if (message.author.bot) return
-  const { content, author } = message
+    const { content, author } = message
   const parse = content.split(' ')
   const command = parse[0]
 
@@ -99,8 +99,8 @@ client.on('message', async message => {
     if (command === process.env.MENU_COMMAND) {
       const args = parse[1] || moment().week()
       const date = moment()
-        .day(moment().format('DD'))
-        .week(args)
+      .day(moment().format('DD'))
+      .week(args)
       log('LOG', `${author.username} requested the menu from week ${date.week()}.`)
       try {
         const fpath = `tmp/eatery-${date.format('YYYY-WW')}.txt`
@@ -118,9 +118,9 @@ client.on('message', async message => {
   }
 
   if (process.env.ALLOW_LINK_COMMANDS) {
-    if (message.guild.owner.id === author.id) //|| process.env.OWNER_ID === author.id)
-    {
-      if (command === process.env.LINK_COMMAND) {
+    if (command === process.env.LINK_COMMAND) {
+      if (message.guild.owner.id === author.id) //|| process.env.OWNER_ID === author.id)
+      {
         Servers.findOne({ where: { serverId: message.guild.id } }).then(subx => {
           if (!subx) {
             Servers.create({ serverId: message.guild.id, channelId: message.channel.id }).then(async user => {
@@ -141,8 +141,13 @@ client.on('message', async message => {
             message.reply('En kanal är redan ansluten :warning:')
           }
         })
+      } else {
+        message.reply('Endast ägaren av servern kan använda detta kommando :no_entry_sign:')
       }
-      if (command === process.env.UNLINK_COMMAND) {
+    }
+    if (command === process.env.UNLINK_COMMAND) {
+      if (message.guild.owner.id === author.id) //|| process.env.OWNER_ID === author.id)
+      {
         Servers.destroy({
           where: {
             serverId: message.guild.id
@@ -151,10 +156,29 @@ client.on('message', async message => {
           log('LOG', `${author.username} removed ${message.guild.name} from automatic messaging.`)
           message.reply('Den anslutna kanalen är inte längre ansluten :electric_plug:')
         })
+      } else {
+        message.reply('Endast ägaren av servern kan använda detta kommando :no_entry_sign:')
       }
-    } else {
-      message.reply('Endast ägaren av servern kan använda detta kommando :no_entry_sign:')
     }
+  }
+
+  // Example help command. Embed would be nice.
+  if (command === process.env.HELP_COMMAND) {
+    message.channel.send(`\`\`\`
+-----------------------------------------------------------------------
+Du kan använda kommandot <lunch {alternativt veckonummer} för att 
+skriva ut lunch menyn i chatten du skriver i.
+-----------------------------------------------------------------------
+Kommandot <sub prenumererar ditt konto till att ta emot lunchmenyn
+direkt via dina privat meddelanden varje måndag. Du kan också
+avprenumerera genom att använda samma kommado igen.
+-----------------------------------------------------------------------
+Som serverägare har du tillgång till kommandot <link och <unlink
+dessa commandon används för att ansluta en kanal i din server till att
+ta emot lunchmenyn. <unlink kan användas i alla kanaler av 
+serverägaren men <link kommandot måste användas i kanalen du vill
+ta emot meddelanden i.
+      \`\`\``);
   }
 
   if (command === process.env.DISPATCH_COMMAND) {
