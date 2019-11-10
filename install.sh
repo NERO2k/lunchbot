@@ -9,6 +9,6 @@ mv swe.traineddata /usr/share/tesseract-ocr/4.00/tessdata
 npm i -g yarn
 cp .env.example .env
 
-yarn
+yarn install
 
 echo Done!
