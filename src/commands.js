@@ -86,6 +86,7 @@ commands[process.env.MENU_COMMAND] = {
 commands[process.env.LINK_COMMAND] = {
   enabled: process.env.ALLOW_LINK_COMMANDS,
   check: (client, message, args) => {
+  	if (message.guild === null) return false
     if (message.guild.owner.id === message.author.id) {
       return true
     }
@@ -123,6 +124,7 @@ commands[process.env.LINK_COMMAND] = {
 commands[process.env.UNLINK_COMMAND] = {
   enabled: process.env.ALLOW_LINK_COMMANDS,
   check: (client, message, args) => {
+  	if (message.guild === null) return false
     if (message.guild.owner.id === message.author.id) {
       return true
     }
