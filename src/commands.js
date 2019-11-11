@@ -63,14 +63,14 @@ commands[process.env.MENU_COMMAND] = {
     return true
   },
   action: async (client, message, args) => {
-    const base = parse[1] || moment().week()
+    const base = args[1] || moment().week()
     const date = moment()
       .day(moment().format('DD'))
       .week(base)
-    log('LOG', `${author.username} requested the menu from week ${date.week()}.`)
+    log('LOG', `${message.author.username} requested the menu from week ${date.week()}.`)
     try {
       const fpath = `tmp/eatery-${date.format('YYYY-WW')}.txt`
-      if (!parse[1]) {
+      if (!args[1]) {
         const url = await scrape()
         await download(url, date)
       }
