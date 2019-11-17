@@ -63,11 +63,11 @@ commands[process.env.MENU_COMMAND] = {
     return true
   },
   action: async (client, message, args) => {
-    const base = args[1] || moment().week()
+    const base = args[1] || moment().format('W')
     const date = moment()
       .day(moment().format('DD'))
       .week(base)
-    log('LOG', `${message.author.username} requested the menu from week ${date.week()}.`)
+    log('LOG', `${message.author.username} requested the menu from week ${date.format('W')}.`)
     try {
       const fpath = `tmp/eatery-${date.format('YYYY-WW')}.txt`
       if (!args[1]) {

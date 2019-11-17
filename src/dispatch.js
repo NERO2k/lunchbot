@@ -25,7 +25,7 @@ export default async function(client) {
       }
     })
   } catch (error) {
-    log('ERROR', `Kunde inte hitta menyn för vecka ${moment().week()}`)
+    log('ERROR', `Kunde inte hitta menyn för vecka ${moment().format('W')}`)
     log('ERROR', error)
   }
 }
