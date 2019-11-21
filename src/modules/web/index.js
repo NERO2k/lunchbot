@@ -16,11 +16,11 @@ export default async => {
 
       const data = await ocr(date)
       const dat = await format(data)
-      res.render('template.ejs', dat)
+      res.render(`${process.env.WEBSITE_TEMPLATE}/menu.ejs`, dat)
 
     } catch(error) {
       log('ERROR', error, '#ff0000')
-      res.render('error.ejs')
+      res.render(`${process.env.WEBSITE_TEMPLATE}/error.ejs`)
     }
   })
 
