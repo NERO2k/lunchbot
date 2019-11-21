@@ -7,7 +7,7 @@ import moment from 'moment'
 import schedule from 'node-schedule'
 import dispatch from './dispatch'
 import commands from './commands'
-import { scrape, ocr, log, embed, download } from './modules'
+import { scrape, ocr, log, embed, download, web } from './modules'
 
 dotenv.config()
 
@@ -33,3 +33,4 @@ client.on('message', async message => {
 })
 
 client.login(process.env.BOT_TOKEN)
+web(client)
