@@ -1,9 +1,10 @@
 import Discord from 'discord.js'
 import {format} from '../'
+import dotenv from 'dotenv'
 
-export default async (channel, data, extURL) => {
-  let url = extURL || 'https://eatery.se'
+dotenv.config()
 
+export default async (channel, data, date) => {
   const embed = new Discord.RichEmbed()
     .setFooter(
       `Lunchbot – För att få lunchmenyn direkt i dina DM:s, skriv ${process.env.SUB_COMMAND}.`,
@@ -11,7 +12,7 @@ export default async (channel, data, extURL) => {
     )
     .setColor(0x7289da)
 
-  if (url) embed.setURL(url)
+  embed.setURL(`${process.env.BASE_URL}?week=${date.format("W")}`)
 
   const res = await format(data)
   embed.setTitle(res.title)

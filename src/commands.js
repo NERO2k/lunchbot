@@ -37,7 +37,7 @@ commands[process.env.SUB_COMMAND] = {
             const url = await scrape()
             await download(url, date)
             const data = await ocr(date)
-            embed(message.author, data, url)
+            embed(message.author, data, date)
           } catch (error) {
             log('ERROR', error, '#ff0000')
             message.channel.send(':fork_knife_plate: Kunde inte hitta menyn för denna vecka.')
@@ -73,7 +73,7 @@ commands[process.env.MENU_COMMAND] = {
         await download(url, date)
       }
       const data = await ocr(date)
-      embed(message.channel, data)
+      embed(message.channel, data, date)
     } catch (error) {
       log('ERROR', error, '#ff0000')
       message.channel.send(':fork_knife_plate: Kunde inte hitta menyn för denna vecka.')
@@ -105,7 +105,7 @@ commands[process.env.LINK_COMMAND] = {
               const url = await scrape()
               await download(url, date)
               const data = await ocr(date)
-              embed(message.channel, data, url)
+              embed(message.channel, data, date)
             } catch (error) {
               log('ERROR', error, '#ff0000')
               message.channel.send(':fork_knife_plate: Kunde inte hitta menyn för denna vecka.')
