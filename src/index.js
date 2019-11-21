@@ -33,4 +33,4 @@ client.on('message', async message => {
 })
 
 client.login(process.env.BOT_TOKEN)
-web(client)
+if (process.env.WEBSITE_ENABLED) web(client)
