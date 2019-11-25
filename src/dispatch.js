@@ -8,8 +8,6 @@ export default async function(client) {
     const url = await scrape()
     await download(url, date)
     const data = await ocr(date)
-    const channel = client.channels.get(process.env.SCHEDULE_CHANNEL)
-    if (channel) embed(channel, data, date)
     Subscriptions.findAll().then(sub => {
       for (let i = 0; i < sub.length; i++) {
         let userChannel = client.users.get(sub[i].discordId)
