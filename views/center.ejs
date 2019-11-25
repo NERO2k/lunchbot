@@ -1,0 +1,10 @@
+function setMargin() {
+	let value = (window.innerHeight-document.getElementById("container").clientHeight)/2;
+	if (Math.sign(value) === 1) document.getElementById("container").style.marginTop = value;
+}
+window.addEventListener("resize",function(){
+   document.getElementById("container").style.marginTop = 0;
+   setMargin();
+})
+setMargin();
+</script>

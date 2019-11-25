@@ -1,12 +1,3 @@
 	</body>
-	<script>
-	function setMargin() {
-		document.getElementById("container").style.marginTop = (window.innerHeight-document.getElementById("container").clientHeight)/2
-	}
-	window.addEventListener("resize",function(){
-	   document.getElementById("container").style.marginTop = 0;
-	   setMargin();
-	})
-	setMargin();
-	</script>
+	<%- include('../center') %>
 </html>
