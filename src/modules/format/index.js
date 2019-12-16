@@ -1,5 +1,7 @@
-function isUpperCase(str) {
-  return str === str.toUpperCase()
+function isUpperCase(str) 
+  var isnum = /^\d+$/.test(str);
+  if (isnum) return false;
+  return str === str.toUpperCase();
 }
 
 const blockedWords = ['Lunchen', 'VÄLKOMMEN', 'Nybakat', 'KISTA']
