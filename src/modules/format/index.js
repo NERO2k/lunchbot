@@ -1,4 +1,4 @@
-function isUpperCase(str) 
+function isUpperCase(str) { 
   var isnum = /^\d+$/.test(str);
   if (isnum) return false;
   return str === str.toUpperCase();
