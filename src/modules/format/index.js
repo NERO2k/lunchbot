@@ -1,4 +1,7 @@
+const bypassedWords = ['BBQ']
+
 function isUpperCase(str) { 
+  if (bypassedWords.includes(str)) return false;
   var isnum = /^\d+$/.test(str);
   if (isnum) return false;
   return str === str.toUpperCase();
