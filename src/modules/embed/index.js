@@ -12,7 +12,7 @@ export default async (channel, data, date) => {
     )
     .setColor(0x7289da)
 
-  embed.setURL(`${process.env.BASE_URL}?week=${date.format("W")}`)
+  embed.setURL(`${process.env.BASE_URL}?week=${date.format("W")}&year=${date.format("YYYY")}`)
 
   const res = await format(data)
   embed.setTitle(res.title)
