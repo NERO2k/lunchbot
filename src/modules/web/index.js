@@ -12,7 +12,8 @@ export default async => {
   app.get('/', async (req, res) => { 
     try {
       const base = req.query.week || moment().format('W')
-      const date = moment().week(base)
+      const basey = req.query.year || moment().format('YYYY')
+      const date = moment().week(base).year(basey)
 
       const data = await ocr(date)
       const dat = await format(data)

@@ -3,7 +3,7 @@ import axios from 'axios'
 export default async =>
   new Promise((resolve, reject) => {
     try {
-      axios.get('https://eatery.se/kista-nod-lunchmeny/').then(({ data }) => {
+      axios.get('https://eatery.se/kista-nod-lunchmeny').then(({ data }) => {
         const base = data.split(`<main id="page-content"`)[1]
         const image = base.split(`<div class="w-image-h">`)[1]
         const cut = image.split(`</div>`)[0]
