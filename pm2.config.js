@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'eatery-bot',
+      name: 'lunchbot',
       script: './watcher.js'
     }
   ]
