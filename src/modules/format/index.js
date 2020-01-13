@@ -25,7 +25,7 @@ export default async data => {
         let msgSplit = menu[i].split(' ')
         if (!isUpperCase(msgSplit[0])) {
           if (msgSplit.length === 1) {
-            if (msgSplit[0].length >= 2) {
+            if (msgSplit[0].length >= 3) {
               if (allowedTitles.includes(msgSplit[0])) {
                 embedData[menu[i]] = ''
                 current = menu[i]
