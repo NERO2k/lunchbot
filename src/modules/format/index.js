@@ -7,7 +7,7 @@ function isUpperCase(str) {
   return str === str.toUpperCase();
 }
 
-const blockedWords = ['Lunchen', 'VÄLKOMMEN', 'Nybakat', 'KISTA']
+const blockedWords = ['Lunchen', 'VÄLKOMMEN', 'Nybakat', 'KISTA', 'TILL']
 const allowedTitles = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag']
 
 export default async data => {
