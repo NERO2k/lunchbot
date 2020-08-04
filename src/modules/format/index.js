@@ -1,7 +1,4 @@
-const bypassedWords = ['BBQ']
-
-function isUpperCase(str) { 
-  if (bypassedWords.includes(str)) return false;
+function isUpperCase(str) {
   var isnum = /^\d+$/.test(str);
   if (isnum) return false;
   return str === str.toUpperCase();
@@ -23,34 +20,29 @@ export default async data => {
     if (menu[i] !== ' ' && menu[i] !== '' && menu[i] !== null) {
       if (title !== null) {
         let msgSplit = menu[i].split(' ')
-        if (!isUpperCase(msgSplit[0])) {
-          if (msgSplit.length === 1) {
-            if (msgSplit[0].length >= 3) {
-              if (allowedTitles.includes(msgSplit[0])) {
-                embedData[menu[i]] = ''
-                current = menu[i]
-                if (lastWasExtra) extras = `${extras}\n`
-                lastWasExtra = false
+        if (msgSplit.length === 1) {
+          if (msgSplit[0].length >= 3) {
+            if (allowedTitles.includes(msgSplit[0])) {
+              embedData[menu[i]] = ''
+              current = menu[i]
+              if (lastWasExtra) extras = `${extras}\n`
+              lastWasExtra = false
+            } else {
+              if (!lastWasExtra) {
+                if (!blockedWords.includes(msgSplit[0]))
+                  embedData[current] = `${embedData[current] + menu[i]}\n`
               } else {
-                if (!lastWasExtra) {
-                  if (!blockedWords.includes(msgSplit[0]))
-                    embedData[current] = `${embedData[current] + menu[i]}\n`
-                } else {
-                  if (!blockedWords.includes(msgSplit[0])) extras = `${extras + menu[i]}`
-                }
-                if (lastWasExtra) extras = `${extras}\n`
-                lastWasExtra = false
+                if (!blockedWords.includes(msgSplit[0])) extras = `${extras + menu[i]}`
               }
+              if (lastWasExtra) extras = `${extras}\n`
+              lastWasExtra = false
             }
-          } else {
-            if (lastWasExtra) extras = `${extras}\n`
-            lastWasExtra = false
-            if (!blockedWords.includes(msgSplit[0]))
-              embedData[current] = `${embedData[current] + menu[i]}\n`
           }
         } else {
-          if (!blockedWords.includes(msgSplit[0])) extras = `${extras + menu[i]} `
-          lastWasExtra = true
+          if (lastWasExtra) extras = `${extras}\n`
+          lastWasExtra = false
+          if (!blockedWords.includes(msgSplit[0]))
+            embedData[current] = `${embedData[current] + menu[i]}\n`
         }
       } else {
         if (isUpperCase(menu[i])) {

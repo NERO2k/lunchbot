@@ -2,32 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52643137-a2c9-4c15-9b9e-08a27fa36e82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/lunchbot.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/america/error.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/america/footer.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/america/header.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/america/menu.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/center.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/christmas/error.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/christmas/footer.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/christmas/header.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/christmas/menu.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/default/error.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/default/footer.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/default/header.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/default/menu.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/sweden/error.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/sweden/footer.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/sweden/header.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/sweden/menu.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/format/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/format/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/web/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/web/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/default/menu.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/default/menu.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +44,7 @@
       <option name="presentableId" value="Default" />
       <updated>1596573178387</updated>
       <workItem from="1596573181556" duration="1856000" />
-      <workItem from="1596575758594" duration="1359000" />
+      <workItem from="1596575758594" duration="3216000" />
     </task>
     <servers />
   </component>

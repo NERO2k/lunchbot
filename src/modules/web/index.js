@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv'
 import moment from 'moment'
-import {log, format, ocr} from '../'
+import {log, format, ocr, scrape, download} from '../'
 const app = express()
 
 dotenv.config()
@@ -14,6 +14,12 @@ export default async => {
       const base = req.query.week || moment().format('W')
       const basey = req.query.year || moment().format('YYYY')
       const date = moment().week(base).year(basey)
+
+      if (req.query.fresh === "true")
+      {
+        const url = await scrape()
+        await download(url, date)
+      }
 
       const data = await ocr(date)
       const dat = await format(data)
