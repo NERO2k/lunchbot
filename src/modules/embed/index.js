@@ -21,6 +21,5 @@ export default async (channel, data, date) => {
     embed.addField(Object.keys(res.data)[i], res.data[Object.keys(res.data)[i]])
   }
 
-  embed.addField('Extra', res.extras)
   channel.send({ embed })
 }
