@@ -1,5 +1,7 @@
-import './db'
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
+import './db'
 import Discord from 'discord.js'
 import dotenv from 'dotenv'
 import fs from 'fs'

@@ -1,6 +1,7 @@
 pids
 node_modules
 db.sqlite
+dist
 *.tgz
 *.seed
 *.pid.lock
