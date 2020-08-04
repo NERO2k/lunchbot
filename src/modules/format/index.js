@@ -4,17 +4,15 @@ function isUpperCase(str) {
   return str === str.toUpperCase();
 }
 
-const blockedWords = ['Lunchen', 'VÄLKOMMEN', 'Nybakat', 'KISTA', 'TILL']
+const blockedWords = ['Lunchen', 'VÄLKOMMEN', 'Nybakat', 'KISTA', 'TILL', 'Trevlig']
 const allowedTitles = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag']
 
 export default async data => {
     let menu = data.split('\n')
     let embedData = []
     let response = {}
-    let extras = ''
     let title = null
     let current = null
-    let lastWasExtra = false
 
     for (let i = 0; i < menu.length; i++) {
     if (menu[i] !== ' ' && menu[i] !== '' && menu[i] !== null) {
@@ -25,22 +23,12 @@ export default async data => {
             if (allowedTitles.includes(msgSplit[0])) {
               embedData[menu[i]] = ''
               current = menu[i]
-              if (lastWasExtra) extras = `${extras}\n`
-              lastWasExtra = false
             } else {
-              if (!lastWasExtra) {
-                if (!blockedWords.includes(msgSplit[0]))
-                  embedData[current] = `${embedData[current] + menu[i]}\n`
-              } else {
-                if (!blockedWords.includes(msgSplit[0])) extras = `${extras + menu[i]}`
-              }
-              if (lastWasExtra) extras = `${extras}\n`
-              lastWasExtra = false
+              if (!blockedWords.includes(msgSplit[0]))
+                embedData[current] = `${embedData[current] + menu[i]}\n`
             }
           }
         } else {
-          if (lastWasExtra) extras = `${extras}\n`
-          lastWasExtra = false
           if (!blockedWords.includes(msgSplit[0]))
             embedData[current] = `${embedData[current] + menu[i]}\n`
         }
@@ -48,11 +36,11 @@ export default async data => {
         if (isUpperCase(menu[i])) {
           title = menu[i]
           response.title = title
+          response.week = title.match(/\d+/g);
         }
       }
     }
   }
   response.data = embedData
-  response.extras = extras
   return response
 }
