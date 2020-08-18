@@ -8,7 +8,10 @@ const blockedWords = ['Lunchen', 'VÄLKOMMEN', 'Nybakat', 'KISTA', 'TILL', 'Trev
 const allowedTitles = ['måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag', 'söndag']
 
 export default async data => {
-    let menu = data.replace(/[\r\n]{1,}/g, "\n").replace(/[\r\n] {2,}/g, "\n").split('\n')
+    let menu = data.replace(/\|/g, '')
+     .replace(/[\r\n]{1,}/g, "\n")
+     .replace(/[\r\n] {2,}/g, "\n")
+     .split('\n');
     let embedData = []
     let response = {}
     let title = null
