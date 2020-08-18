@@ -4,7 +4,7 @@
   "scripts": {
     "build": "babel src -d dist",
     "start": "node dist/index.js",
-    "start-dev": "nodemon --exec 'npm run build && npm run start'"
+    "start-dev": "nodemon 'babel-node src/index.js'"
   },
   "nodemonConfig": {
     "delay": "200",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.0",
+    "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.0",
     "axios": "^0.19.0",
     "chalk": "^3.0.0",

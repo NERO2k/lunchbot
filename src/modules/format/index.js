@@ -5,10 +5,10 @@ function isUpperCase(str) {
 }
 
 const blockedWords = ['Lunchen', 'VÄLKOMMEN', 'Nybakat', 'KISTA', 'TILL', 'Trevlig']
-const allowedTitles = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag']
+const allowedTitles = ['måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag', 'söndag']
 
 export default async data => {
-    let menu = data.split('\n')
+    let menu = data.replace(/[\r\n]{1,}/g, "\n").replace(/[\r\n] {2,}/g, "\n").split('\n')
     let embedData = []
     let response = {}
     let title = null
@@ -20,7 +20,7 @@ export default async data => {
         let msgSplit = menu[i].split(' ')
         if (msgSplit.length === 1) {
           if (msgSplit[0].length >= 3) {
-            if (allowedTitles.includes(msgSplit[0])) {
+            if (allowedTitles.includes(msgSplit[0].toLowerCase())) {
               embedData[menu[i]] = ''
               current = menu[i]
             } else {
