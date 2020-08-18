@@ -7,7 +7,7 @@ dotenv.config()
 export default async (channel, data, date) => {
   const embed = new Discord.RichEmbed()
     .setFooter(
-      `Lunchbot – För att få lunchmenyn direkt i dina DM:s, skriv ${process.env.SUB_COMMAND}.`,
+      `Lunchbot – Få lunchmenyn direkt i dina DM:s, skriv kommandot ${process.env.SUB_COMMAND}.`,
       'https://i.imgur.com/QCfAJ9S.png'
     )
     .setColor(0x7289da)
