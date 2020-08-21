@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52643137-a2c9-4c15-9b9e-08a27fa36e82" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/modules/embed/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/embed/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/web/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/web/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/center.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/center.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/default/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/default/header.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +29,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -40,11 +44,14 @@
       <updated>1596573178387</updated>
       <workItem from="1596573181556" duration="1856000" />
       <workItem from="1596575758594" duration="3783000" />
+      <workItem from="1598001940202" duration="190000" />
+      <workItem from="1598002142426" duration="81000" />
+      <workItem from="1598002237849" duration="227000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="693" y="263" width="524" height="507" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596575867195">
@@ -55,9 +62,14 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="743" y="274" width="424" height="486" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1596575711446" />
-    <state x="441" y="151" width="1037" height="732" key="SettingsEditor" timestamp="1596573780132">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state x="441" y="180" width="1037" height="732" key="SettingsEditor" timestamp="1598002129464">
+      <screen x="0" y="26" width="1920" height="1054" />
     </state>
     <state x="441" y="151" width="1037" height="732" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1596573780132" />
+    <state x="441" y="180" key="SettingsEditor/0.26.1920.1054@0.26.1920.1054" timestamp="1598002129464" />
+    <state x="623" y="401" width="533" height="309" key="cloudConfig.PluginsDialog" timestamp="1598002207011">
+      <screen x="0" y="26" width="1920" height="1054" />
+    </state>
+    <state x="623" y="401" width="533" height="309" key="cloudConfig.PluginsDialog/0.26.1920.1054@0.26.1920.1054" timestamp="1598002207011" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 <script>
 function setMargin() {
-	var value = (window.innerHeight-document.getElementById("container").clientHeight)/2;
-	if (value > 0) document.getElementById("container").style.marginTop = value;
+  const value = (window.innerHeight-document.getElementById("container").clientHeight*<%=zoom%>.1)/2;
+  if (value > 0) document.getElementById("container").style.marginTop = value;
 }
 window.addEventListener("resize",function(){
    document.getElementById("container").style.marginTop = 0;

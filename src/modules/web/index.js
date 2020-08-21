@@ -14,6 +14,7 @@ export default async => {
       const base = req.query.week || moment().format('W')
       const basey = req.query.year || moment().format('YYYY')
       const date = moment().week(base).year(basey)
+      const zoom = Number(req.query.zoom ? req.query.zoom : req.query.tv ? 2 : 1)
 
       if (req.query.fresh === "true")
       {
@@ -23,7 +24,7 @@ export default async => {
 
       const data = await ocr(date)
       const dat = await format(data)
-      res.render(`${process.env.WEBSITE_TEMPLATE}/menu.ejs`, dat)
+      res.render(`${process.env.WEBSITE_TEMPLATE}/menu.ejs`, {...dat, zoom: zoom}))
 
     } catch(error) {
       log('ERROR', error, '#ff0000')
