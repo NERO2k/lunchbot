@@ -103,7 +103,7 @@ export async function parse(text) : Promise<object>
         if (currentDay)
           data.menu[currentDay].push(cleanLines[i])
       } else {
-        let day = cleanLines[i].toLowerCase();
+        let day = cleanLines[i].toLowerCase().replace( /[^a-öA-Ö0-9]/ , "");;
         currentDay = dayCast[day] || day;
         data.menu[currentDay] = data[currentDay] || []
       };
