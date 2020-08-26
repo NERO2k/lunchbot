@@ -1,25 +1,25 @@
 import Env from "@ioc:Adonis/Core/Env";
 
-const { AkairoClient, CommandHandler } = require('discord-akairo');
+import { AkairoClient, CommandHandler } from 'discord-akairo'
 
 class LunchBot extends AkairoClient {
   constructor() {
     super({
-      ownerID: '12345678910',
+      ownerID: Env.get('DISCORD_BOT_OWNER'),
     }, {
       disableEveryone: true
     });
     this.commandHandler = new CommandHandler(this, {
       directory: '../app/Commands/',
-      prefix: '!'
+      prefix: '<'
     });
 
     this.commandHandler.loadAll();
   }
 }
 
-const lunchBot = new LunchBot();
-lunchBot.login(Env.get('DISCORD_BOT_TOKEN'));
+const lunchBot = new LunchBot()
+lunchBot.login(Env.get('DISCORD_BOT_TOKEN'))
 
 lunchBot.once("ready", () => {
   console.log(`Logged in as ${lunchBot.user.tag}!`)
