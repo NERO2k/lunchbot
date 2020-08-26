@@ -4,7 +4,6 @@ import {Exception} from "@poppinss/utils";
 import {fetch, image, ocr, parse} from 'App/Common/MenuFunctions';
 
 export default class WebController {
-
   public async image ({ params }) {
     return image(params.url)
   }

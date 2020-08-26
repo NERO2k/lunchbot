@@ -5,7 +5,7 @@ import Env from "@ioc:Adonis/Core/Env";
 import tesseract from 'node-tesseract-ocr'
 import moment from 'moment'
 
-export async function image(url)
+export async function image(url) : Promise<string>
 {
   const page_url = url ? url : Env.get("LUNCHBOT_URL")
 
@@ -19,7 +19,8 @@ export async function image(url)
   throw new Exception("Failed scrape image url from http body.");
 }
 
-export async function fetch(date, url) {
+export async function fetch(date, url) : Promise<boolean>
+{
   const fpath = `../tmp/eatery-${date.format('YYYY-WW')}.png`
 
   if (!fs.existsSync(fpath)) {
@@ -36,7 +37,7 @@ export async function fetch(date, url) {
 
     if (response.status === 200) {
       await response.data.pipe(writer)
-      throw new Exception("Menu image written to drive", 200);
+      return true;
     } else {
       throw new Exception("Failed to fetch menu.");
     }
@@ -45,7 +46,7 @@ export async function fetch(date, url) {
   }
 }
 
-export async function ocr(file_path)
+export async function ocr(file_path) : Promise<string>
 {
   const config = {
     lang: 'swe',
@@ -65,7 +66,7 @@ export async function ocr(file_path)
   );
 }
 
-export async function parse(text)
+export async function parse(text) : Promise<object>
 {
   let data = {menu:{}}
   let currentDay;
