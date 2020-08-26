@@ -20,7 +20,7 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', 'MenuController.index')
+Route.get('/', 'WebController.index')
 
 Route.get('/api', 'ApiController.index')
 
