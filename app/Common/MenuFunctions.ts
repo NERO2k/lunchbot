@@ -2,8 +2,8 @@ import fs from "fs";
 import axios from "axios";
 import {Exception} from "@poppinss/utils";
 import Env from "@ioc:Adonis/Core/Env";
-import tesseract from 'node-tesseract-ocr'
-import moment from 'moment'
+import tesseract from 'node-tesseract-ocr/'
+import moment from 'moment/'
 import {blockedWords, sweDayCast, weekDays} from "../../config/words";
 
 export async function image(url) : Promise<string>

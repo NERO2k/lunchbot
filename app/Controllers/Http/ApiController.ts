@@ -1,7 +1,7 @@
 // import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import {hasWeekImage, isWeekParsed, isWeekStringified} from "App/Common/MenuHelpers";
-import moment from "moment";
+import moment from "moment/";
 import {Exception} from "@poppinss/utils";
 import {promises as fs} from "fs";
 

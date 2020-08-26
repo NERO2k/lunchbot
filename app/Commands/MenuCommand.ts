@@ -8,7 +8,7 @@ import {engDayCast} from "../../config/words";
 class MenuCommand extends Command {
     constructor() {
         super('menu', {
-            aliases: ['meny'],
+            aliases: ['meny', 'menu'],
             args: [
               {
                 id: 'date',

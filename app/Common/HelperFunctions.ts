@@ -2,7 +2,7 @@ import {hasWeekImage, isWeekParsed, isWeekStringified} from "./MenuHelpers";
 import {promises as fs} from "fs";
 import {ocr, fetch, image, parse} from "./MenuFunctions";
 import {Exception} from "@poppinss/utils";
-import moment from "moment";
+import moment from "moment/moment";
 
 export async function getMenu(date, allowFetch) : Promise<object> {
   if (!hasWeekImage(date))

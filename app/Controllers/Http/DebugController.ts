@@ -1,5 +1,5 @@
 // import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import moment from 'moment';
+import moment from 'moment/';
 import {Exception} from "@poppinss/utils";
 import {fetch, image, ocr, parse} from 'App/Common/MenuFunctions';
 import {getMenu} from "App/Common/HelperFunctions";
@@ -24,8 +24,7 @@ export default class WebController {
 
   public async ocr ({ request }) {
     const params = request.all();
-    const data = await ocr(params.file);
-    return data;
+    return await ocr(params.file);
   }
 
   public async parse ({ request }) {
@@ -40,7 +39,6 @@ export default class WebController {
     if (!date.isValid())
       throw new Exception("Date / Date format provided is invalid.")
 
-    const data = getMenu(date, true)
-    return data;
+    return getMenu(date, true);
   }
 }
