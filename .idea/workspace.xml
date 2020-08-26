@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/menu.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/menu.edge" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/install.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +48,7 @@
       <workItem from="1598431902214" duration="24285000" />
       <workItem from="1598465766521" duration="33000" />
       <workItem from="1598465816910" duration="64000" />
-      <workItem from="1598465891894" duration="12436000" />
+      <workItem from="1598465891894" duration="12623000" />
     </task>
     <servers />
   </component>
@@ -59,6 +60,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="630" y="337" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598455299326" />
+    <state x="724" y="124" key="CommitChangelistDialog2" timestamp="1598479464484">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="724" y="124" key="CommitChangelistDialog2/-1920.0.1920.1040/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598479464484" />
     <state x="381" y="167" key="SettingsEditor" timestamp="1598465869179">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
