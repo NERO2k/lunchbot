@@ -6,15 +6,16 @@ import moment from "moment/";
 class DispatchCommand extends Command {
   constructor() {
       super('dispatch', {
-          aliases: ['dispatch']
+          aliases: ['dispatch'],
+          ownerOnly: true
       });
   }
 
   async exec(message) {
-    message.reply('Running schedule job.')
+    await message.reply('Running schedule job.')
     const data = await getMenu(moment(), true);
     await dispatch(message.client, data, moment())
-    message.reply('Ran schedule job.')
+    await message.reply('Ran schedule job.')
   }
 }
 
