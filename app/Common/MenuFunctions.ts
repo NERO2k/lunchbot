@@ -4,10 +4,11 @@ import {Exception} from "@poppinss/utils";
 import Env from "@ioc:Adonis/Core/Env";
 import tesseract from 'node-tesseract-ocr'
 import moment from 'moment'
+import {blockedWords, sweDayCast, weekDays} from "../../config/words";
 
 export async function image(url) : Promise<string>
 {
-  const page_url = url ? url : Env.get("LUNCHBOT_URL")
+  const page_url = url ? url : Env.get("EATERY_LUNCH_URL")
 
   const request = await axios.get(page_url);
   const imgRex = /<img.*?src="(.*?)"[^>]+>/g;
@@ -71,10 +72,6 @@ export async function parse(text) : Promise<object>
   let data = {menu:{}}
   let currentDay;
 
-  const blocked = ["borgarfsjordsgatan", "borgarfsjordgatan", "kista", "bröd", "eaterykortet", "trevlig", "eatery"]
-  const days = ["måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag", "söndag", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
-  const dayCast = {"måndag": "monday", "tisdag": "tuesday", "onsdag": "wednesday", "torsdag": "thursday", "fredag": "friday", "lördag": "saturday", "söndag": "sunday"}
-
   const splitLines = text.replace(/\r/g, "").split("\n");
   const cleanLines = splitLines.filter(function(entry) {
     return entry.trim() != '';
@@ -94,17 +91,17 @@ export async function parse(text) : Promise<object>
       if (listedWeek < 53) {
         data["listed_week"] = listedWeek;
       }}
-    if (!blocked.some(function(v) {
+    if (!blockedWords.some(function(v) {
       return cleanLines[i].toLowerCase().indexOf(v) >= 0;
     })) {
-      if (!days.some(function(v) {
+      if (!weekDays.some(function(v) {
         return cleanLines[i].toLowerCase().indexOf(v) >= 0 && cleanLines[i].split(" ").length < 2;
       })) {
         if (currentDay)
           data.menu[currentDay].push(cleanLines[i])
       } else {
         let day = cleanLines[i].toLowerCase().replace( /[^a-öA-Ö0-9]/ , "");;
-        currentDay = dayCast[day] || day;
+        currentDay = sweDayCast[day] || day;
         data.menu[currentDay] = data[currentDay] || []
       };
     }

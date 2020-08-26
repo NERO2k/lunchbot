@@ -40,7 +40,7 @@ export default class WebController {
     if (!date.isValid())
       throw new Exception("Date / Date format provided is invalid.")
 
-    const data = getMenu(date)
+    const data = getMenu(date, true)
     return data;
   }
 }
