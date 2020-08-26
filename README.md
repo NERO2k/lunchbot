@@ -16,6 +16,12 @@ Make sure to edit the `.env` file with your desired values.
 
 If you prefer a hosted version, [add it to your Discord server](https://discordapp.com/oauth2/authorize?client_id=642020950853943306&scope=bot&permissions=67226688).
 
+## 💻 Web API
+
+Use Lunchbot data for your personal projects with our API.
+
+For more information check out the [api page](https://eatery.nero2k.com/api).
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
