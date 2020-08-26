@@ -28,10 +28,10 @@ Route.any('/api/image', 'ApiController.image')
 Route.any('/api/text', 'ApiController.text')
 Route.any('/api/json', 'ApiController.json')
 
-Route.any('/debug/image', 'DebugController.image')
-Route.any('/debug/fetch', 'DebugController.fetch')
-Route.any('/debug/ocr', 'DebugController.ocr')
-Route.any('/debug/parse', 'DebugController.parse')
+Route.any('/debug/image', 'DebugController.image').middleware('debug')
+Route.any('/debug/fetch', 'DebugController.fetch').middleware('debug')
+Route.any('/debug/ocr', 'DebugController.ocr').middleware('debug')
+Route.any('/debug/parse', 'DebugController.parse').middleware('debug')
 
-Route.any('/debug/process', 'DebugController.process')
+Route.any('/debug/process', 'DebugController.process').middleware('debug')
 

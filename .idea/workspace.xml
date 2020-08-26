@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Common/DiscordHelpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Commands/MenuCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/MenuCommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Common/HelperFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/HelperFunctions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/kernel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/kernel.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,10 +28,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Controllers/Http" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\nero2\Documents\Git\lunchbot\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Controllers\Http" />
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\resources\views" />
@@ -40,6 +50,9 @@
       <option name="presentableId" value="Default" />
       <updated>1598431901003</updated>
       <workItem from="1598431902214" duration="24285000" />
+      <workItem from="1598465766521" duration="33000" />
+      <workItem from="1598465816910" duration="64000" />
+      <workItem from="1598465891894" duration="2946000" />
     </task>
     <servers />
   </component>
@@ -51,10 +64,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="630" y="337" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598455299326" />
+    <state x="381" y="167" key="SettingsEditor" timestamp="1598465869179">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="381" y="167" key="SettingsEditor/-1920.0.1920.1040/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598465869179" />
     <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1598445274718">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="540" height="524" key="StructurePopup/-1920.0.1920.1040/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598445274718" />
+    <state x="659" y="367" key="cloudConfig.PluginsDialog" timestamp="1598465879187">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="659" y="367" key="cloudConfig.PluginsDialog/-1920.0.1920.1040/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598465879187" />
     <state x="561" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598443055441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

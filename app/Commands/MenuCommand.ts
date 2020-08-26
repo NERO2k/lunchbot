@@ -1,9 +1,7 @@
 import {Command} from 'discord-akairo'
 import {getMenu} from "App/Common/HelperFunctions";
-import moment from "moment";
-import Discord from 'discord.js'
-import Env from "@ioc:Adonis/Core/Env";
-import {engDayCast} from "../../config/words";
+import {embed} from "App/Common/DiscordHelpers";
+import moment from "moment/";
 
 class MenuCommand extends Command {
     constructor() {
@@ -35,23 +33,9 @@ class MenuCommand extends Command {
       }
       if (!res) return;
 
-      const embed = new Discord.MessageEmbed()
-        .setFooter(
-          `Lunchbot – Få lunchmenyn direkt i dina DM:s, skriv kommandot <sub.`,
-          'https://i.imgur.com/QCfAJ9S.png'
-        )
-        .setColor(0x7289da)
+      const embedCode = embed(res, date)
 
-      embed.setURL(`${Env.get("WEBSITE_BASE_URL")}?date=${date.format("WW-YYYY")}&format=WW-YYYY`)
-
-      embed.setTitle("EATERY KISTA NOD — MENY VECKA "+res.listed_week)
-
-      Object.keys(res.menu).forEach((value) => {
-        const day = engDayCast[value] || value;
-        embed.addField(day.charAt(0).toUpperCase()+day.slice(1), res.menu[value].join("\n"))
-      });
-
-      message.channel.send({ embed })
+      message.channel.send({ embedCode })
     }
 }
 
