@@ -1,6 +1,8 @@
 import Discord from "discord.js";
 import {engDayCast} from "../../config/words";
 import Env from "@ioc:Adonis/Core/Env";
+import User from "App/Models/User";
+import Server from "App/Models/Server";
 
 export function embed(data, date)
 {
@@ -21,4 +23,22 @@ export function embed(data, date)
   });
 
   return embed;
+}
+
+export async function dispatch(instace, data, date)
+{
+  const users = await User.all();
+  const servers = await Server.all();
+
+  const embedData = embed(data, date);
+
+  for (const user of users) {
+    let userChannel = await instace.users.fetch(user.user_id)
+    userChannel.send(embedData)
+  }
+
+  for (const server of servers) {
+    let guildChannel = await instace.channels.fetch(server.channel_id)
+    guildChannel.send(embedData)
+  }
 }

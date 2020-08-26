@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Commands/DispatchCommand.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Commands/HelpCommand.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Commands/LinkCommand.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Commands/SubCommand.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Commands/DispatchCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/DispatchCommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Commands/LinkCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/LinkCommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Common/DiscordHelpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/DiscordHelpers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +50,7 @@
       <workItem from="1598431902214" duration="24285000" />
       <workItem from="1598465766521" duration="33000" />
       <workItem from="1598465816910" duration="64000" />
-      <workItem from="1598465891894" duration="5345000" />
+      <workItem from="1598465891894" duration="7652000" />
     </task>
     <servers />
   </component>

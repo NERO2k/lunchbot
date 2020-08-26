@@ -14,7 +14,7 @@ class LinkCommand extends Command {
   }
 
   async exec(message) {
-    const server = await Server.firstOrCreate({server_id: message.guild.id, channel_id: message.channel.id}, {server_id: message.guild.id, channel_id: message.channel.id, enabled: false})
+    const server = await Server.firstOrCreate({channel_id: message.channel.id}, {server_id: message.guild.id, channel_id: message.channel.id, enabled: false})
 
     if (!server.enabled) {
       server.enabled = true;
