@@ -2,6 +2,7 @@
 import moment from 'moment';
 import {Exception} from "@poppinss/utils";
 import {fetch, image, ocr, parse} from 'App/Common/MenuFunctions';
+import {getMenu} from "App/Common/HelperFunctions";
 
 export default class WebController {
   public async image ({ params }) {
@@ -30,5 +31,16 @@ export default class WebController {
   public async parse ({ request }) {
     const params = request.all();
     return parse(params.text)
+  }
+
+  public async process ({ request }) {
+    const params = request.all();
+    const date = moment(params.date, params.format)
+
+    if (!date.isValid())
+      throw new Exception("Date / Date format provided is invalid.")
+
+    const data = getMenu(date)
+    return data;
   }
 }

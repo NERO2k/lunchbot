@@ -51,11 +51,6 @@
       color: #17161A;
     }
 
-    .subtitle {
-      font-size: 26px;
-      margin-bottom: 40px;
-    }
-
     p {
       margin-bottom: 20px;
     }
@@ -86,24 +81,23 @@
 
   <main>
     <div>
-      <h1 class="title"> It Works! </h1>
-      <p class="subtitle">
-        Congratulations, you have just created your first AdonisJS app.
-      </p>
+      <h1 class="title"> Lunchbot API </h1>
 
       <ul>
         <li>
-          The route for this page is defined inside <code>start/routes.ts</code> file
+          Fetch the lunch menu image from <code>/api/image?date=&format=</code>
         </li>
 
         <li>
-          You can update this page by editing <code>resources/views/welcome.edge</code> file
+          Fetch the raw lunch menu string from <code>/api/text?date=&format=</code>
         </li>
 
         <li>
-          If you run into problems, you can reach us on <a href="https://discord.gg/vDcEjq6?">Discord</a> or the <a href="https://forum.adonisjs.com/">Forum</a>.
+          Fetch the parsed lunch menu json data from <code>/api/json?date=&format=</code>
         </li>
       </ul>
+      <small>To fetch the lunch menu from week 30, 2019 you would for example do</small>
+      <code>https://eatery.nero2k.com/api/json?date=2019-30&format=YYYY-WW</code>
     </div>
   </main>
 </body>

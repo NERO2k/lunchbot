@@ -33,3 +33,5 @@ Route.any('/debug/fetch', 'DebugController.fetch')
 Route.any('/debug/ocr', 'DebugController.ocr')
 Route.any('/debug/parse', 'DebugController.parse')
 
+Route.any('/debug/process', 'DebugController.process')
+
