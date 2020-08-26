@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.adonisrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.adonisrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Commands/DispatchCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/DispatchCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Commands/LinkCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/LinkCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Common/DiscordHelpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/DiscordHelpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/discord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/discord.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/scheduler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +54,7 @@
       <workItem from="1598431902214" duration="24285000" />
       <workItem from="1598465766521" duration="33000" />
       <workItem from="1598465816910" duration="64000" />
-      <workItem from="1598465891894" duration="7652000" />
+      <workItem from="1598465891894" duration="8737000" />
     </task>
     <servers />
   </component>
