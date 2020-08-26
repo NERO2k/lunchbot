@@ -75,7 +75,7 @@ export async function parse(text) : Promise<object>
   const days = ["måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag", "söndag", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
   const dayCast = {"måndag": "monday", "tisdag": "tuesday", "onsdag": "wednesday", "torsdag": "thursday", "fredag": "friday", "lördag": "saturday", "söndag": "sunday"}
 
-  const splitLines = text.split("\n");
+  const splitLines = text.replace(/\r/g, "").split("\n");
   const cleanLines = splitLines.filter(function(entry) {
     return entry.trim() != '';
   }).filter(function(entry) {

@@ -14,16 +14,17 @@ export async function getMenu(date) : Promise<object> {
     menuString = await ocr(`../tmp/eatery-${date.format("YYYY-WW")}.png`)
     await fs.writeFile(`../tmp/eatery-${date.format("YYYY-WW")}.txt`, menuString);
   } else {
-    menuString = await fs.readFile(`../tmp/eatery-${date.format("YYYY-WW")}.txt`)
+    let cacheString = await fs.readFile(`../tmp/eatery-${date.format("YYYY-WW")}.txt`)
+    menuString = cacheString.toString()
   }
   let menuObject:object;
   if (!isWeekParsed(date))
   {
-    menuObject = await parse(menuString.toString())
+    menuObject = await parse(menuString)
     await fs.writeFile(`../tmp/eatery-${date.format("YYYY-WW")}.json`, JSON.stringify(menuObject));
   } else {
     const menuText = await fs.readFile(`../tmp/eatery-${date.format("YYYY-WW")}.json`)
-    menuObject = JSON.parse(menuText.toString().replace(/\\r/g, ""))
+    menuObject = JSON.parse(menuText.toString())
   }
   return menuObject;
 }

@@ -22,6 +22,8 @@
     "@adonisjs/session": "^3.0.0",
     "@adonisjs/view": "^2.0.0",
     "axios": "^0.20.0",
+    "discord-akairo": "^8.1.0",
+    "discord.js": "^12.3.1",
     "luxon": "^1.25.0",
     "moment": "^2.27.0",
     "node-tesseract-ocr": "^2.0.0",
