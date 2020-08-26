@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/WebController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/WebController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/menu.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/menu.edge" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +47,7 @@
       <workItem from="1598431902214" duration="24285000" />
       <workItem from="1598465766521" duration="33000" />
       <workItem from="1598465816910" duration="64000" />
-      <workItem from="1598465891894" duration="12341000" />
+      <workItem from="1598465891894" duration="12436000" />
     </task>
     <servers />
   </component>
