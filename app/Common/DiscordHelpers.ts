@@ -19,7 +19,7 @@ export function embed(data, date)
 
   Object.keys(data.menu).forEach((value) => {
     const day = engDayCast[value] || value;
-    embed.addField(day.charAt(0).toUpperCase()+day.slice(1), data.menu[value].join("\n"))
+    embed.addField(day.toUpperCase(), data.menu[value].join("\n"))
   });
 
   return embed;

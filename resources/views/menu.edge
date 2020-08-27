@@ -59,12 +59,12 @@
   			@each((data, name) in menu)
   				<div class="media text-muted pt-3">
   					<p class="media-body pb-3 mb-0 small lh-125 border-gray border-bottom">
-  						<strong class="d-block text-gray-dark">{{engDayCast[name].charAt(0).toUpperCase()+name.slice(1) || name.charAt(0).toUpperCase()+name.slice(1)}}</strong>
+  						<strong class="d-block text-gray-dark">{{engDayCast[name].toUpperCase() || engDayCast[name].toUpperCase()}}</strong>
   						{{{data.join("<br/>")}}}
   					</p>
   				</div>
   			@endeach
-  			<small class="notice">Du kan nu använda Lunchbot API´n för att läsa av Eatery menyn till ditt egna project. Du kan nu också lägga till Lunchbot i din egna Discord Server. Läs våran Github sida eller kontakta NERO2k#1593 (William Helmenius) för mer information.</small>
+  			<small class="notice">Du kan nu använda Lunchbot API´n för att läsa av Eatery menyn i ditt egna project. Du kan nu också lägga till Lunchbot i din egna Discord Server. Läs våran Github sida eller kontakta NERO2k#1593 (William Helmenius) för mer information.</small>
   		</div>
   	</div>
   </body>
