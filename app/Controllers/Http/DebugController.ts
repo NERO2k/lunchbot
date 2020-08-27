@@ -3,6 +3,8 @@ import moment from 'moment/';
 import {Exception} from "@poppinss/utils";
 import {fetch, image, ocr, parse} from 'App/Common/MenuFunctions';
 import {getMenu} from "App/Common/HelperFunctions";
+import User from "App/Models/User";
+import Server from "App/Models/Server";
 
 export default class WebController {
   public async image ({ params }) {
@@ -40,5 +42,37 @@ export default class WebController {
       throw new Exception("Date / Date format provided is invalid.")
 
     return getMenu(date, true);
+  }
+
+  public async addUser ({ request }) {
+    const params = request.all();
+
+    const user = await User.firstOrCreate({user_id: params.user_id}, {user_id: params.user_id, enabled: false})
+
+    if (!user.enabled) {
+      user.enabled = true;
+      await user.save()
+    } else {
+      user.enabled = false;
+      await user.save()
+    }
+
+    return user;
+  }
+
+  public async addServer ({ request }) {
+    const params = request.all();
+
+    const server = await Server.firstOrCreate({channel_id: params.channel_id}, {server_id: params.server_id, channel_id: params.channel_id, enabled: false})
+
+    if (!server.enabled) {
+      server.enabled = true;
+      await server.save()
+    } else {
+      server.enabled = false;
+      await server.save()
+    }
+
+    return server;
   }
 }
