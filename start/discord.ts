@@ -32,6 +32,7 @@ lunchBot.login(Env.get('DISCORD_BOT_TOKEN'))
 lunchBot.once("ready", () => {
   // @ts-ignore
   Logger.info(`started discord bot as ${lunchBot.user.tag}`)
+  // @ts-ignore
   lunchBot.user.setActivity("<lunch | <sub | <help")
 });
 
