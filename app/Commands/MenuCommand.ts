@@ -6,7 +6,7 @@ import moment from "moment/";
 class MenuCommand extends Command {
     constructor() {
         super('menu', {
-            aliases: ['meny', 'menu'],
+            aliases: ['meny', 'menu', 'lunch'],
             args: [
               {
                 id: 'date',
