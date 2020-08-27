@@ -22,6 +22,10 @@ export default class ExceptionHandler extends HttpExceptionHandler {
     '500..599': 'errors.server-error',
   }
 
+  public async handle (error, ctx) {
+    return ctx.response.send(error.message)
+  }
+
   constructor () {
     super(Logger)
   }
