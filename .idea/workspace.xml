@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/start/schedule.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/discord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/discord.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Commands/MenuCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/MenuCommand.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +49,7 @@
       <workItem from="1598465766521" duration="33000" />
       <workItem from="1598465816910" duration="64000" />
       <workItem from="1598465891894" duration="12623000" />
-      <workItem from="1598519211971" duration="2036000" />
+      <workItem from="1598519211971" duration="2638000" />
     </task>
     <servers />
   </component>

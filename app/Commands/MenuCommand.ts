@@ -29,13 +29,13 @@ class MenuCommand extends Command {
       try {
         res = await getMenu(date, false)
       } catch (error) {
-        message.reply(error.message)
+        await message.reply(error.message)
       }
       if (!res) return;
 
       const embedCode = embed(res, date)
 
-      message.channel.send({ embedCode })
+      message.channel.send(embedCode)
     }
 }
 
