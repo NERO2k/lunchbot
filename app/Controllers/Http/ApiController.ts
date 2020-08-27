@@ -4,6 +4,7 @@ import {hasWeekImage, isWeekParsed, isWeekStringified} from "App/Common/MenuHelp
 import moment from "moment/";
 import {Exception} from "@poppinss/utils";
 import {promises as fs} from "fs";
+import {getMenu} from "App/Common/HelperFunctions";
 
 export default class ApiController {
   public async index ({ view }) {
@@ -17,10 +18,15 @@ export default class ApiController {
     if (!date.isValid())
       throw new Exception("Date / Date format provided is invalid.")
 
+    if (!await isWeekStringified(date)) {
+      await getMenu(date, false)
+    }
+
     if (await isWeekStringified(date)) {
       response.download(`../tmp/eatery-${date.format("YYYY-WW")}.txt`)
       return "Downloading file..."
     }
+
     throw new Exception("Requested week is not stored on the server.")
   }
 
@@ -31,10 +37,15 @@ export default class ApiController {
     if (!date.isValid())
       throw new Exception("Date / Date format provided is invalid.")
 
+    if (!await isWeekParsed(date)) {
+       await getMenu(date, false)
+    }
+
     if (await isWeekParsed(date)) {
       const data = await fs.readFile(`../tmp/eatery-${date.format("YYYY-WW")}.json`)
       return data.toString().replace(/\\r/g, "");
     }
+
     throw new Exception("Requested week is not stored on the server.")
   }
 
