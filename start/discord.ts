@@ -38,7 +38,7 @@ lunchBot.once("ready", () => {
   lunchBot.user.setActivity("<lunch | <sub | <help")
 });
 
-const ls = spawn('node', ['../start/schedule.js'])
+const ls = spawn('node', ['../start/subprocesses/discord.js'])
 
 ls.stdout.on('data', async (stdout) => {
   let type = stdout.toString().replace(/(\r\n|\n|\r)/gm, "");
@@ -48,21 +48,13 @@ ls.stdout.on('data', async (stdout) => {
     Logger.warn("Dispatcher is now running.")
     return true;
   }
-  if (type === "menu") {
-    const data = await getMenu(moment(), true, false)
-    if (!hasWeekImage(moment(data["listed_week"], "WW"))) {
-      Logger.info("New menu found, writing to disk.")
-      await getMenu(moment(), true, true);
-    }
-    return;
-  }
-  Logger.info(`scheduler: ${stdout}`);
+  Logger.info(`discord scheduler: ${stdout}`);
 });
 
 ls.stderr.on('data', (data) => {
-  Logger.error(`scheduler: ${data}`)
+  Logger.error(`discord scheduler: ${data}`)
 });
 
 ls.on('close', (code) => {
-  Logger.warn(`scheduler process exited with code ${code}.`)
+  Logger.warn(`discord scheduler process exited with code ${code}.`)
 });
