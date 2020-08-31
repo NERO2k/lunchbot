@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/start/schedule.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.adonisrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.adonisrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Commands/DispatchCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/DispatchCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Commands/LinkCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/LinkCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Commands/MenuCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/MenuCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Commands/SubCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/SubCommand.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Common/HelperFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/HelperFunctions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Common/MenuFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/MenuFunctions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/ApiController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/ApiController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/DebugController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/DebugController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/WebController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/WebController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start/discord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/discord.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/schedule.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/schedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/schedule.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

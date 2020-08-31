@@ -24,7 +24,7 @@ export async function fetch(date, url, temp) : Promise<boolean>
 {
   const fpath = temp ? '../tmp/eatery-tmp.png' : `../tmp/eatery-${date.format('YYYY-WW')}.png`
 
-  if (!fs.existsSync(fpath)) {
+  if (!fs.existsSync(fpath) || temp) {
     const writer = fs.createWriteStream(fpath)
     writer.on('error', () => {
       throw new Exception('Failed to write the Eatery menu.')

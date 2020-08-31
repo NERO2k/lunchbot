@@ -15,8 +15,7 @@
   "preloads": [
     "./start/routes",
     "./start/kernel",
-    "./start/discord",
-    "./start/schedule"
+    "./start/discord"
   ],
   "providers": [
     "./providers/AppProvider",

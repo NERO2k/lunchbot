@@ -10,3 +10,8 @@ schedule.scheduleJob(
     console.log("dispatch")
   }
 )
+schedule.scheduleJob("*/5 * * * *",
+  async () => {
+    console.log("menu")
+  }
+)
