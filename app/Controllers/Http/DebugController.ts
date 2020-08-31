@@ -21,7 +21,7 @@ export default class WebController {
     if (!params.url)
       throw new Exception("No fetch url provided.")
 
-    return fetch(date, params.url)
+    return fetch(date, params.url, false)
   }
 
   public async ocr ({ request }) {
@@ -41,7 +41,7 @@ export default class WebController {
     if (!date.isValid())
       throw new Exception("Date / Date format provided is invalid.")
 
-    return getMenu(date, true);
+    return getMenu(date, true, true);
   }
 
   public async addUser ({ request }) {

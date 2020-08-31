@@ -19,7 +19,7 @@ class SubCommand extends Command {
       await user.save()
       await message.reply('Du är nu på listan :inbox_tray:')
 
-      const menu = await getMenu(moment(), false)
+      const menu = await getMenu(moment(), false, true)
       await message.author.send(embed(menu, moment()));
     } else {
       user.enabled = false;

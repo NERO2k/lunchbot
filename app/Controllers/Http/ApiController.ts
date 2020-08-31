@@ -19,7 +19,7 @@ export default class ApiController {
       throw new Exception("Date / Date format provided is invalid.")
 
     if (!await isWeekStringified(date)) {
-      await getMenu(date, false)
+      await getMenu(date, false, true)
     }
 
     if (await isWeekStringified(date)) {
@@ -38,7 +38,7 @@ export default class ApiController {
       throw new Exception("Date / Date format provided is invalid.")
 
     if (!await isWeekParsed(date)) {
-       await getMenu(date, false)
+       await getMenu(date, false, true)
     }
 
     if (await isWeekParsed(date)) {

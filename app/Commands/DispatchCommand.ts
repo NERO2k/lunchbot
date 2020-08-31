@@ -13,7 +13,7 @@ class DispatchCommand extends Command {
 
   async exec(message) {
     await message.reply('Running schedule job.')
-    const data = await getMenu(moment(), true);
+    const data = await getMenu(moment(), true, true);
     await dispatch(message.client, data, moment())
     await message.reply('Ran schedule job.')
   }

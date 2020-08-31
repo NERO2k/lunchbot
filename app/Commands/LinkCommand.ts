@@ -21,7 +21,7 @@ class LinkCommand extends Command {
       await server.save()
       await message.reply('Kanalen är nu ansluten :bulb:')
 
-      const menu = await getMenu(moment(), false)
+      const menu = await getMenu(moment(), false, false)
       await message.channel.send(embed(menu, moment()));
     } else {
       server.enabled = false;

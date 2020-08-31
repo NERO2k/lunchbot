@@ -27,7 +27,7 @@ class MenuCommand extends Command {
 
       let res;
       try {
-        res = await getMenu(date, false)
+        res = await getMenu(date, false, true)
       } catch (error) {
         await message.reply(error.message)
       }

@@ -13,7 +13,7 @@ export default class WebController {
     if (!date.isValid())
       throw new Exception("Date / Date format provided is invalid.")
 
-    const data = await getMenu(date, false)
+    const data = await getMenu(date, false, true)
 
     const momentInstance = moment();
     const viewData = {

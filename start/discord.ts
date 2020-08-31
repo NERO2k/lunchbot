@@ -38,11 +38,11 @@ lunchBot.once("ready", () => {
   lunchBot.user.setActivity("<lunch | <sub | <help")
 });
 
-const ls = spawn('node', ['../start/schedule.js'])
+const ls = spawn('node', ['./schedule.js'])
 
 ls.stdout.on('data', async (stdout) => {
   if (stdout === "dispatch") {
-    const data = await getMenu(moment(), false)
+    const data = await getMenu(moment(), false, true)
     await dispatch(lunchBot, data, moment())
     Logger.warn("Dispatcher is now running.")
   } else {

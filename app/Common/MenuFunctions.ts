@@ -20,9 +20,9 @@ export async function image(url) : Promise<string>
   throw new Exception("Failed scrape image url from http body.");
 }
 
-export async function fetch(date, url) : Promise<boolean>
+export async function fetch(date, url, temp) : Promise<boolean>
 {
-  const fpath = `../tmp/eatery-${date.format('YYYY-WW')}.png`
+  const fpath = temp ? '../tmp/eatery-tmp.png' : `../tmp/eatery-${date.format('YYYY-WW')}.png`
 
   if (!fs.existsSync(fpath)) {
     const writer = fs.createWriteStream(fpath)
