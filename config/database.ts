@@ -5,10 +5,10 @@
  * file.
  */
 
-import Env from '@ioc:Adonis/Core/Env'
-import { OrmConfig } from '@ioc:Adonis/Lucid/Orm'
-import Application from '@ioc:Adonis/Core/Application'
-import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
+import Env from "@ioc:Adonis/Core/Env";
+import { OrmConfig } from "@ioc:Adonis/Lucid/Orm";
+import Application from "@ioc:Adonis/Core/Application";
+import { DatabaseConfig } from "@ioc:Adonis/Lucid/Database";
 
 const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
   /*
@@ -21,7 +21,7 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
   | file.
   |
   */
-  connection: Env.get('DB_CONNECTION', 'sqlite') as string,
+  connection: Env.get("DB_CONNECTION", "sqlite") as string,
 
   connections: {
     /*
@@ -36,9 +36,9 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
     |
     */
     sqlite: {
-      client: 'sqlite',
+      client: "sqlite",
       connection: {
-        filename: Application.tmpPath('db.sqlite3'),
+        filename: Application.tmpPath("db.sqlite3"),
       },
       useNullAsDefault: true,
       healthCheck: false,
@@ -57,8 +57,7 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
   | - Or define a custom function to compute the primary key for a given model.
   |
   */
-  orm: {
-  },
-}
+  orm: {},
+};
 
-export default databaseConfig
+export default databaseConfig;

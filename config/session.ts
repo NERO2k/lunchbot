@@ -5,8 +5,8 @@
  * file.
  */
 
-import Env from '@ioc:Adonis/Core/Env'
-import { SessionConfig } from '@ioc:Adonis/Addons/Session'
+import Env from "@ioc:Adonis/Core/Env";
+import { SessionConfig } from "@ioc:Adonis/Addons/Session";
 
 const sessionConfig: SessionConfig = {
   /*
@@ -24,7 +24,7 @@ const sessionConfig: SessionConfig = {
   | Note: Switching drivers will make existing sessions invalid.
   |
   */
-  driver: Env.get('SESSION_DRIVER', 'cookie') as string,
+  driver: Env.get("SESSION_DRIVER", "cookie") as string,
 
   /*
   |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ const sessionConfig: SessionConfig = {
   | The name of the cookie that will hold the session id.
   |
   */
-  cookieName: 'adonis-session',
+  cookieName: "adonis-session",
 
   /*
   |--------------------------------------------------------------------------
@@ -61,7 +61,7 @@ const sessionConfig: SessionConfig = {
   | Example: `2 days`, `2.5 hrs`, `1y`, `5s` and so on.
   |
   */
-  age: '2h',
+  age: "2h",
 
   /*
   |--------------------------------------------------------------------------
@@ -73,7 +73,7 @@ const sessionConfig: SessionConfig = {
   |
   */
   cookie: {
-    path: '/',
+    path: "/",
     httpOnly: true,
     sameSite: false,
   },
@@ -88,7 +88,7 @@ const sessionConfig: SessionConfig = {
   |
   */
   file: {
-    location: '',
+    location: "",
   },
 
   /*
@@ -100,7 +100,7 @@ const sessionConfig: SessionConfig = {
   | must be defined inside `config/redis.ts` file
   |
   */
-  redisConnection: 'session',
-}
+  redisConnection: "session",
+};
 
-export default sessionConfig
+export default sessionConfig;

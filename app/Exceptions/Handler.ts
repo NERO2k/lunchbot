@@ -13,20 +13,20 @@
 |
 */
 
-import Logger from '@ioc:Adonis/Core/Logger'
-import HttpExceptionHandler from '@ioc:Adonis/Core/HttpExceptionHandler'
+import Logger from "@ioc:Adonis/Core/Logger";
+import HttpExceptionHandler from "@ioc:Adonis/Core/HttpExceptionHandler";
 
 export default class ExceptionHandler extends HttpExceptionHandler {
   protected statusPages = {
-    '404': 'errors.not-found',
-    '500..599': 'errors.server-error',
+    "404": "errors.not-found",
+    "500..599": "errors.server-error",
+  };
+
+  public async handle(error, ctx) {
+    return ctx.response.send(error.message);
   }
 
-  public async handle (error, ctx) {
-    return ctx.response.send(error.message)
-  }
-
-  constructor () {
-    super(Logger)
+  constructor() {
+    super(Logger);
   }
 }

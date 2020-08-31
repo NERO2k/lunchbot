@@ -1,19 +1,19 @@
-import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import BaseSchema from "@ioc:Adonis/Lucid/Schema";
 
 export default class Servers extends BaseSchema {
-  protected tableName = 'servers'
+  protected tableName = "servers";
 
-  public async up () {
+  public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
-      table.boolean('enabled')
-      table.string('server_id')
-      table.string('channel_id')
-      table.timestamps(true)
-    })
+      table.increments("id");
+      table.boolean("enabled");
+      table.string("server_id");
+      table.string("channel_id");
+      table.timestamps(true);
+    });
   }
 
-  public async down () {
-    this.schema.dropTable(this.tableName)
+  public async down() {
+    this.schema.dropTable(this.tableName);
   }
 }

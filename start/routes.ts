@@ -18,23 +18,22 @@
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route'
+import Route from "@ioc:Adonis/Core/Route";
 
-Route.get('/', 'WebController.index')
+Route.get("/", "WebController.index");
 
-Route.get('/api', 'ApiController.index')
+Route.get("/api", "ApiController.index");
 
-Route.any('/api/image', 'ApiController.image')
-Route.any('/api/text', 'ApiController.text')
-Route.any('/api/json', 'ApiController.json')
+Route.any("/api/image", "ApiController.image");
+Route.any("/api/text", "ApiController.text");
+Route.any("/api/json", "ApiController.json");
 
-Route.any('/debug/image', 'DebugController.image').middleware('debug')
-Route.any('/debug/fetch', 'DebugController.fetch').middleware('debug')
-Route.any('/debug/ocr', 'DebugController.ocr').middleware('debug')
-Route.any('/debug/parse', 'DebugController.parse').middleware('debug')
+Route.any("/debug/image", "DebugController.image").middleware("debug");
+Route.any("/debug/fetch", "DebugController.fetch").middleware("debug");
+Route.any("/debug/ocr", "DebugController.ocr").middleware("debug");
+Route.any("/debug/parse", "DebugController.parse").middleware("debug");
 
-Route.any('/debug/addUser', 'DebugController.addUser').middleware('debug')
-Route.any('/debug/addServer', 'DebugController.addServer').middleware('debug')
+Route.any("/debug/addUser", "DebugController.addUser").middleware("debug");
+Route.any("/debug/addServer", "DebugController.addServer").middleware("debug");
 
-Route.any('/debug/process', 'DebugController.process').middleware('debug')
-
+Route.any("/debug/process", "DebugController.process").middleware("debug");
