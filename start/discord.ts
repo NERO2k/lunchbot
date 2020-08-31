@@ -1,5 +1,3 @@
-if (require.main !== module) return;
-
 import Env from "@ioc:Adonis/Core/Env";
 import {spawn} from 'child_process';
 
@@ -23,7 +21,9 @@ class LunchBot extends AkairoClient {
       prefix: '<'
     });
 
-    this.commandHandler.loadAll();
+    try {
+      this.commandHandler.loadAll();
+    } catch (err) {}
   }
 }
 
