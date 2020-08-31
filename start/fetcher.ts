@@ -2,7 +2,7 @@ import {spawn} from "child_process";
 import {getMenu} from "App/Common/HelperFunctions";
 import moment from "moment";
 import Logger from "@ioc:Adonis/Core/Logger";
-import {hasWeekImage} from "App/Common/MenuHelpers";
+import {deleteWeek, hasWeekImage} from "App/Common/MenuHelpers";
 
 const ls = spawn('node', ['../start/subprocesses/fetcher.js'])
 
@@ -17,6 +17,7 @@ ls.stdout.on('data', async (stdout) => {
       const menu = await getMenu(moment(), false, true)
       if (JSON.stringify(menu) !== JSON.stringify(data)) {
         Logger.warn(`newer menu was found for week ${data["listed_week"]},. replacing old menu.`)
+        deleteWeek(moment())
         await getMenu(moment(), true, true)
       }
     }
