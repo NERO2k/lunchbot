@@ -3,12 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/api.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/api.edge" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/discord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/discord.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,7 +27,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Commands" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\Users\nero2\Documents\Git\lunchbot\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -51,6 +54,8 @@
       <workItem from="1598465891894" duration="12623000" />
       <workItem from="1598519211971" duration="3252000" />
       <workItem from="1598528998366" duration="2658000" />
+      <workItem from="1598857733362" duration="616000" />
+      <workItem from="1598863161676" duration="125000" />
     </task>
     <servers />
   </component>

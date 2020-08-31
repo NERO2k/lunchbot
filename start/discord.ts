@@ -1,3 +1,5 @@
+if (require.main !== module) return;
+
 import Env from "@ioc:Adonis/Core/Env";
 import {spawn} from 'child_process';
 
