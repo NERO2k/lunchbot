@@ -5,7 +5,6 @@ import Logger from "@ioc:Adonis/Core/Logger";
 import {getMenu} from "App/Common/HelperFunctions";
 import moment from "moment";
 import {dispatch} from "App/Common/DiscordHelpers";
-import {hasWeekImage} from "App/Common/MenuHelpers";
 
 class LunchBot extends AkairoClient {
   private commandHandler: any
