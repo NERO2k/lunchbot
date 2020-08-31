@@ -14,7 +14,7 @@ export async function image(url) : Promise<string>
   const imgRex = /<img.*?src="(.*?)"[^>]+>/g;
   let img;
   while ((img = imgRex.exec(request.data))) {
-    if (img[1].includes("i1.wp.com"))
+    if (img[1].match("i[0-9-].wp.com"))
       return img[1].substring(0, img[1].indexOf('?'));
   }
   throw new Exception("Failed scrape image url from http body.");
