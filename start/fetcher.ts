@@ -13,6 +13,12 @@ ls.stdout.on('data', async (stdout) => {
     if (!hasWeekImage(moment(data["listed_week"], "WW"))) {
       Logger.info("New menu found, writing to disk.")
       await getMenu(moment(), true, true);
+    } else {
+      const menu = await getMenu(moment(), false, true)
+      if (JSON.stringify(menu) !== JSON.stringify(data)) {
+        Logger.warn("Newer menu was found. Replacing old menu.")
+        await getMenu(moment(), true, true)
+      }
     }
     return;
   }
