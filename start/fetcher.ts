@@ -11,22 +11,33 @@ const ls = spawn("node", ["../start/subprocesses/fetcher.js"]);
 ls.stdout.on("data", async (stdout) => {
   let type = stdout.toString().replace(/(\r\n|\n|\r)/gm, "");
   if (type === "menu") {
-    const data = await getMenu(moment(), true, false);
-    if (!hasWeekImage(moment(data["listed_week"], "WW"))) {
+    const date = moment();
+    const data = await getMenu(date, true, false);
+    const listedWeek = moment(data["listed_week"], "WW");
+
+    if (listedWeek.week() !== date.week())
+    {
+      Logger.info(
+        `Found new menu for week ${listedWeek.week()} but current week is ${date.week()}.`
+      )
+      return;
+    }
+
+    if (!hasWeekImage(listedWeek)) {
       Logger.info(
         `new menu found for week ${data["listed_week"]}, writing to disk.`
       );
-      await getMenu(moment(), true, true)
+      await getMenu(date, true, true)
       const calendar = await generateCalendar();
       await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
     } else {
-      const menu = await getMenu(moment(), false, true);
+      const menu = await getMenu(date, false, true);
       if (JSON.stringify(menu) !== JSON.stringify(data)) {
         Logger.warn(
           `newer menu was found for week ${data["listed_week"]},. replacing old menu.`
         );
-        deleteWeek(moment());
-        await getMenu(moment(), true, true);
+        deleteWeek(date);
+        await getMenu(date, true, true);
         deleteCalendar();
         const calendar = await generateCalendar();
         await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
