@@ -58,6 +58,7 @@ export async function generateCalendar() : Promise<string>
             end: momentDay.endOf("day"),
             allDay: true,
             summary: `Eatery ${day}`,
+            location: `Lunchmeny Vecka ${json.listed_week}`,
             // @ts-ignore
             description: json.menu[key].join("\n"),
             url: `https://eatery.nero2k.com?date=${momentDay.week()}-${momentDay.year()}&format=WW-YYYY`
