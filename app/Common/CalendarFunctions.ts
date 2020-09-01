@@ -52,10 +52,10 @@ export async function generateCalendar() : Promise<string>
         await Object.keys(json.menu).forEach((key) => {
           console.log(key);
           let day = engDayCast[key].charAt(0).toUpperCase() + engDayCast[key].slice(1) || key.charAt(0).toUpperCase() + key.slice(1);
-          let momentDay = moment(`${key}-${json.listed_week}-${json.actual_year}`, "dddd-ww-yyyy").add(1, "d");
+          let momentDay = moment(`${key}-${json.listed_week}-${json.actual_year}`, "dddd-ww-yyyy");
           cal.createEvent({
-            start: momentDay,
-            end: momentDay,
+            start: momentDay.startOf("day"),
+            end: momentDay.endOf("day"),
             allDay: true,
             summary: `Eatery ${day}`,
             // @ts-ignore

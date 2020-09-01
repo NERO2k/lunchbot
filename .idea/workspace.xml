@@ -4,7 +4,6 @@
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Common/CalendarFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/CalendarFunctions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Common/MenuFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/MenuFunctions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +59,7 @@
       <workItem from="1598857733362" duration="616000" />
       <workItem from="1598863161676" duration="125000" />
       <workItem from="1598943480207" duration="2459000" />
-      <workItem from="1598946628157" duration="4977000" />
+      <workItem from="1598946628157" duration="6594000" />
     </task>
     <servers />
   </component>
