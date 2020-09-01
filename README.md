@@ -16,6 +16,14 @@ Make sure to edit the `.env` file with your desired values.
 
 If you prefer a hosted version, [add it to your Discord server](https://discordapp.com/oauth2/authorize?client_id=642020950853943306&scope=bot&permissions=67226688).
 
+## 👤 General Usage
+
+You as a user can access Lunchbot through the screens in school primarily but you can also access it with these methods.
+
+- The [Lunchbot website](https://eatery.nero2k.com).
+- The Discord bot [(invite link)](https://discordapp.com/oauth2/authorize?client_id=642020950853943306&scope=bot&permissions=67226688).
+- Or the Google Calendar extension. [Click to add.](https://calendar.google.com/calendar/r?cid=is2oe8gf2gscki6q1eo299i5m9lo0dr2@import.calendar.google.com)
+
 ## 💻 Web API
 
 Use Lunchbot data for your personal projects with our API.
