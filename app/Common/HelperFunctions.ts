@@ -41,14 +41,14 @@ export async function getMenu(date, allowFetch, cache): Promise<object> {
     menuObject = await parse(menuString);
     await fs.writeFile(
       !cache
-        ? "../tmp/eatery-tmp.json"
+        ? "../tmp/eatery-tmp.jsontmp"
         : `../tmp/eatery-${date.format("YYYY-WW")}.json`,
       JSON.stringify(menuObject)
     );
   } else {
     const menuText = await fs.readFile(
       !cache
-        ? "../tmp/eatery-tmp.json"
+        ? "../tmp/eatery-tmp.jsontmp"
         : `../tmp/eatery-${date.format("YYYY-WW")}.json`
     );
     menuObject = JSON.parse(menuText.toString());

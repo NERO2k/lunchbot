@@ -5,6 +5,9 @@ import { fetch, image, ocr, parse } from "App/Common/MenuFunctions";
 import { getMenu } from "App/Common/HelperFunctions";
 import User from "App/Models/User";
 import Server from "App/Models/Server";
+import {generateCalendar} from "App/Common/CalendarFunctions";
+import fs from "fs/promises";
+import fsS from "fs";
 
 export default class WebController {
   public async image({ params }) {
@@ -83,5 +86,13 @@ export default class WebController {
     }
 
     return server;
+  }
+
+
+  public async regenerateCalendar()
+  {
+    const calendar = await generateCalendar();
+    await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
+    return calendar;
   }
 }
