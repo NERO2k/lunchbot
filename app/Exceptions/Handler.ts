@@ -15,6 +15,7 @@
 
 import Logger from "@ioc:Adonis/Core/Logger";
 import HttpExceptionHandler from "@ioc:Adonis/Core/HttpExceptionHandler";
+import Env from "@ioc:Adonis/Core/Env";
 
 export default class ExceptionHandler extends HttpExceptionHandler {
   protected statusPages = {
@@ -23,7 +24,9 @@ export default class ExceptionHandler extends HttpExceptionHandler {
   };
 
   public async handle(error, ctx) {
-    return ctx.response.send(error.message);
+    if (Env.get("NODE_ENV") !== "development")
+      return ctx.response.send(error.message);
+    return super.handle(error, ctx)
   }
 
   constructor() {

@@ -21,6 +21,7 @@
 import Route from "@ioc:Adonis/Core/Route";
 
 Route.get("/", "WebController.index");
+Route.get("/calendar", "WebController.calendar");
 
 Route.get("/api", "ApiController.index");
 
