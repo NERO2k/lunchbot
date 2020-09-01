@@ -85,6 +85,7 @@ export async function parse(text): Promise<object> {
     });
 
   data["actual_week"] = Number(moment().format("WW"));
+  data["actual_year"] = Number(moment().format("YYYY"));
   for (let i = 0; i < cleanLines.length; i++) {
     if (!data["listed_week"]) {
       let listedWeek = (cleanLines[i].match(/\d+/g) || [null]).map(Number)[0];

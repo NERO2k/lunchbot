@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Common/CalendarFunctions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Common/HelperFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/HelperFunctions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/DebugController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/DebugController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/WebController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/WebController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/fetcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/fetcher.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Common/CalendarFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/CalendarFunctions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Common/MenuFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/MenuFunctions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +60,7 @@
       <workItem from="1598857733362" duration="616000" />
       <workItem from="1598863161676" duration="125000" />
       <workItem from="1598943480207" duration="2459000" />
-      <workItem from="1598946628157" duration="4670000" />
+      <workItem from="1598946628157" duration="4977000" />
     </task>
     <servers />
   </component>
@@ -95,11 +92,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="561" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/-1920.0.1920.1040/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598443055441" />
-    <state x="649" y="274" key="run.anything.popup" timestamp="1598943581301">
+    <state x="649" y="274" key="run.anything.popup" timestamp="1598951452664">
       <screen x="48" y="32" width="1872" height="1048" />
     </state>
     <state x="616" y="240" key="run.anything.popup/-1920.0.1920.1040/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598463074145" />
-    <state x="649" y="274" key="run.anything.popup/48.32.1872.1048@48.32.1872.1048" timestamp="1598943581301" />
+    <state x="649" y="274" key="run.anything.popup/48.32.1872.1048@48.32.1872.1048" timestamp="1598951452664" />
     <state x="655" y="259" width="672" height="684" key="search.everywhere.popup" timestamp="1598944763610">
       <screen x="48" y="32" width="1872" height="1048" />
     </state>
