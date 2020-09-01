@@ -26,10 +26,10 @@ export default class WebController {
       // @ts-ignore
       engDayCast: engDayCast,
       // @ts-ignore
-      current_menu: data.menu[momentInstance.format("dddd").toLowerCase()],
+      current_menu: data.menu[momentInstance.format("dddd").toLowerCase()]
     };
     return view.render("menu", viewData);
-  },
+  }
 
   public async calendar()
   {

@@ -4,9 +4,6 @@
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/WebController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/WebController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +59,7 @@
       <workItem from="1598857733362" duration="616000" />
       <workItem from="1598863161676" duration="125000" />
       <workItem from="1598943480207" duration="2459000" />
-      <workItem from="1598946628157" duration="1341000" />
+      <workItem from="1598946628157" duration="1476000" />
     </task>
     <servers />
   </component>
