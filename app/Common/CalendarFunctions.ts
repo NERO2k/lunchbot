@@ -1,7 +1,7 @@
 import ical from "ical-generator";
 import moment from "moment";
 import {engDayCast} from "../../config/words";
-import fs from "fs/promises";
+import * as fs from "fs/promises";
 import fsS from "fs";
 import {glob} from "glob";
 import path from "path";

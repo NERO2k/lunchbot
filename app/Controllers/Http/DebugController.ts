@@ -6,7 +6,7 @@ import { getMenu } from "App/Common/HelperFunctions";
 import User from "App/Models/User";
 import Server from "App/Models/Server";
 import {generateCalendar} from "App/Common/CalendarFunctions";
-import fs from "fs/promises";
+import * as fs from "fs/promises";
 import fsS from "fs";
 
 export default class WebController {
