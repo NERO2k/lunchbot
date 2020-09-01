@@ -87,11 +87,18 @@ export default class WebController {
     return server;
   }
 
-
   public async regenerateCalendar()
   {
     const calendar = await generateCalendar();
     await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
     return calendar;
+  }
+
+  public async dump()
+  {
+    return {
+      users: User.all(),
+      servers: Server.all()
+    }
   }
 }
