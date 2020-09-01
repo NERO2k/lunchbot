@@ -7,7 +7,6 @@ import User from "App/Models/User";
 import Server from "App/Models/Server";
 import {generateCalendar} from "App/Common/CalendarFunctions";
 import * as fs from "fs/promises";
-import fsS from "fs";
 
 export default class WebController {
   public async image({ params }) {

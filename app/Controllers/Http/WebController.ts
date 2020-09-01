@@ -18,7 +18,7 @@ export default class WebController {
 
     const momentInstance = moment();
     const viewData = {
-      zoom: Number(params.zoom ? params.zoom : params.tv ? 2 : 1),
+      zoom: Number(params.zoom ? params.zoom : params.tv ? 1.9 : 1),
       // @ts-ignore
       menu: data.menu,
       // @ts-ignore
