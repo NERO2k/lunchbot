@@ -26,7 +26,7 @@ export default class ExceptionHandler extends HttpExceptionHandler {
   public async handle(error, ctx) {
     if (Env.get("NODE_ENV") !== "development")
       return ctx.response.send(error.message);
-    return super.handle(error, ctx)
+    return super.handle(error, ctx);
   }
 
   constructor() {

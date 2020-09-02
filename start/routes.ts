@@ -40,4 +40,7 @@ Route.any("/debug/addUser", "DebugController.addUser").middleware("debug");
 Route.any("/debug/addServer", "DebugController.addServer").middleware("debug");
 
 Route.any("/debug/process", "DebugController.process").middleware("debug");
-Route.any("/debug/regenerateCalendar", "DebugController.regenerateCalendar").middleware("debug");
+Route.any(
+  "/debug/regenerateCalendar",
+  "DebugController.regenerateCalendar"
+).middleware("debug");

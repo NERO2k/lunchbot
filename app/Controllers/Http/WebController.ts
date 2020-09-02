@@ -4,7 +4,7 @@ import moment from "moment";
 import { Exception } from "@poppinss/utils";
 import { getMenu } from "App/Common/HelperFunctions";
 import { engDayCast } from "../../../config/words";
-import {getCalendar} from "App/Common/CalendarFunctions";
+import { getCalendar } from "App/Common/CalendarFunctions";
 
 export default class WebController {
   public async index({ view, request }) {
@@ -26,13 +26,12 @@ export default class WebController {
       // @ts-ignore
       engDayCast: engDayCast,
       // @ts-ignore
-      current_menu: data.menu[momentInstance.format("dddd").toLowerCase()]
+      current_menu: data.menu[momentInstance.format("dddd").toLowerCase()],
     };
     return view.render("menu", viewData);
   }
 
-  public async calendar()
-  {
+  public async calendar() {
     return getCalendar();
   }
 }
