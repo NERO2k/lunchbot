@@ -3,6 +3,7 @@ require("dotenv").config({ path: "../.env" });
 
 console.log("subprocess is now running.");
 
-discord.scheduleJob("*/5 * * * *", async () => {
+const timeout = process.env.NODE_ENV === "development" ? "*/10 * * * * *" : "*/5 * * * *";
+discord.scheduleJob(timeout, async () => {
   console.log("menu");
 });

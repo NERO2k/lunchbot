@@ -24,7 +24,7 @@ ls.stdout.on("data", async (stdout) => {
 
     if (!hasWeekImage(listedWeek)) {
       Logger.info(
-        `new menu found for week ${data["listed_week"]}, writing to disk.`
+        `new menu found for week ${data["listed_week"]}, writing to disk and updating calendar.`
       );
       await getMenu(date, true, true);
       const calendar = await generateCalendar();
@@ -33,7 +33,7 @@ ls.stdout.on("data", async (stdout) => {
       const menu = await getMenu(date, false, true);
       if (JSON.stringify(menu) !== JSON.stringify(data)) {
         Logger.warn(
-          `newer menu was found for week ${data["listed_week"]},. replacing old menu.`
+          `newer menu was found for week ${data["listed_week"]},. replacing old menu and updating calendar.`
         );
         deleteWeek(date);
         await getMenu(date, true, true);

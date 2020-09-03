@@ -21,12 +21,12 @@ export async function getMenu(date, allowFetch, cache): Promise<object> {
   if (!isWeekStringified(date) || !cache) {
     menuString = await ocr(
       !cache
-        ? "../tmp/eatery-tmp.png"
+        ? "../tmp/eatery.png.tmp"
         : `../tmp/eatery-${date.format("YYYY-WW")}.png`
     );
     await fs.writeFile(
       !cache
-        ? "../tmp/eatery-tmp.txt"
+        ? "../tmp/eatery.txt.tmp"
         : `../tmp/eatery-${date.format("YYYY-WW")}.txt`,
       menuString
     );
@@ -41,14 +41,14 @@ export async function getMenu(date, allowFetch, cache): Promise<object> {
     menuObject = await parse(menuString);
     await fs.writeFile(
       !cache
-        ? "../tmp/eatery-tmp.jsontmp"
+        ? "../tmp/eatery.json.tmp"
         : `../tmp/eatery-${date.format("YYYY-WW")}.json`,
       JSON.stringify(menuObject)
     );
   } else {
     const menuText = await fs.readFile(
       !cache
-        ? "../tmp/eatery-tmp.jsontmp"
+        ? "../tmp/eatery.json.tmp"
         : `../tmp/eatery-${date.format("YYYY-WW")}.json`
     );
     menuObject = JSON.parse(menuText.toString());

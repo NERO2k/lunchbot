@@ -1,18 +1,19 @@
 import fs from "fs";
-import axios from "axios";
 import { Exception } from "@poppinss/utils";
 import Env from "@ioc:Adonis/Core/Env";
 import tesseract from "node-tesseract-ocr/";
 import moment from "moment/";
 import { blockedWords, sweDayCast, weekDays } from "../../config/words";
+import sharp from "sharp";
+import got from "got";
 
 export async function image(url): Promise<string> {
   const page_url = url ? url : Env.get("EATERY_LUNCH_URL");
 
-  const request = await axios.get(page_url);
+  const request = await got(page_url);
   const imgRex = /<img.*?src="(.*?)"[^>]+>/g;
   let img;
-  while ((img = imgRex.exec(request.data))) {
+  while ((img = imgRex.exec(request.body))) {
     if (img[1].match("i[0-9-].wp.com"))
       return img[1].substring(0, img[1].indexOf("?"));
   }
@@ -20,28 +21,21 @@ export async function image(url): Promise<string> {
 }
 
 export async function fetch(date, url, temp): Promise<boolean> {
-  const fpath = temp
-    ? "../tmp/eatery-tmp.png"
+  const filePath = temp
+    ? "../tmp/eatery.png.tmp"
     : `../tmp/eatery-${date.format("YYYY-WW")}.png`;
 
-  if (!fs.existsSync(fpath) || temp) {
-    const writer = fs.createWriteStream(fpath);
-    writer.on("error", () => {
-      throw new Exception("Failed to write the Eatery menu.");
-    });
+  if (!fs.existsSync(filePath) || temp) {
+    const sharpStream = sharp();
 
-    const response = await axios({
-      url,
-      method: "GET",
-      responseType: "stream",
-    });
+    await got.stream(url).pipe(sharpStream);
 
-    if (response.status === 200) {
-      await response.data.pipe(writer);
-      return true;
-    } else {
-      throw new Exception("Failed to fetch menu.");
-    }
+    await sharpStream
+        .clone()
+        .png()
+        .toFile(filePath)
+
+    return true;
   } else {
     throw new Exception("Week has already been written to drive.");
   }

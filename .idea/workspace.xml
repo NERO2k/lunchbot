@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Common/CalendarFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/CalendarFunctions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Common/HelperFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/HelperFunctions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Common/MenuFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/MenuFunctions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/fetcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/fetcher.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/subprocesses/fetcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/subprocesses/fetcher.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +118,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/Common/MenuFunctions.ts</url>
-          <line>16</line>
+          <line>17</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
