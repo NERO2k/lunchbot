@@ -21,8 +21,8 @@ export async function getMenu(date, allowFetch, cache): Promise<object> {
   if (!isWeekStringified(date) || !cache) {
     menuString = await ocr(
       !cache
-        ? "../tmp/eatery.png.tmp"
-        : `../tmp/eatery-${date.format("YYYY-WW")}.png`
+        ? "../tmp/eatery.tif.tmp"
+        : `../tmp/eatery-${date.format("YYYY-WW")}.tif`
     );
     await fs.writeFile(
       !cache

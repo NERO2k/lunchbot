@@ -22,8 +22,8 @@ export async function image(url): Promise<string> {
 
 export async function fetch(date, url, temp): Promise<boolean> {
   const filePath = temp
-    ? "../tmp/eatery.png.tmp"
-    : `../tmp/eatery-${date.format("YYYY-WW")}.png`;
+    ? "../tmp/eatery.tif.tmp"
+    : `../tmp/eatery-${date.format("YYYY-WW")}.tif`;
 
   if (!fs.existsSync(filePath) || temp) {
     const sharpStream = sharp();
@@ -32,7 +32,7 @@ export async function fetch(date, url, temp): Promise<boolean> {
 
     await sharpStream
         .clone()
-        .png()
+        .tiff()
         .toFile(filePath)
 
     return true;

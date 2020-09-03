@@ -1,7 +1,7 @@
 import * as fs from "fs";
 
 export function hasWeekImage(date): boolean {
-  if (fs.existsSync(`../tmp/eatery-${date.format("YYYY-WW")}.png`)) {
+  if (fs.existsSync(`../tmp/eatery-${date.format("YYYY-WW")}.tif`)) {
     return true;
   }
   return false;
@@ -21,7 +21,7 @@ export function isWeekParsed(date): boolean {
 }
 
 export function deleteWeekImage(date): void {
-  fs.unlinkSync(`../tmp/eatery-${date.format("YYYY-WW")}.png`);
+  fs.unlinkSync(`../tmp/eatery-${date.format("YYYY-WW")}.tif`);
 }
 
 export function deleteWeekStringified(date): void {

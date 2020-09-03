@@ -63,7 +63,7 @@ export default class ApiController {
       throw new Exception("Date / Date format provided is invalid.");
 
     if (await hasWeekImage(date)) {
-      response.download(`../tmp/eatery-${date.format("YYYY-WW")}.png`);
+      response.download(`../tmp/eatery-${date.format("YYYY-WW")}.tif`);
       return "Downloading file...";
     }
     throw new Exception("Requested week is not stored on the server.");
