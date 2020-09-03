@@ -39,6 +39,7 @@ export async function getCalendar() {
 
 export async function generateCalendar(): Promise<string> {
   const cal = ical({ domain: "eatery.nero2k.com", name: "Eatery Lunchmeny" });
+  let listedWeeks = [];
 
   return new Promise((resolve) => {
     glob(
@@ -48,26 +49,29 @@ export async function generateCalendar(): Promise<string> {
         for (const path1 of files) {
           const data = await fs.readFile(path1);
           let json = JSON.parse(data.toString());
-          await Object.keys(json.menu).forEach((key) => {
-            let day =
-              engDayCast[key].charAt(0).toUpperCase() +
+          if (!listedWeeks[`${json.listed_week}-${json.actual_year}`]) {
+            await Object.keys(json.menu).forEach((key) => {
+              let day =
+                engDayCast[key].charAt(0).toUpperCase() +
                 engDayCast[key].slice(1) ||
-              key.charAt(0).toUpperCase() + key.slice(1);
-            let momentDay = moment(
-              `${key}-${json.listed_week}-${json.actual_year}`,
-              "dddd-ww-yyyy"
-            );
-            cal.createEvent({
-              start: momentDay.startOf("day"),
-              end: momentDay.endOf("day"),
-              allDay: true,
-              summary: `Eatery ${day}`,
-              location: `Lunchmeny Vecka ${json.listed_week}`,
-              // @ts-ignore
-              description: json.menu[key].join("\n"),
-              url: `https://eatery.nero2k.com?date=${momentDay.week()}-${momentDay.year()}&format=WW-YYYY`,
+                key.charAt(0).toUpperCase() + key.slice(1);
+              let momentDay = moment(
+                `${key}-${json.listed_week}-${json.actual_year}`,
+                "dddd-ww-yyyy"
+              );
+              cal.createEvent({
+                start: momentDay.startOf("day"),
+                end: momentDay.endOf("day"),
+                allDay: true,
+                summary: `Eatery ${day}`,
+                location: `Lunchmeny Vecka ${json.listed_week}`,
+                // @ts-ignore
+                description: json.menu[key].join("\n"),
+                url: `https://eatery.nero2k.com?date=${momentDay.week()}-${momentDay.year()}&format=WW-YYYY`,
+              });
+              listedWeeks[`${json.listed_week}-${json.actual_year}`] = true;
             });
-          });
+          }
         }
         resolve(cal.toString());
       }
