@@ -95,8 +95,8 @@ export default class WebController {
 
   public async dump() {
     return {
-      users: User.all(),
-      servers: Server.all(),
+      users: await User.all(),
+      servers: await Server.all(),
     };
   }
 }
