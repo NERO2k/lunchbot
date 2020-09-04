@@ -69,7 +69,7 @@ export default class ApiController {
     throw new Exception("Requested week is not stored on the server.");
   }
 
-  public async image_source({ request, response }) {
+  public async source_image({ request, response }) {
     const params = request.all();
     const date = moment(params.date, params.format);
 
