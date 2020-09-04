@@ -26,6 +26,7 @@ Route.get("/calendar", "WebController.calendar");
 Route.get("/api", "ApiController.index");
 
 Route.any("/api/image", "ApiController.image");
+Route.any("/api/image/source", "ApiController.source_image");
 Route.any("/api/text", "ApiController.text");
 Route.any("/api/json", "ApiController.json");
 

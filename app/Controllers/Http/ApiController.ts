@@ -68,4 +68,18 @@ export default class ApiController {
     }
     throw new Exception("Requested week is not stored on the server.");
   }
+
+  public async image_source({ request, response }) {
+    const params = request.all();
+    const date = moment(params.date, params.format);
+
+    if (!date.isValid())
+      throw new Exception("Date / Date format provided is invalid.");
+
+    if (await hasWeekImage(date)) {
+      response.download(`../tmp/eatery-${date.format("YYYY-WW")}.source`);
+      return "Downloading file...";
+    }
+    throw new Exception("Requested week is not stored on the server.");
+  }
 }

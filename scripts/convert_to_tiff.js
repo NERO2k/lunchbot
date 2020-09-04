@@ -18,7 +18,7 @@ glob(
 
       console.log("converted " + path1)
 
-      await fs.rename(path1, path1.replace(".png", ".source.png"))
+      await fs.rename(path1, path1.replace(".png", ".source"))
 
       console.log("renamed " + path1)
     }
