@@ -9,6 +9,7 @@ import moment from "moment/";
 import { Exception } from "@poppinss/utils";
 import { promises as fs } from "fs";
 import { getMenu } from "App/Common/HelperFunctions";
+import FileType from 'file-type';
 
 export default class ApiController {
   public async index({ view }) {
@@ -63,7 +64,7 @@ export default class ApiController {
       throw new Exception("Date / Date format provided is invalid.");
 
     if (await hasWeekImage(date)) {
-      response.download(`../tmp/eatery-${date.format("YYYY-WW")}.tif`);
+      response.attachment(`../tmp/eatery-${date.format("YYYY-WW")}.tif`, 'image.tif');
       return "Downloading file...";
     }
     throw new Exception("Requested week is not stored on the server.");
@@ -77,7 +78,9 @@ export default class ApiController {
       throw new Exception("Date / Date format provided is invalid.");
 
     if (await hasWeekImage(date)) {
-      response.download(`../tmp/eatery-${date.format("YYYY-WW")}.source`);
+      const file = await FileType.fromFile(`../tmp/eatery-${date.format("YYYY-WW")}.source`);
+      // @ts-ignore
+      response.attachment(`../tmp/eatery-${date.format("YYYY-WW")}.source`, 'image.'+file.ext);
       return "Downloading file...";
     }
     throw new Exception("Requested week is not stored on the server.");
