@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Common/MenuFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/MenuFunctions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/convert_to_tiff.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/convert_to_tiff.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/delete_all_ocr.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/delete_all_ocr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/delete_all_parsed.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/delete_all_parsed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ocr_all_images.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/parse_all_images.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +67,7 @@
       <workItem from="1599040931879" duration="72000" />
       <workItem from="1599044306831" duration="614000" />
       <workItem from="1599117249158" duration="1913000" />
-      <workItem from="1599202014931" duration="678000" />
+      <workItem from="1599202014931" duration="919000" />
     </task>
     <servers />
   </component>

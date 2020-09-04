@@ -18,9 +18,9 @@ glob(
 
       console.log("converted " + path1)
 
-      await fs.unlink(path1)
+      await fs.rename(path1, path1.replace(".png", ".source.png"))
 
-      console.log("deleted source image for " + path1)
+      console.log("renamed " + path1)
     }
   }
 )

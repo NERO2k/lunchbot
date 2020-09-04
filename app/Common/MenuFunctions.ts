@@ -31,6 +31,9 @@ export async function fetch(date, url, temp): Promise<boolean> {
     await got.stream(url).pipe(sharpStream);
 
     await sharpStream
+      .toFile(filePath.replace(".tif", ".source.png"))
+
+    await sharpStream
         .clone()
         .tiff()
         .toFile(filePath)
