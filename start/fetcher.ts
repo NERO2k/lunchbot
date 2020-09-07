@@ -7,7 +7,7 @@ import { deleteCalendar, generateCalendar } from "App/Common/CalendarFunctions";
 import * as fs from "fs/promises";
 import Event from "@ioc:Adonis/Core/Event";
 
-const ls = spawn("node", ["../start/subprocesses/cron.js"]);
+const ls = spawn("node", ["../start/cron.js"]);
 
 ls.stdout.on("data", async (stdout) => {
   let type = stdout.toString().replace(/(\r\n|\n|\r)/gm, "");
