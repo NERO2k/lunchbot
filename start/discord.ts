@@ -1,8 +1,6 @@
 import Env from "@ioc:Adonis/Core/Env";
-import { spawn } from "child_process";
 import { AkairoClient, CommandHandler } from "discord-akairo";
 import Logger from "@ioc:Adonis/Core/Logger";
-import { getMenu } from "App/Common/HelperFunctions";
 import moment from "moment";
 import { dispatch } from "App/Common/DiscordHelpers";
 import Event from "@ioc:Adonis/Core/Event";
@@ -39,28 +37,6 @@ lunchBot.once("ready", () => {
   Logger.info(`started discord bot as ${lunchBot.user.tag}`);
   // @ts-ignore
   lunchBot.user.setActivity("<lunch | <sub | <help");
-});
-
-const ls = spawn("node", ["../start/subprocesses/discord.js"]);
-
-ls.stdout.on("data", async (stdout) => {
-  let type = stdout.toString().replace(/(\r\n|\n|\r)/gm, "");
-  if (type === "dispatch") {
-    const data = await getMenu(moment(), false, true);
-    Logger.warn("Dispatcher is now running.");
-    await dispatch(lunchBot, data, moment());
-    Logger.warn("Dispatcher has now finished.");
-    return true;
-  }
-  Logger.info(`discord scheduler: ${stdout}`);
-});
-
-ls.stderr.on("data", (data) => {
-  Logger.error(`discord scheduler: ${data}`);
-});
-
-ls.on("close", (code) => {
-  Logger.warn(`discord scheduler process exited with code ${code}.`);
 });
 
 Event.on("new:menu", async (data) => {

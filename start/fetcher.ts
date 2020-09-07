@@ -7,11 +7,11 @@ import { deleteCalendar, generateCalendar } from "App/Common/CalendarFunctions";
 import * as fs from "fs/promises";
 import Event from "@ioc:Adonis/Core/Event";
 
-const ls = spawn("node", ["../start/subprocesses/fetcher.js"]);
+const ls = spawn("node", ["../start/subprocesses/cron.js"]);
 
 ls.stdout.on("data", async (stdout) => {
   let type = stdout.toString().replace(/(\r\n|\n|\r)/gm, "");
-  if (type === "menu") {
+  if (type === "execute") {
     const date = moment();
     const data = await getMenu(date, true, false);
     const listedWeek = moment(data["listed_week"], "WW");

@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Common/DiscordHelpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/DiscordHelpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/discord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/discord.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/fetcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/fetcher.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/subprocesses/discord.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/subprocesses/fetcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/cron.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +35,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\start" />
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\start/cron.ts" />
       <recent name="$PROJECT_DIR$/start/subprocesses" />
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\app" />
     </key>
