@@ -3,6 +3,7 @@ import { engDayCast } from "../../config/words";
 import Env from "@ioc:Adonis/Core/Env";
 import User from "App/Models/User";
 import Server from "App/Models/Server";
+import Logger from "@ioc:Adonis/Core/Logger";
 
 export function embed(data, date) {
   const embed = new Discord.MessageEmbed()
@@ -35,12 +36,24 @@ export async function dispatch(instace, data, date) {
   const embedData = embed(data, date);
 
   for (const user of users) {
-    let userChannel = await instace.users.fetch(user.user_id);
-    userChannel.send(embedData);
+    try {
+      let userChannel = await instace.users.fetch(user.user_id);
+      userChannel.send(embedData);
+      Logger.info(`Sent lunch menu to ${user.user_id}, aka ${userChannel.name}`)
+    } catch(error) {
+      Logger.error(`Failed to send menu to ${user.user_id}`)
+      console.log(error)
+    }
   }
 
   for (const server of servers) {
-    let guildChannel = await instace.channels.fetch(server.channel_id);
-    guildChannel.send(embedData);
+    try {
+      let guildChannel = await instace.channels.fetch(server.channel_id);
+      guildChannel.send(embedData);
+      Logger.info(`Sent lunch menu to ${server.channel_id} in ${server.server_id}, aka ${guildChannel.guild.name}/${guildChannel.name}`)
+    } catch(error) {
+      Logger.error(`Failed to send lunch menu to ${server.channel_id} in ${server.server_id}.`)
+      console.log(error)
+    }
   }
 }
