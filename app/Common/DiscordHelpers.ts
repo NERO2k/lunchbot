@@ -38,8 +38,8 @@ export async function dispatch(instace, data, date) {
   for (const user of users) {
     try {
       let userChannel = await instace.users.fetch(user.user_id);
-      userChannel.send(embedData);
-      Logger.info(`Sent lunch menu to ${user.user_id}, aka ${userChannel.name}`)
+      await userChannel.send(embedData);
+      Logger.info(`Sent lunch menu to ${user.user_id}, aka ${userChannel.username}`)
     } catch(error) {
       Logger.error(`Failed to send menu to ${user.user_id}`)
       console.log(error)
