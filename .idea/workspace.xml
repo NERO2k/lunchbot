@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Common/MenuHelpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/MenuHelpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/discord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/discord.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/fetcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/fetcher.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,14 +32,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/start/subprocesses" />
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Commands" />
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Controllers\Http" />
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\resources\views" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/start/subprocesses" />
-      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

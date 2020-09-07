@@ -5,6 +5,7 @@ import Logger from "@ioc:Adonis/Core/Logger";
 import { deleteWeek, hasWeekImage } from "App/Common/MenuHelpers";
 import { deleteCalendar, generateCalendar } from "App/Common/CalendarFunctions";
 import * as fs from "fs/promises";
+import Event from "@ioc:Adonis/Core/Event";
 
 const ls = spawn("node", ["../start/subprocesses/fetcher.js"]);
 
@@ -29,6 +30,7 @@ ls.stdout.on("data", async (stdout) => {
       await getMenu(date, true, true);
       const calendar = await generateCalendar();
       await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
+      await Event.emit("new:menu", data)
     } else {
       const menu = await getMenu(date, false, true);
       if (JSON.stringify(menu) !== JSON.stringify(data)) {
@@ -40,6 +42,7 @@ ls.stdout.on("data", async (stdout) => {
         deleteCalendar();
         const calendar = await generateCalendar();
         await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
+        await Event.emit("new:menu", data)
       }
     }
     return;
