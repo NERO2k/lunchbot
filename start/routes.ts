@@ -30,6 +30,8 @@ Route.any("/api/image/source", "ApiController.source_image");
 Route.any("/api/text", "ApiController.text");
 Route.any("/api/json", "ApiController.json");
 
+Route.any("/assistant", "AssistantController.call");
+
 Route.any("/debug/dump", "DebugController.dump").middleware("debug");
 
 Route.any("/debug/image", "DebugController.image").middleware("debug");
