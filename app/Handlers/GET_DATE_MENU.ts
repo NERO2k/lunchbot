@@ -18,6 +18,13 @@ export default async function(params, conv) {5
   }
 
   const mergeString = data.menu[date.format('dddd').toLowerCase()]
+
+  conv.add(new Card({
+    "title": (engDayCast[date.format("dddd").toLowerCase()] || date.format("dddd")).toUpperCase(),
+    "subtitle": "EATERY KISTA NOD — MENY VECKA "+date.format("WW"),
+    "text": mergeString.join("\n\n")
+  }));
+
   if (params.device.capabilities.includes("SPEECH")) {
     conv.add(
       new Simple({
@@ -26,10 +33,4 @@ export default async function(params, conv) {5
       })
     );
   }
-
-  conv.add(new Card({
-    "title": (engDayCast[date.format("dddd").toLowerCase()] || date.format("dddd")).toUpperCase(),
-    "subtitle": "EATERY KISTA NOD — MENY VECKA "+date.format("WW"),
-    "text": mergeString.join("\n\n")
-  }));
 }

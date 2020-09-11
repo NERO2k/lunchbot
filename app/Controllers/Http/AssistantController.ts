@@ -7,7 +7,6 @@ export default class WebController {
 
   public async call({request}) {
     const params = request.all();
-    console.log(params);
 
     let conv = new ConversationV3({
       body: request.body,

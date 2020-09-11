@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/privacy_policy.edge" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/AssistantController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/AssistantController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Handlers/GET_DATE_MENU.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Handlers/GET_DATE_MENU.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Handlers/GET_WEEK_MENU.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Handlers/GET_WEEK_MENU.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +72,7 @@
       <workItem from="1599202014931" duration="4339000" />
       <workItem from="1599775452624" duration="8617000" />
       <workItem from="1599824190259" duration="6653000" />
+      <workItem from="1599851065080" duration="618000" />
     </task>
     <servers />
   </component>
