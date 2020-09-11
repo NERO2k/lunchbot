@@ -1,50 +1,53 @@
-import {Image, Table} from "@assistant/conversation";
+import {Table} from "@assistant/conversation";
+import {resolvedToDate} from "App/Common/AssistantHelpers";
+import moment from "moment";
+import {getMenu} from "App/Common/HelperFunctions";
 
-export default function(params, conv) {
-  if (params.device.capabilities.includes("RICH_RESPONSE")) {
-    conv.add(new Table({
-      "title": "Table Title",
-      "subtitle": "Table Subtitle",
-      "image": new Image({
-        url: 'https://developers.google.com/assistant/assistant_96.png',
-        alt: 'Google Assistant logo'
-      }),
-      "columns": [{
-        "header": "Column A"
-      }, {
-        "header": "Column B"
-      }, {
-        "header": "Column C"
-      }],
-      "rows": [{
-        "cells": [{
-          "text": "A1"
-        }, {
-          "text": "B1"
-        }, {
-          "text": "C1"
-        }]
-      }, {
-        "cells": [{
-          "text": "A2"
-        }, {
-          "text": "B2"
-        }, {
-          "text": "C2"
-        }]
-      }, {
-        "cells": [{
-          "text": "A3"
-        }, {
-          "text": "B3"
-        }, {
-          "text": "C3"
-        }]
-      }]
-    }));
-  } else {
-    if (params.device.capabilities.includes("SPEECH")) {
-      conv.add("Today eatery is serving.")
-    }
+export default async function(params, conv) {
+  let data;
+  const resolvedDate = params.intent.params.date.resolved ? resolvedToDate(params.intent.params.date.resolved): moment()
+  const date = resolvedDate || moment()
+
+  try {
+    data = await getMenu(date, false, true)
+  } catch(error) {
+    conv.add("Något gick fel...")
+    conv.add(error.message);
+    return;
   }
+
+  conv.add(new Table({
+    "title": "EATERY KISTA NOD — MENY VECKA " + data.listed_week,
+    "subtitle": "Powered by Lunchbot.",
+    "columns": [{
+      "header": "Dag"
+    }, {
+      "header": "Meny"
+    }],
+    "rows": [{
+      "cells": [{
+        "text": "A1"
+      }, {
+        "text": "B1"
+      }, {
+        "text": "C1"
+      }]
+    }, {
+      "cells": [{
+        "text": "A2"
+      }, {
+        "text": "B2"
+      }, {
+        "text": "C2"
+      }]
+    }, {
+      "cells": [{
+        "text": "A3"
+      }, {
+        "text": "B3"
+      }, {
+        "text": "C3"
+      }]
+    }]
+  }));
 }

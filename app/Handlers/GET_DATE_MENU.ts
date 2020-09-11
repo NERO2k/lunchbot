@@ -2,35 +2,34 @@ import {Card, Simple} from "@assistant/conversation";
 import {getMenu} from "App/Common/HelperFunctions";
 import {resolvedToDate} from "App/Common/AssistantHelpers";
 import {engDayCast} from "../../config/words";
+import moment from "moment";
 
-export default async function(params, conv) {
-  if (params.device.capabilities.includes("RICH_RESPONSE")) {
+export default async function(params, conv) {5
+  let data;
+  const resolvedDate = params.intent.params.date.resolved ? resolvedToDate(params.intent.params.date.resolved): moment()
+  const date = resolvedDate || moment()
 
-    const data = await getMenu(resolvedToDate(params.intent.params.date.resolved), false, true)
-
-    /*// @ts-ignore
-    Object.keys(data.menu).forEach((value) => {
-      const day = engDayCast[value] || value;
-
-      let dayList = [];
-      // @ts-ignore
-      Object.keys(data.menu[value]).forEach((dayNum) => {
-        dayList.push({
-          "cells": [{
-            // @ts-ignore
-            "text": data.menu[value][dayNum]
-          }]
-        });
-      });
-      console.log(day.toUpperCase())
-      conv.add(new Simple({
-        "text": "Card Subtitle",
-        "speech": ""
-      }));
-    });*/
-  } else {
-    if (params.device.capabilities.includes("SPEECH")) {
-      conv.add("Today eatery is serving.")
-    }
+  try {
+    data = await getMenu(date, false, true)
+  } catch(error) {
+    conv.add("Något gick fel...")
+    conv.add(error.message);
+    return;
   }
+
+  const mergeString = data.menu[date.format('dddd').toLowerCase()]
+  if (params.device.capabilities.includes("SPEECH")) {
+    conv.add(
+      new Simple({
+        speech: `<speak>Eatery serverar ${mergeString.join('<break strength="1000ms"/>')}</speak>`,
+        text: params.device.capabilities.includes("RICH_RESPONSE") ? mergeString.join("\n\n") : null
+      })
+    );
+  }
+
+  conv.add(new Card({
+    "title": (engDayCast[date.format("dddd").toLowerCase()] || date.format("dddd")).toUpperCase(),
+    "subtitle": "EATERY KISTA NOD — MENY VECKA "+date.format("WW"),
+    "text": mergeString.join("\n\n")
+  }));
 }
