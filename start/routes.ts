@@ -31,6 +31,7 @@ Route.any("/api/text", "ApiController.text");
 Route.any("/api/json", "ApiController.json");
 
 Route.any("/assistant", "AssistantController.call");
+Route.any("/assistant/policy", "AssistantController.policy");
 
 Route.any("/debug/dump", "DebugController.dump").middleware("debug");
 

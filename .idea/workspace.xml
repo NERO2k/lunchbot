@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/privacy_policy.edge" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/AssistantController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/AssistantController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Handlers/GET_DATE_MENU.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Handlers/GET_DATE_MENU.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Handlers/GET_WEEK_MENU.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Handlers/GET_WEEK_MENU.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,24 +28,24 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Handlers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Handlers" />
-      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Commands" />
-      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Controllers\Http" />
-      <recent name="C:\Users\nero2\Documents\Git\lunchbot\resources\views" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\start" />
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\start/cron.ts" />
       <recent name="$PROJECT_DIR$/start/subprocesses" />
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\app" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\resources\views" />
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Handlers" />
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Commands" />
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Controllers\Http" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -73,7 +75,7 @@
       <workItem from="1599117249158" duration="1913000" />
       <workItem from="1599202014931" duration="4339000" />
       <workItem from="1599775452624" duration="8617000" />
-      <workItem from="1599824190259" duration="3831000" />
+      <workItem from="1599824190259" duration="6653000" />
     </task>
     <servers />
   </component>
@@ -81,10 +83,11 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="630" y="337" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598455299326">
+    <state x="630" y="337" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599830854858">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="630" y="337" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598455299326" />
+    <state x="630" y="337" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599830854858" />
     <state x="724" y="124" key="CommitChangelistDialog2" timestamp="1598479464484">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

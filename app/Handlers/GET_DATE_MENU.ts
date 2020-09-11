@@ -6,7 +6,7 @@ import moment from "moment";
 
 export default async function(params, conv) {5
   let data;
-  const resolvedDate = params.intent.params.date.resolved ? resolvedToDate(params.intent.params.date.resolved): moment()
+  const resolvedDate = params.intent.params.date ? resolvedToDate(params.intent.params.date.resolved): moment()
   const date = resolvedDate || moment()
 
   try {

@@ -1,11 +1,25 @@
-import {Table} from "@assistant/conversation";
+import {Simple, Table} from "@assistant/conversation";
 import {resolvedToDate} from "App/Common/AssistantHelpers";
 import moment from "moment";
 import {getMenu} from "App/Common/HelperFunctions";
+import {engDayCast} from "../../config/words";
 
 export default async function(params, conv) {
   let data;
-  const resolvedDate = params.intent.params.date.resolved ? resolvedToDate(params.intent.params.date.resolved): moment()
+  let rowData = [];
+
+  if (!params.device.capabilities.includes("RICH_RESPONSE"))
+  {
+    conv.add(
+      new Simple({
+        speech: `Man kan endast visa hela eatery menyn på en enhet med skärm.`,
+        text: ""
+      })
+    );
+    return;
+  }
+
+  const resolvedDate = params.intent.params.date ? resolvedToDate(params.intent.params.date.resolved): moment()
   const date = resolvedDate || moment()
 
   try {
@@ -16,38 +30,28 @@ export default async function(params, conv) {
     return;
   }
 
+  Object.keys(data.menu).forEach((value) => {
+    const day = engDayCast[value] || value;
+    rowData.push({
+      "cells": [{
+        // @ts-ignore
+        "text": day.toUpperCase()
+      }, {
+        // @ts-ignore
+        "text": data.menu[value].join("\n")
+      }]
+    });
+  });
+
   conv.add(new Table({
-    "title": "EATERY KISTA NOD — MENY VECKA " + data.listed_week,
-    "subtitle": "Powered by Lunchbot.",
+    "title": "EATERY KISTA NOD",
+    "subtitle": "MENY VECKA " + data.listed_week,
     "columns": [{
       "header": "Dag"
     }, {
       "header": "Meny"
     }],
-    "rows": [{
-      "cells": [{
-        "text": "A1"
-      }, {
-        "text": "B1"
-      }, {
-        "text": "C1"
-      }]
-    }, {
-      "cells": [{
-        "text": "A2"
-      }, {
-        "text": "B2"
-      }, {
-        "text": "C2"
-      }]
-    }, {
-      "cells": [{
-        "text": "A3"
-      }, {
-        "text": "B3"
-      }, {
-        "text": "C3"
-      }]
-    }]
+    "rows": rowData
   }));
+
 }

@@ -18,4 +18,9 @@ export default class WebController {
 
     return conv.serialize();
   }
+
+  public async policy({view})
+  {
+    return view.render("privacy_policy")
+  }
 }
