@@ -22,14 +22,14 @@ export default async function(params, conv) {5
   conv.add(new Card({
     "title": (engDayCast[date.format("dddd").toLowerCase()] || date.format("dddd")).toUpperCase(),
     "subtitle": "EATERY KISTA NOD — MENY VECKA "+date.format("WW"),
-    "text": mergeString.join("\n\n")
+    "text": mergeString.join(". \n\n")
   }));
 
   if (params.device.capabilities.includes("SPEECH")) {
     conv.add(
       new Simple({
         speech: `<speak>Eatery serverar ${mergeString.join('<break strength="1000ms"/>')}</speak>`,
-        text: params.device.capabilities.includes("RICH_RESPONSE") ? mergeString.join("\n\n") : null
+        text: params.device.capabilities.includes("RICH_RESPONSE") ? "Hämtar Eatery Menyn..." : params.device.capabilities.includes("RICH_RESPONSE") ? mergeString.join(".\n\n") : null
       })
     );
   }
