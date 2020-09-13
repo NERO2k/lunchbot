@@ -38,7 +38,7 @@ export default async function(params, conv) {
         "text": day.toUpperCase()
       }, {
         // @ts-ignore
-        "text": data.menu[value].join("\n")
+        "text": data.menu[value].join(". \n\n")
       }]
     });
   });
