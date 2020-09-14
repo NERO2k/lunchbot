@@ -4,7 +4,6 @@ import {
 import {mapConversation} from "App/Common/AssistantHelpers";
 
 export default class WebController {
-
   public async call({request}) {
     const params = request.all();
 
@@ -16,10 +15,5 @@ export default class WebController {
     await mapConversation(params, conv)
 
     return conv.serialize();
-  }
-
-  public async policy({view})
-  {
-    return view.render("privacy_policy")
   }
 }
