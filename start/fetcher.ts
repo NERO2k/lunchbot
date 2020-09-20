@@ -38,7 +38,7 @@ ls.stdout.on("data", async (stdout) => {
       await Event.emit("new:menu", data)
     } else {
       const menu = await getMenu(date, false, true);
-      if (JSON.stringify(menu) !== JSON.stringify(data)) {
+      if (JSON.stringify(menu["menu"]) !== JSON.stringify(data["menu"])) {
         if (listedWeekMismatch) {
           Logger.info(
             `found updated menu for week ${listedWeek.format("WW")} but current week is ${date.format("WW")}.`
