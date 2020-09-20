@@ -12,19 +12,23 @@ const ls = spawn("node", ["../start/cron.js"]);
 ls.stdout.on("data", async (stdout) => {
   let type = stdout.toString().replace(/(\r\n|\n|\r)/gm, "");
   if (type === "execute") {
+    let listedWeekMismatch = false;
     let date = moment();
     const data = await getMenu(date, true, false);
     const listedWeek = moment(data["listed_week"], "WW");
 
     if (listedWeek.format("WW") !== date.format("WW")) {
-      Logger.info(
-        `found new menu for week ${listedWeek.format("WW")} but current week is ${date.format("WW")}.`
-      );
-      Logger.warn("writing menu as eatery listed week.")
+      listedWeekMismatch = true;
       date = listedWeek;
     }
 
     if (!hasWeekImage(listedWeek)) {
+      if (listedWeekMismatch) {
+        Logger.info(
+          `found new menu for week ${listedWeek.format("WW")} but current week is ${date.format("WW")}.`
+        );
+        Logger.warn("writing menu as eatery listed week.")
+      }
       Logger.info(
         `new menu found for week ${data["listed_week"]}, writing to disk and updating calendar.`
       );
