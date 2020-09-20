@@ -8,12 +8,15 @@ export const blockedWords = [
 ];
 export const weekDays = [
   "måndag",
+  "mandag",
   "tisdag",
   "onsdag",
   "torsdag",
   "fredag",
   "lördag",
+  "lordag",
   "söndag",
+  "sondag",
   "monday",
   "tuesday",
   "wednesday",
@@ -24,12 +27,15 @@ export const weekDays = [
 ];
 export const sweDayCast = {
   måndag: "monday",
+  mandag: "monday",
   tisdag: "tuesday",
   onsdag: "wednesday",
   torsdag: "thursday",
   fredag: "friday",
   lördag: "saturday",
+  lordag: "saturday",
   söndag: "sunday",
+  sondag: "sunday",
 };
 export const engDayCast = {
   monday: "måndag",

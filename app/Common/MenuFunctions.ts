@@ -6,6 +6,7 @@ import moment from "moment/";
 import { blockedWords, sweDayCast, weekDays } from "../../config/words";
 import sharp from "sharp";
 import got from "got";
+import strtr from "locutus/php/strings/strtr"
 
 export async function image(url): Promise<string> {
   const page_url = url ? url : Env.get("EATERY_LUNCH_URL");
@@ -98,14 +99,14 @@ export async function parse(text): Promise<object> {
       if (
         !weekDays.some(function (v) {
           return (
-            cleanLines[i].toLowerCase().indexOf(v) >= 0 &&
+            strtr(cleanLines[i].toLowerCase(), "åäö", "aao").indexOf(v) >= 0 &&
             cleanLines[i].split(" ").length < 2
           );
         })
       ) {
         if (currentDay) data.menu[currentDay].push(cleanLines[i]);
       } else {
-        let day = cleanLines[i].toLowerCase().replace(/[^a-öA-Ö0-9]/, "");
+        let day = strtr(cleanLines[i].toLowerCase().replace(/[^a-öA-Ö0-9]/, ""), "åäö", "aao")
         currentDay = sweDayCast[day] || day;
         data.menu[currentDay] = data[currentDay] || [];
       }
