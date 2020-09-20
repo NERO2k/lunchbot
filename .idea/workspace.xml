@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/what.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Common/HelperFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/HelperFunctions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start/fetcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/fetcher.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +74,7 @@
       <workItem from="1599775452624" duration="8617000" />
       <workItem from="1599824190259" duration="6653000" />
       <workItem from="1599851065080" duration="618000" />
-      <workItem from="1600637171897" duration="627000" />
+      <workItem from="1600637171897" duration="1564000" />
     </task>
     <servers />
   </component>
