@@ -16,9 +16,9 @@ ls.stdout.on("data", async (stdout) => {
     const data = await getMenu(date, true, false);
     const listedWeek = moment(data["listed_week"], "WW");
 
-    if (listedWeek.week() !== date.week()) {
+    if (listedWeek.format("WW") !== date.format("WW")) {
       Logger.info(
-        `Found new menu for week ${listedWeek.week()} but current week is ${date.week()}.`
+        `Found new menu for week ${listedWeek.format("WW")} but current week is ${date.format("WW")}.`
       );
       return;
     }

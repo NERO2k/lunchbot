@@ -67,7 +67,7 @@ export async function generateCalendar(): Promise<string> {
                 location: `EATERY KISTA NOD — MENY VECKA ${json.listed_week}`,
                 // @ts-ignore
                 description: json.menu[key].join("\n"),
-                url: `https://eatery.nero2k.com?date=${momentDay.week()}-${momentDay.year()}&format=WW-YYYY`,
+                url: `https://eatery.nero2k.com?date=${momentDay.format("WW")}-${momentDay.year()}&format=WW-YYYY`,
               });
               listedWeeks[`${json.listed_week}-${json.actual_year}`] = true;
             });
