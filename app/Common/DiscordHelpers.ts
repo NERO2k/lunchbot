@@ -37,21 +37,35 @@ export async function dispatch(instance, data, date) {
 
   for (const user of users) {
     try {
-      const userObject = await instance.users.fetch(user.user_id);
-      const userChannel = await instance.channels.fetch(user.channel_id);
-      const messageCollection = await userChannel.messages.fetch({limit: 1})
-      const latestMessage = messageCollection.first()
-      if (
-        (latestMessage.author.id === instance.user.id) &&
-        (latestMessage.embeds.length > 0) &&
-        (latestMessage.embeds[0].title.includes("EATERY")) &&
-        (latestMessage.embeds[0].title.match(/\d+/g)[0] !== data.actual_week)
-      ) {
-        await latestMessage.edit(embedData);
-        Logger.info(`Edited lunch menu in ${user.user_id}, aka ${userObject.username}`)
+      if (user.channel_id) {
+        const userObject = await instance.users.fetch(user.user_id);
+        const userChannel = await instance.channels.fetch(user.channel_id);
+        const messageCollection = await userChannel.messages.fetch({limit: 1})
+        const latestMessage = messageCollection.first()
+        if (
+          (latestMessage.author.id === instance.user.id) &&
+          (latestMessage.embeds.length > 0) &&
+          (latestMessage.embeds[0].title.includes("EATERY")) &&
+          (latestMessage.embeds[0].title.match(/\d+/g)[0] !== data.actual_week)
+        ) {
+          await latestMessage.edit(embedData);
+          Logger.info(`Edited lunch menu in ${user.user_id}, aka ${userObject.username}`)
+        } else {
+          await userChannel.send(embedData);
+          Logger.info(`Sent lunch menu to ${user.user_id}, aka ${userObject.username}`)
+        }
       } else {
-        await userChannel.send(embedData);
-        Logger.info(`Sent lunch menu to ${user.user_id}, aka ${userObject.username}`)
+        // REMOVE THIS AFTER ONE WEEK
+        let userChannel = await instance.users.fetch(user.user_id);
+        const message = await userChannel.send(embedData);
+        Logger.info(`Sent lunch menu to ${user.user_id}, aka ${userChannel.username} using legacy method.`)
+        // @ts-ignore
+        const userModel = await User.firstOrFail({user_id: user.user_id});
+        // @ts-ignore
+        userModel.channel_id = message.channel.id;
+        await userModel.save();
+        Logger.info(`Migrated ${user.user_id}, aka ${userChannel.username} to new system.`)
+        // REMOVE THIS AFTER ONE WEEK
       }
     } catch(error) {
       Logger.error(`Failed to send menu to ${user.user_id}`)
