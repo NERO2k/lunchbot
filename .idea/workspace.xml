@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/migrations/1598433214357_users.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Commands/SubCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/SubCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Common/DiscordHelpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/DiscordHelpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/1598433214356_users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598433214356_users.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,24 +25,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\database\migrations" />
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\resources\views" />
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Handlers" />
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Commands" />
+      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Controllers\Http" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\start" />
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\start/cron.ts" />
       <recent name="$PROJECT_DIR$/start/subprocesses" />
       <recent name="C:\Users\nero2\Documents\Git\lunchbot\app" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nero2\Documents\Git\lunchbot\resources\views" />
-      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Handlers" />
-      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Commands" />
-      <recent name="C:\Users\nero2\Documents\Git\lunchbot\app\Controllers\Http" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -75,7 +76,7 @@
       <workItem from="1599824190259" duration="6653000" />
       <workItem from="1599851065080" duration="618000" />
       <workItem from="1600637171897" duration="4253000" />
-      <workItem from="1600705005255" duration="7371000" />
+      <workItem from="1600705005255" duration="7520000" />
     </task>
     <servers />
   </component>
