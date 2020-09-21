@@ -8,6 +8,7 @@ export default class Users extends BaseSchema {
       table.increments("id");
       table.boolean("enabled");
       table.string("user_id");
+      table.string("channel_id");
       table.timestamps(true);
     });
   }
