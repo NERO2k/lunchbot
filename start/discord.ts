@@ -1,7 +1,6 @@
 import Env from "@ioc:Adonis/Core/Env";
 import { AkairoClient, CommandHandler } from "discord-akairo";
 import Logger from "@ioc:Adonis/Core/Logger";
-import moment from "moment";
 import { dispatch } from "App/Common/DiscordHelpers";
 import Event from "@ioc:Adonis/Core/Event";
 
@@ -39,8 +38,8 @@ lunchBot.once("ready", () => {
   lunchBot.user.setActivity("<lunch | <sub | <help");
 });
 
-Event.on("new:menu", async (data) => {
+Event.on("new:menu", async (msg) => {
   Logger.warn("Dispatcher is now running.");
-  await dispatch(lunchBot, data, moment());
+  await dispatch(lunchBot, msg.data, msg.date);
   Logger.warn("Dispatcher has now finished.");
 })
