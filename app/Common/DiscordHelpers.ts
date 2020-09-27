@@ -56,14 +56,11 @@ export async function dispatch(instance, data, date) {
         }
       } else {
         // REMOVE THIS AFTER ONE WEEK
-        let userChannel = await instance.users.fetch(user.user_id);
+        const userChannel = await instance.users.fetch(user.user_id);
         const message = await userChannel.send(embedData);
         Logger.info(`Sent lunch menu to ${user.user_id}, aka ${userChannel.username} using legacy method.`)
         // @ts-ignore
-        const userModel = await User.firstOrFail({user_id: user.user_id});
-        // @ts-ignore
-        userModel.channel_id = message.channel.id;
-        await userModel.save();
+        await User.updateOrCreate({user_id: user.user_id}, {channel_id: message.channel.id});
         Logger.info(`Migrated ${user.user_id}, aka ${userChannel.username} to new system.`)
         // REMOVE THIS AFTER ONE WEEK
       }

@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/1598433214357_users.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1598433214356_users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1598433214356_users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Common/DiscordHelpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Common/DiscordHelpers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +22,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
@@ -77,6 +77,7 @@
       <workItem from="1599851065080" duration="618000" />
       <workItem from="1600637171897" duration="4253000" />
       <workItem from="1600705005255" duration="7520000" />
+      <workItem from="1601228935071" duration="1724000" />
     </task>
     <servers />
   </component>
@@ -84,6 +85,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="511" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601229981501">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="511" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601229981501" />
     <state x="630" y="337" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599830854858">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -93,6 +98,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="724" y="124" key="CommitChangelistDialog2/-1920.0.1920.1040/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598479464484" />
+    <state x="699" y="288" key="FileChooserDialogImpl" timestamp="1601229974724">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="699" y="288" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601229974724" />
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1601229946929">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1040/-1920.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601229946929" />
     <state x="381" y="167" key="SettingsEditor" timestamp="1598465869179">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
