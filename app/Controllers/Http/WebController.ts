@@ -9,7 +9,10 @@ import { getCalendar } from "App/Common/CalendarFunctions";
 export default class WebController {
   public async index({ view, request }) {
     const params = request.all();
-    const date = moment(params.date || (params.week+params.year) || moment().format("WW-YYYY"), params.format || "WWYYYY");
+    const date = moment(
+      params.date || params.week + params.year || moment().format("WW-YYYY"),
+      params.format || "WWYYYY"
+    );
 
     if (!date.isValid())
       throw new Exception("Date / Date format provided is invalid.");

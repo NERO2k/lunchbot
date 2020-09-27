@@ -6,7 +6,7 @@ import moment from "moment/";
 import { blockedWords, sweDayCast, weekDays } from "../../config/words";
 import sharp from "sharp";
 import got from "got";
-import strtr from "locutus/php/strings/strtr"
+import strtr from "locutus/php/strings/strtr";
 
 export async function image(url): Promise<string> {
   const page_url = url ? url : Env.get("EATERY_LUNCH_URL");
@@ -16,7 +16,12 @@ export async function image(url): Promise<string> {
   let img;
   while ((img = imgRex.exec(request.body))) {
     if (img[1].match("i[0-9-].wp.com"))
-      return img[1].substring(0, img[1].indexOf("?")).replace(/-[0-9-]?[0-9-]?[0-9-]?[0-9-]?[xX][0-9-]?[0-9-]?[0-9-]?[0-9-]?/g, "");
+      return img[1]
+        .substring(0, img[1].indexOf("?"))
+        .replace(
+          /-[0-9-]?[0-9-]?[0-9-]?[0-9-]?[xX][0-9-]?[0-9-]?[0-9-]?[0-9-]?/g,
+          ""
+        );
   }
   throw new Exception("Failed scrape image url from http body.");
 }
@@ -31,13 +36,9 @@ export async function fetch(date, url, temp): Promise<boolean> {
 
     await got.stream(url).pipe(sharpStream);
 
-    await sharpStream
-      .toFile(filePath.replace(".tif", ".source"))
+    await sharpStream.toFile(filePath.replace(".tif", ".source"));
 
-    await sharpStream
-        .clone()
-        .tiff()
-        .toFile(filePath)
+    await sharpStream.clone().tiff().toFile(filePath);
 
     return true;
   } else {
@@ -106,7 +107,11 @@ export async function parse(text): Promise<object> {
       ) {
         if (currentDay) data.menu[currentDay].push(cleanLines[i]);
       } else {
-        let day = strtr(cleanLines[i].toLowerCase().replace(/[^a-öA-Ö0-9]/, ""), "åäö", "aao")
+        let day = strtr(
+          cleanLines[i].toLowerCase().replace(/[^a-öA-Ö0-9]/, ""),
+          "åäö",
+          "aao"
+        );
         currentDay = sweDayCast[day] || day;
         data.menu[currentDay] = data[currentDay] || [];
       }

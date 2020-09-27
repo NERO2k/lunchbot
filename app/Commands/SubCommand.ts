@@ -13,13 +13,19 @@ class SubCommand extends Command {
 
   async exec(message) {
     if (message.channel.type !== "dm") {
-      await message.reply("På grund av Discord API restriktioner så måste detta kommandot användas i din DM kanal med Lunchbot.");
+      await message.reply(
+        "På grund av Discord API restriktioner så måste detta kommandot användas i din DM kanal med Lunchbot."
+      );
       return;
     }
 
     const user = await User.firstOrCreate(
       { user_id: message.author.id },
-      { user_id: message.author.id, channel_id: message.channel.id, enabled: false }
+      {
+        user_id: message.author.id,
+        channel_id: message.channel.id,
+        enabled: false,
+      }
     );
 
     if (!user.enabled) {

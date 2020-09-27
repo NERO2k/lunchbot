@@ -25,9 +25,11 @@ ls.stdout.on("data", async (stdout) => {
     if (!hasWeekImage(listedWeek)) {
       if (listedWeekMismatch) {
         Logger.info(
-          `found new menu for week ${listedWeek.format("WW")} but current week is ${date.format("WW")}.`
+          `found new menu for week ${listedWeek.format(
+            "WW"
+          )} but current week is ${date.format("WW")}.`
         );
-        Logger.warn("writing menu as eatery listed week.")
+        Logger.warn("writing menu as eatery listed week.");
       }
       Logger.info(
         `new menu found for week ${data["listed_week"]}, writing to disk and updating calendar.`
@@ -35,15 +37,17 @@ ls.stdout.on("data", async (stdout) => {
       await getMenu(date, true, true);
       const calendar = await generateCalendar();
       await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
-      await Event.emit("new:menu", {data, date})
+      await Event.emit("new:menu", { data, date });
     } else {
       const menu = await getMenu(date, false, true);
       if (JSON.stringify(menu["menu"]) !== JSON.stringify(data["menu"])) {
         if (listedWeekMismatch) {
           Logger.info(
-            `found updated menu for week ${listedWeek.format("WW")} but current week is ${date.format("WW")}.`
+            `found updated menu for week ${listedWeek.format(
+              "WW"
+            )} but current week is ${date.format("WW")}.`
           );
-          Logger.warn("writing menu as eatery listed week.")
+          Logger.warn("writing menu as eatery listed week.");
         }
         Logger.warn(
           `newer menu was found for week ${data["listed_week"]},. replacing old menu and updating calendar.`
@@ -53,7 +57,7 @@ ls.stdout.on("data", async (stdout) => {
         deleteCalendar();
         const calendar = await generateCalendar();
         await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
-        await Event.emit("new:menu", {data, date})
+        await Event.emit("new:menu", { data, date });
       }
     }
     return;

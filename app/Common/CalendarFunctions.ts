@@ -53,7 +53,7 @@ export async function generateCalendar(): Promise<string> {
             await Object.keys(json.menu).forEach((key) => {
               let day =
                 engDayCast[key].charAt(0).toUpperCase() +
-                engDayCast[key].slice(1) ||
+                  engDayCast[key].slice(1) ||
                 key.charAt(0).toUpperCase() + key.slice(1);
               let momentDay = moment(
                 `${key}-${json.listed_week}-${json.actual_year}`,
@@ -67,7 +67,9 @@ export async function generateCalendar(): Promise<string> {
                 location: `EATERY KISTA NOD — MENY VECKA ${json.listed_week}`,
                 // @ts-ignore
                 description: json.menu[key].join("\n"),
-                url: `https://eatery.nero2k.com?date=${momentDay.format("WW")}-${momentDay.year()}&format=WW-YYYY`,
+                url: `https://eatery.nero2k.com?date=${momentDay.format(
+                  "WW"
+                )}-${momentDay.year()}&format=WW-YYYY`,
               });
               listedWeeks[`${json.listed_week}-${json.actual_year}`] = true;
             });
