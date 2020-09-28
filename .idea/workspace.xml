@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9293a311-3470-4d80-8565-a3c6bd947afa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/discord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/discord.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start/fetcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/fetcher.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Commands/DispatchCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commands/DispatchCommand.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +78,7 @@
       <workItem from="1600637171897" duration="4253000" />
       <workItem from="1600705005255" duration="7520000" />
       <workItem from="1601228935071" duration="2344000" />
+      <workItem from="1601287952075" duration="670000" />
     </task>
     <servers />
   </component>
@@ -86,9 +86,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="511" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601229981501">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="916" y="258" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601288625121">
+      <screen x="0" y="0" width="3440" height="1400" />
     </state>
+    <state x="916" y="258" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1920.1040/0.0.3440.1400@0.0.3440.1400" timestamp="1601288625121" />
     <state x="511" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601229981501" />
     <state x="630" y="337" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599830854858">
       <screen x="0" y="0" width="1920" height="1040" />
