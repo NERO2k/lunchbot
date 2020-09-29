@@ -12,7 +12,7 @@ export async function mapConversation(params, conv) {
     GET_DATE_MENU: (params, conv) => GET_DATE_MENU(params, conv),
   };
 
-  const handler = handlers[params.handler.name];
+  const handler = handlers[params.handler?.name];
 
   if (handler) {
     await handler(params, conv);
