@@ -41,7 +41,7 @@ export default async function (params, conv) {
         },
         {
           // @ts-ignore
-          text: data.menu[value].join(". \n\n"),
+          text: data.menu[value].map(i => i+'.').join(" \n\n"),
         },
       ],
     });

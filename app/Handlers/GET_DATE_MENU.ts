@@ -28,7 +28,7 @@ export default async function (params, conv) {
         engDayCast[date.format("dddd").toLowerCase()] || date.format("dddd")
       ).toUpperCase(),
       subtitle: "EATERY KISTA NOD — MENY VECKA " + date.format("WW"),
-      text: mergeString.join(". \n\n"),
+      text: mergeString.map(i => i+'.').join(" \n\n"),
     })
   );
 
@@ -41,7 +41,7 @@ export default async function (params, conv) {
         text: params.device.capabilities.includes("RICH_RESPONSE")
           ? "Hämtar Eatery Menyn..."
           : params.device.capabilities.includes("RICH_RESPONSE")
-          ? mergeString.join(".\n\n")
+          ? mergeString.map(i => i+'.').join("\n\n")
           : null,
       })
     );
