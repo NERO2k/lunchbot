@@ -33,7 +33,7 @@ class SubCommand extends Command {
     );
 
     if (!user.enabled) {
-      Logger.info(`user ${message.author.id} aka ${message.author.username} subscribed to lunch the menu`)
+      Logger.info(`User ${message.author.id} aka ${message.author.username} subscribed to lunch the menu.`)
       user.enabled = true;
       await user.save();
       await message.reply("Du är nu på listan :inbox_tray:");
@@ -41,7 +41,7 @@ class SubCommand extends Command {
       const menu = await getMenu(moment(), false, true);
       await message.author.send(embed(menu, moment()));
     } else {
-      Logger.info(`user ${message.author.id} aka ${message.author.username} unsubscribed to the lunch menu`)
+      Logger.info(`User ${message.author.id} aka ${message.author.username} unsubscribed to the lunch menu.`)
 
       user.enabled = false;
       await user.save();

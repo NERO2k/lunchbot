@@ -25,7 +25,7 @@ class MenuCommand extends Command {
 
   async exec(message, args) {
     const date = moment(args.date, args.format);
-    Logger.info(`user ${message.author.id} aka ${message.author.username} fetched the menu for week ${date.format("WW")}`)
+    Logger.info(`User ${message.author.id} aka ${message.author.username} fetched the menu for week ${date.format("WW")}.`)
 
     let res;
     try {

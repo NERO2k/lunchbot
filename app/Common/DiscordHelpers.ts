@@ -51,12 +51,12 @@ export async function dispatch(instance, data, date) {
       ) {
         await latestMessage.edit(embedData);
         Logger.info(
-          `Edited lunch menu in ${user.user_id}, aka ${userObject.username}`
+          `Edited lunch menu in ${user.user_id}, aka ${userObject.username}.`
         );
       } else {
         await userChannel.send(embedData);
         Logger.info(
-          `Sent lunch menu to ${user.user_id}, aka ${userObject.username}`
+          `Sent lunch menu to ${user.user_id}, aka ${userObject.username}.`
         );
       }
     } catch (error) {
@@ -79,12 +79,12 @@ export async function dispatch(instance, data, date) {
       ) {
         await latestMessage.edit(embedData);
         Logger.info(
-          `Edited lunch menu in ${server.channel_id} in ${server.server_id}, aka ${guildChannel.guild.name}/${guildChannel.name}`
+          `Edited lunch menu in ${server.channel_id} in ${server.server_id}, aka ${guildChannel.guild.name}/${guildChannel.name}.`
         );
       } else {
         await guildChannel.send(embedData);
         Logger.info(
-          `Sent lunch menu to ${server.channel_id} in ${server.server_id}, aka ${guildChannel.guild.name}/${guildChannel.name}`
+          `Sent lunch menu to ${server.channel_id} in ${server.server_id}, aka ${guildChannel.guild.name}/${guildChannel.name}.`
         );
       }
     } catch (error) {

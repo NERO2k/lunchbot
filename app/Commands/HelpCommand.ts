@@ -9,7 +9,7 @@ class HelpCommand extends Command {
   }
 
   async exec(message) {
-    Logger.info(`user ${message.author.id} aka ${message.author.username} asked for the help menu`)
+    Logger.info(`User ${message.author.id} aka ${message.author.username} asked for the help menu.`)
     message.channel.send({
       embed: {
         title: "Lunchbot",
