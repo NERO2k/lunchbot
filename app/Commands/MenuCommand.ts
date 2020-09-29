@@ -2,6 +2,7 @@ import { Command } from "discord-akairo";
 import { getMenu } from "App/Common/HelperFunctions";
 import { embed } from "App/Common/DiscordHelpers";
 import moment from "moment/";
+import Logger from "@ioc:Adonis/Core/Logger";
 
 class MenuCommand extends Command {
   constructor() {
@@ -24,6 +25,7 @@ class MenuCommand extends Command {
 
   async exec(message, args) {
     const date = moment(args.date, args.format);
+    Logger.info(`user ${message.author.id} aka ${message.author.username} fetched the menu for week ${date.format("WW")}`)
 
     let res;
     try {

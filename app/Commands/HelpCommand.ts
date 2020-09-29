@@ -1,4 +1,5 @@
 import { Command } from "discord-akairo";
+import Logger from "@ioc:Adonis/Core/Logger";
 
 class HelpCommand extends Command {
   constructor() {
@@ -8,6 +9,7 @@ class HelpCommand extends Command {
   }
 
   async exec(message) {
+    Logger.info(`user ${message.author.id} aka ${message.author.username} asked for the help menu`)
     message.channel.send({
       embed: {
         title: "Lunchbot",
