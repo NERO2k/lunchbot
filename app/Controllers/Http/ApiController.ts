@@ -84,11 +84,13 @@ export default class ApiController {
       const file = await FileType.fromFile(
         `../tmp/eatery-${date.format("YYYY-WW")}.source`
       );
-      if ("ext" in file) {
-        response.attachment(
-          `../tmp/eatery-${date.format("YYYY-WW")}.source`,
-          "image." + file.ext
-        );
+      if (file) {
+        if ("ext" in file) {
+          response.attachment(
+            `../tmp/eatery-${date.format("YYYY-WW")}.source`,
+            "image." + file.ext
+          );
+        }
       }
       return "Downloading file...";
     }
