@@ -84,11 +84,12 @@ export default class ApiController {
       const file = await FileType.fromFile(
         `../tmp/eatery-${date.format("YYYY-WW")}.source`
       );
-      // @ts-ignore
-      response.attachment(
-        `../tmp/eatery-${date.format("YYYY-WW")}.source`,
-        "image." + file.ext
-      );
+      if ("ext" in file) {
+        response.attachment(
+          `../tmp/eatery-${date.format("YYYY-WW")}.source`,
+          "image." + file.ext
+        );
+      }
       return "Downloading file...";
     }
     throw new Exception("Requested week is not stored on the server.");
