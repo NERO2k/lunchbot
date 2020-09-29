@@ -71,6 +71,7 @@ export async function dispatch(instance, data, date) {
       const messageCollection = await guildChannel.messages.fetch({ limit: 1 });
       const latestMessage = messageCollection.first();
       if (
+        latestMessage &&
         latestMessage.author.id === instance.user.id &&
         latestMessage.embeds.length > 0 &&
         latestMessage.embeds[0].title.includes("EATERY") &&
