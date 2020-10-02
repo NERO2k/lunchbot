@@ -60,7 +60,9 @@
   				<div class="media text-muted pt-3">
   					<p class="media-body pb-3 mb-0 small lh-125 border-gray border-bottom">
   						<strong class="d-block text-gray-dark">{{engDayCast[name].toUpperCase() || engDayCast[name].toUpperCase()}}</strong>
-  						{{{data.join("<br/>")}}}
+  						{{{data.map(i => {
+			                return /[.!?]$/.test(i) ? i : i+"."
+			            }).join("<br/>")}}}
   					</p>
   				</div>
   			@endeach
