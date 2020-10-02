@@ -47,7 +47,7 @@ export async function dispatch(instance, data, date) {
         latestMessage.author.id === instance.user.id &&
         latestMessage.embeds.length > 0 &&
         latestMessage.embeds[0].title.includes("EATERY") &&
-        latestMessage.embeds[0].title.match(/\d+/g)[0] !== data.actual_week
+        latestMessage.embeds[0].title.match(/\d+/g)[0] !== data.listed_week
       ) {
         await latestMessage.edit(embedData);
         Logger.info(
@@ -75,7 +75,7 @@ export async function dispatch(instance, data, date) {
         latestMessage.author.id === instance.user.id &&
         latestMessage.embeds.length > 0 &&
         latestMessage.embeds[0].title.includes("EATERY") &&
-        latestMessage.embeds[0].title.match(/\d+/g)[0] !== data.actual_week
+        latestMessage.embeds[0].title.match(/\d+/g)[0] !== data.listed_week
       ) {
         await latestMessage.edit(embedData);
         Logger.info(
