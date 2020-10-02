@@ -28,13 +28,7 @@ class MenuCommand extends Command {
       const date = moment(args.date, args.format);
       Logger.info(`User ${message.author.id} aka ${message.author.username} fetched the menu for week ${date.format("WW")}.`)
 
-      let res;
-      try {
-        res = await getMenu(date, false, true);
-      } catch (error) {
-        await message.reply(error.message);
-      }
-      if (!res) return;
+      const res = await getMenu(date, false, true);
 
       const embedCode = embed(res, date);
 
