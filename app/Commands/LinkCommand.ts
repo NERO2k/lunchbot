@@ -15,28 +15,39 @@ class LinkCommand extends Command {
   }
 
   async exec(message) {
-    const server = await Server.firstOrCreate(
-      { channel_id: message.channel.id },
-      {
-        server_id: message.guild.id,
-        channel_id: message.channel.id,
-        enabled: false,
+    try {
+      const server = await Server.firstOrCreate(
+        { channel_id: message.channel.id },
+        {
+          server_id: message.guild.id,
+          channel_id: message.channel.id,
+          enabled: false,
+        }
+      );
+
+      if (!server.enabled) {
+        Logger.info(`User ${message.author.id} aka ${message.author.username} connected ${message.guild.id} aka ${message.guild.name} to the lunch dispatch.`)
+        server.enabled = true;
+        await server.save();
+        await message.reply("Kanalen är nu ansluten :bulb:");
+
+        const menu = await getMenu(moment(), false, true);
+        await message.channel.send(embed(menu, moment()));
+      } else {
+        Logger.info(`User ${message.author.id} aka ${message.author.username} disconnected ${message.guild.id} aka ${message.guild.name} to the lunch dispatch.`)
+        server.enabled = false;
+        await server.save();
+        message.reply("Kanalen är inte längre ansluten :electric_plug:");
       }
-    );
-
-    if (!server.enabled) {
-      Logger.info(`User ${message.author.id} aka ${message.author.username} connected ${message.guild.id} aka ${message.guild.name} to the lunch dispatch.`)
-      server.enabled = true;
-      await server.save();
-      await message.reply("Kanalen är nu ansluten :bulb:");
-
-      const menu = await getMenu(moment(), false, true);
-      await message.channel.send(embed(menu, moment()));
-    } else {
-      Logger.info(`User ${message.author.id} aka ${message.author.username} disconnected ${message.guild.id} aka ${message.guild.name} to the lunch dispatch.`)
-      server.enabled = false;
-      await server.save();
-      message.reply("Kanalen är inte längre ansluten :electric_plug:");
+    } catch(error) {
+      console.log(error);
+      message.channel.send({
+        "embed": {
+          "title": ":warning: Något gick fel.",
+          "description": error.message,
+          "color": 16776960
+        }
+      })
     }
   }
 }

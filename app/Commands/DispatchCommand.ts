@@ -12,10 +12,21 @@ class DispatchCommand extends Command {
   }
 
   async exec(message) {
-    await message.reply("Running schedule job.");
-    const data = await getMenu(moment(), false, true);
-    await dispatch(message.client, data, moment());
-    await message.reply("Ran schedule job.");
+    try {
+      await message.reply("Running schedule job.");
+      const data = await getMenu(moment(), false, true);
+      await dispatch(message.client, data, moment());
+      await message.reply("Ran schedule job.");
+    } catch(error) {
+      console.log(error);
+      message.channel.send({
+        "embed": {
+          "title": ":warning: Något gick fel.",
+          "description": error.message,
+          "color": 16776960
+        }
+      })
+    }
   }
 }
 
