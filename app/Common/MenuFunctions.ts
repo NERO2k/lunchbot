@@ -15,7 +15,7 @@ export async function image(url): Promise<string> {
   const imgRex = /<img.*?src="(.*?)"[^>]+>/g;
   let img;
   while ((img = imgRex.exec(request.body))) {
-    if (img[1].match("i[0-9-].wp.com"))
+    if (img[1].match("[iI][0-9-]?[0-9-]?\\.[wW][pP]\\.[cC][oO][mM]"))
       return img[1]
         .substring(0, img[1].indexOf("?"))
         .replace(
