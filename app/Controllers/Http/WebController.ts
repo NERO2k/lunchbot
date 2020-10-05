@@ -23,7 +23,7 @@ export default class WebController {
     const viewData = {
       tv: Boolean(params.tv),
       year: moment().year(),
-      zoom: Number(params.zoom ? params.zoom : params.tv ? 1.4 : 1),
+      zoom: Number(params.zoom ? params.zoom : params.tv ? 1.55 : 1),
       // @ts-ignore
       menu: data.menu,
       // @ts-ignore
