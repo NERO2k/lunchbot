@@ -1,84 +1,82 @@
-<html lang="sv">
-	<head>
+<!DOCTYPE html>
+<html>
+  <head>
 		<title>Eatery Lunchmenyn | Lunchbot</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="The Premier Discord Bot for Tracking Your Favorite Lunch Establishment.">
 		<link rel="shortcut icon" href="https://i.imgur.com/cIM9Nsf.png" type="image/x-icon">
 
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 
-		<style>
-			#container { zoom: {{zoom}} }
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-			.container {
-				max-width: 760px;
-			}
+    <style>
+      * { box-sizing: border-box; }
 
-			body {
-				background: linear-gradient(270deg, #7b90dc, #ffffff, #7b90dc, #7b90dc);
-				background-size: 800% 800%;
-				animation: BgAnimation 0s ease infinite;
-			}
+      body, html {
+        margin: 0px;
+        overflow-x: hidden;
+      }
 
-			.notice {
-			  display: block;
-			  padding-top: 10px;
-			}
+      .grid {
+        zoom: {{zoom}};
+      }
 
-			@-webkit-keyframes BgAnimation {
-			    0%{background-position:0% 50%}
-			    50%{background-position:100% 50%}
-			    100%{background-position:0% 50%}
-			}
-			@-moz-keyframes BgAnimation {
-			    0%{background-position:0% 50%}
-			    50%{background-position:100% 50%}
-			    100%{background-position:0% 50%}
-			}
-			@keyframes BgAnimation {
-			    0%{background-position:0% 50%}
-			    50%{background-position:100% 50%}
-			    100%{background-position:0% 50%}
-			}
-		</style>
-	</head>
-	<body>
-	  <div style="position: fixed; top: 0; padding: 5; color: #fff; z-index: -1;">
-	    Github: https://github.com/nero2k/lunchbot
-	  </div>
-	  <div style="position: fixed; bottom: 0; padding: 5; color: #fff; z-index: -1;">
-	    Skapad av William Helmenius
-	  </div>
-		<div class="container" id="container">
-  		<div class="my-3 p-3 bg-white rounded shadow-sm">
-  			<h6 class="border-bottom border-gray pb-2 mb-0">EATERY KISTA NOD — MENY VECKA {{week_number}}</h6>
-  			@each((data, name) in menu)
-  				<div class="media text-muted pt-3">
-  					<p class="media-body pb-3 mb-0 small lh-125 border-gray border-bottom">
-  						<strong class="d-block text-gray-dark">{{engDayCast[name].toUpperCase() || engDayCast[name].toUpperCase()}}</strong>
-  						{{{data.map(i => {
-			                return /[.!?]$/.test(i) ? i : i+"."
-			            }).join("<br/>")}}}
-  					</p>
-  				</div>
-  			@endeach
-  			<small class="notice">Du kan nu använda Lunchbot API´n för att läsa av Eatery menyn i ditt egna project. Du kan nu också lägga till Lunchbot i din egna Discord Server. Läs våran Github sida eller kontakta NERO2k#1593 (William Helmenius) för mer information.</small>
-  		</div>
-  	</div>
+      .grid:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body class="antialiased font-sans bg-gray-800">
+    <div class="p-8 bg-gray-800">
+      <div class="md:flex md:items-center md:justify-between">
+        <div class="flex-1 min-w-0">
+          <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl sm:leading-9 sm:truncate">
+            EATERY KISTA NOD — MENY VECKA {{week_number}}
+          </h2>
+        </div>
+        @if(tv !== true)
+        <div class="mt-4 flex md:mt-0 md:ml-4">
+          <span class="shadow-sm rounded-md">
+            <a href="/api" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-gray-600 hover:bg-gray-500 focus:outline-none focus:shadow-outline-gray focus:border-gray-700 active:bg-gray-700 transition duration-150 ease-in-out">
+              API
+            </a>
+          </span>
+          <span class="ml-3 shadow-sm rounded-md">
+            <a href="https://github.com/NERO2k/lunchbot" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-400 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-600 active:bg-indigo-600 transition duration-150 ease-in-out">
+              Github
+            </a>
+          </span>
+        </div>
+        @endif
+      </div>
+    </div>
+    <div class="grid">
+      @each((data, name) in menu)
+      <div class="grid-item w-full lg:w-1/2">
+        <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 md:m-0 lg:m-2 lg:rounded-md rounded-none">
+          <strong class="d-block text-gray-dark">{{engDayCast[name].toUpperCase() || engDayCast[name].toUpperCase()}}</strong>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            {{{data.map(i => { return /[.!?]$/.test(i) ? i : i+"."}).join("<br/>")}}}
+          </h3>
+        </div>
+      </div>
+      @endeach
+    </div>
   </body>
   <script>
-  function setMargin() {
-    const value = (window.innerHeight-document.getElementById("container").clientHeight*{{zoom}}.1)/2;
-    if (value > 0) document.getElementById("container").style.marginTop = value;
-  }
-  window.addEventListener("resize",function(){
-     document.getElementById("container").style.marginTop = 0;
-     setMargin();
-  })
-  setMargin();
+    $('.grid').isotope({
+      stagger: 0,
+      transitionDuration: 0,
+      itemSelector: '.grid-item',
+      masonry: {
+        //columnWidth: 500
+      }
+    });
   </script>
 </html>
