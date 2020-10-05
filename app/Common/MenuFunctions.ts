@@ -36,7 +36,13 @@ export async function fetch(date, url, temp): Promise<boolean> {
 
     await got.stream(url).pipe(sharpStream);
 
-    await sharpStream.toFile(filePath.replace(".tif", ".source"));
+    const contrast = 10;
+    const brightness = 1;
+
+    await sharpStream
+      .linear(contrast, -(128 * contrast) + 128)
+      .modulate({ brightness: brightness })
+      .toFile(filePath.replace(".tif", ".source"));
 
     await sharpStream.clone().tiff().toFile(filePath);
 

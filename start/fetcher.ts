@@ -50,7 +50,7 @@ ls.stdout.on("data", async (stdout) => {
           Logger.warn("writing menu as eatery listed week.");
         }
         Logger.warn(
-          `newer menu was found for week ${data["listed_week"]},. replacing old menu and updating calendar.`
+          `newer menu was found for week ${data["listed_week"]}, replacing old menu and updating calendar.`
         );
         deleteWeek(date);
         await getMenu(date, true, true);
