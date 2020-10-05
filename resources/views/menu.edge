@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
     <style>
-      * { box-sizing: border-box; }
+      * { 
+      	box-sizing: border-box; 
+      	font-family: 'Inter', sans-serif;
+      }
 
       html {
         zoom: {{zoom}};
@@ -79,7 +82,7 @@
         @endif
       </div>
     </div>
-    <div class="grid lg:m-2">
+    <div class="grid lg:m-2" style="overflow: hidden;">
       @each((data, name) in menu)
       <div class="grid-item w-full lg:w-1/2">
         <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 md:m-0 lg:m-2 lg:rounded-md rounded-none">
@@ -118,12 +121,18 @@
       itemSelector: '.grid-item'
     });
     $(document).ready(function(){
-      $('.grid').isotope( 'reloadItems' ).isotope();
-      $("body").removeClass("opacity-0");
-      @if(tv !== true)
-      $("html").css("overflow", "auto");
-      $("body").hide().fadeIn(1000);
-      @endif
+		$("body").removeClass("opacity-0");
+		$('.grid').isotope( 'reloadItems' ).isotope();
+		@if(tv !== true)
+		$("html").css("overflow", "auto");
+		$("grid").css("overflow", "auto");
+		$("body").hide().fadeIn(1000, function() {
+			$('.grid').isotope( 'reloadItems' ).isotope();
+		});
+  		@endif
     });
+	$(window).load(function(){
+		$('.grid').isotope( 'reloadItems' ).isotope();
+	});
   </script>
 </html>
