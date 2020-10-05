@@ -59,7 +59,7 @@
         @endif
       </div>
     </div>
-    <div class="grid">
+    <div class="grid lg:m-2 m-0">
       @each((data, name) in menu)
       <div class="grid-item w-full lg:w-1/2">
         <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 md:m-0 lg:m-2 lg:rounded-md rounded-none">
@@ -101,6 +101,7 @@
       }
     });
     $(document).ready(function(){
+      $('.grid').isotope( 'reloadItems' ).isotope();
       $("body").removeClass("opacity-0");
       @if(tv !== true)
       $("body").hide().fadeIn(1000, function() {
