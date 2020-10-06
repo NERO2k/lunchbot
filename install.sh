@@ -8,7 +8,7 @@ echo Installing system dependencies.
 apt install -y tesseract-ocr node-gyp make
 
 echo Downloading tesseract data.
-curl -O https://github.com/tesseract-ocr/tessdata_best/raw/master/swe.traineddata
+curl -O https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/swe.traineddata
 mv swe.traineddata /usr/share/tesseract-ocr/4.00/tessdata
 
 echo Installing yarn.
