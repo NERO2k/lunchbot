@@ -12,13 +12,13 @@
 sudo sh ./install.sh
 ```
 
-Make sure to edit the `.env` file with your desired values.
+Make sure to edit the `.env` file with your desired values and a valid app key.
 
 If you prefer a hosted version, [add it to your Discord server](https://discordapp.com/oauth2/authorize?client_id=642020950853943306&scope=bot&permissions=67226688).
 
 ## 👤 General Usage
 
-You as a user can access Lunchbot through the screens in school primarily but you can also access it with these methods.
+You as a user can access Lunchbot through the screens in school primarily, but you can also access it with these methods.
 
 - The [Lunchbot website](https://eatery.nero2k.com).
 - The Discord bot [(invite link)](https://discordapp.com/oauth2/authorize?client_id=642020950853943306&scope=bot&permissions=67226688).
@@ -39,6 +39,6 @@ Feel free to check the [issues page](https://github.com/NERO2k/lunchbot/issues).
 
 ## 📝 License
 
-Copyright © 2019 [NERO2k](https://github.com/NERO2k).
+Copyright © 2020 [NERO2k](https://github.com/NERO2k).
 
 This project is [AGPL-3.0](./LICENSE) licensed.
