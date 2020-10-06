@@ -25,14 +25,14 @@ ls.stdout.on("data", async (stdout) => {
     if (!hasWeekImage(listedWeek)) {
       if (listedWeekMismatch) {
         Logger.info(
-          `found new menu for week ${listedWeek.format(
+          `Found new menu for week ${listedWeek.format(
             "WW"
           )} but current week is ${date.format("WW")}.`
         );
         Logger.warn("writing menu as eatery listed week.");
       }
       Logger.info(
-        `new menu found for week ${data["listed_week"]}, writing to disk and updating calendar.`
+        `New menu found for week ${data["listed_week"]}, writing to disk and updating calendar.`
       );
       await getMenu(date, true, true);
       const calendar = await generateCalendar();
@@ -43,14 +43,14 @@ ls.stdout.on("data", async (stdout) => {
       if (JSON.stringify(menu["menu"]) !== JSON.stringify(data["menu"])) {
         if (listedWeekMismatch) {
           Logger.info(
-            `found updated menu for week ${listedWeek.format(
+            `Found updated menu for week ${listedWeek.format(
               "WW"
             )} but current week is ${date.format("WW")}.`
           );
-          Logger.warn("writing menu as eatery listed week.");
+          Logger.warn("Writing menu as eatery listed week.");
         }
         Logger.warn(
-          `newer menu was found for week ${data["listed_week"]}, replacing old menu and updating calendar.`
+          `Newer menu was found for week ${data["listed_week"]}, replacing old menu and updating calendar.`
         );
         deleteWeek(date);
         await getMenu(date, true, true);
@@ -62,13 +62,13 @@ ls.stdout.on("data", async (stdout) => {
     }
     return;
   }
-  Logger.info(`fetcher scheduler: ${stdout}`);
+  Logger.info(`Fetcher scheduler: ${stdout}`);
 });
 
 ls.stderr.on("data", (data) => {
-  Logger.error(`fetcher scheduler: ${data}`);
+  Logger.error(`Fetcher scheduler: ${data}`);
 });
 
 ls.on("close", (code) => {
-  Logger.warn(`fetcher scheduler process exited with code ${code}.`);
+  Logger.warn(`Fetcher scheduler process exited with code ${code}.`);
 });
