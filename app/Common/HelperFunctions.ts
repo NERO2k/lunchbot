@@ -1,4 +1,4 @@
-import { hasWeekImage, isWeekParsed, isWeekStringified } from "./MenuHelpers";
+import {hasWeekImage, isWeekParsed, isWeekStringified, isWeekUpdated} from "./MenuHelpers";
 import { promises as fs } from "fs";
 import { ocr, fetch, image, parse } from "./MenuFunctions";
 import { Exception } from "@poppinss/utils";
@@ -32,7 +32,7 @@ export async function getMenu(date, allowFetch, cache): Promise<object> {
     menuString = cacheString.toString();
   }
   let menuObject: object;
-  if (!isWeekParsed(date) || !cache) {
+  if (!isWeekParsed(date) || !await isWeekUpdated(date) || !cache) {
     menuObject = await parse(menuString);
     await fs.writeFile(
       !cache

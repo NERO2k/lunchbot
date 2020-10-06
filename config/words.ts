@@ -6,6 +6,7 @@ export const blockedWords = [
   "eaterykortet",
   "trevlig",
 ];
+
 export const weekDays = [
   "måndag",
   "mandag",
@@ -25,6 +26,7 @@ export const weekDays = [
   "saturday",
   "sunday",
 ];
+
 export const sweDayCast = {
   måndag: "monday",
   mandag: "monday",
@@ -37,6 +39,7 @@ export const sweDayCast = {
   söndag: "sunday",
   sondag: "sunday",
 };
+
 export const engDayCast = {
   monday: "måndag",
   tuesday: "tisdag",

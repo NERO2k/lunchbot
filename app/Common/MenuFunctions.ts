@@ -7,6 +7,7 @@ import { blockedWords, sweDayCast, weekDays } from "../../config/words";
 import sharp from "sharp";
 import got from "got";
 import strtr from "locutus/php/strings/strtr";
+import {schemaVersion} from "../../config/schema";
 
 export async function image(url): Promise<string> {
   const page_url = url ? url : Env.get("EATERY_LUNCH_URL");
@@ -88,6 +89,7 @@ export async function parse(text): Promise<object> {
       return count !== split.length;
     });
 
+  data["schema_version"] = schemaVersion;
   data["actual_week"] = Number(moment().format("WW"));
   data["actual_year"] = Number(moment().format("YYYY"));
   for (let i = 0; i < cleanLines.length; i++) {
@@ -110,7 +112,8 @@ export async function parse(text): Promise<object> {
           );
         })
       ) {
-        if (currentDay) data.menu[currentDay].push(cleanLines[i]);
+        if (currentDay)
+          data.menu[currentDay].push(/[.!?]$/.test(cleanLines[i]) ? cleanLines[i] : cleanLines[i]+".");
       } else {
         let day = strtr(
           cleanLines[i].toLowerCase().replace(/[^a-öA-Ö0-9]/, ""),

@@ -97,7 +97,7 @@
       <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 md:m-0 lg:m-2 lg:rounded-md rounded-none">
         <strong class="d-block text-gray-dark">{{engDayCast[name].toUpperCase() || engDayCast[name].toUpperCase()}}</strong>
         <h3 class="text-lg leading-6 font-medium text-gray-900">
-          {{{data.map(i => { return /[.!?]$/.test(i) ? i : i+"."}).join("<br/>")}}}
+          {{{data.join("<br/>")}}}
         </h3>
       </div>
     </div>
