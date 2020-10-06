@@ -12,7 +12,7 @@ export function errorCalendar() {
   cal.prodId({
     company: 'nero2k.com',
     product: 'lunchbot',
-    language: 'SE'
+    language: 'SV'
   });
 
   cal.createEvent({
