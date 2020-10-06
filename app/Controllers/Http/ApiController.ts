@@ -1,5 +1,3 @@
-// import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-
 import {
   hasWeekImage,
   isWeekParsed,
@@ -7,7 +5,6 @@ import {
 } from "App/Common/MenuHelpers";
 import moment from "moment/";
 import { Exception } from "@poppinss/utils";
-import { promises as fs } from "fs";
 import { getMenu } from "App/Common/HelperFunctions";
 import FileType from "file-type";
 
@@ -47,10 +44,8 @@ export default class ApiController {
     }
 
     if (await isWeekParsed(date)) {
-      const data = await fs.readFile(
-        `../tmp/eatery-${date.format("YYYY-WW")}.json`
-      );
-      return data.toString().replace(/\\r/g, "");
+      const data = await getMenu(date, false, true);
+      return data;
     }
 
     throw new Exception("Begärd vecka sparas inte på servern.");

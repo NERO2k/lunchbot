@@ -7,11 +7,7 @@ export async function isWeekUpdated(date): Promise<boolean> {
     `../tmp/eatery-${date.format("YYYY-WW")}.json`
   );
   const data = JSON.parse(rawData.toString());
-  if (data.schema_version !== schemaVersion) {
-    fs.unlinkSync(`../tmp/eatery-${date.format("YYYY-WW")}.json`);
-    return false;
-  }
-  return true;
+  return data.schema_version === schemaVersion;
 }
 
 export function hasWeekImage(date): boolean {

@@ -1,8 +1,7 @@
 import {
   hasWeekImage,
   isWeekParsed,
-  isWeekStringified,
-  isWeekUpdated,
+  isWeekStringified, isWeekUpdated
 } from "./MenuHelpers";
 import { promises as fs } from "fs";
 import { ocr, fetch, image, parse } from "./MenuFunctions";
@@ -37,7 +36,9 @@ export async function getMenu(date, allowFetch, cache): Promise<object> {
     menuString = cacheString.toString();
   }
   let menuObject: object;
-  if (!isWeekParsed(date) || !(await isWeekUpdated(date)) || !cache) {
+  console.log("bruhx")
+  if ((!isWeekParsed(date) || !cache) || (!await isWeekUpdated(date) && cache) ) {
+    if (cache) console.log("bruh")
     menuObject = await parse(menuString);
     await fs.writeFile(
       !cache
