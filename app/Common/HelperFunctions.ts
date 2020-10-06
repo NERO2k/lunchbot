@@ -36,9 +36,7 @@ export async function getMenu(date, allowFetch, cache): Promise<object> {
     menuString = cacheString.toString();
   }
   let menuObject: object;
-  console.log("bruhx")
   if ((!isWeekParsed(date) || !cache) || (!await isWeekUpdated(date) && cache) ) {
-    if (cache) console.log("bruh")
     menuObject = await parse(menuString);
     await fs.writeFile(
       !cache
