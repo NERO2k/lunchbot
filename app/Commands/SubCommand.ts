@@ -15,7 +15,7 @@ class SubCommand extends Command {
   async exec(message) {
     try {
       if (message.channel.type !== "dm") {
-        const userCheck = await User.findBy('user_id', message.author.id)
+        const userCheck = await User.findBy("user_id", message.author.id);
         if (!userCheck) {
           await message.reply(
             "På grund av Discord API restriktioner så måste detta kommandot användas i din DM kanal med Lunchbot."
@@ -34,7 +34,9 @@ class SubCommand extends Command {
       );
 
       if (!user.enabled) {
-        Logger.info(`User ${message.author.id} aka ${message.author.username} subscribed to lunch the menu.`)
+        Logger.info(
+          `User ${message.author.id} aka ${message.author.username} subscribed to lunch the menu.`
+        );
         user.enabled = true;
         await user.save();
         await message.reply("Du är nu på listan :inbox_tray:");
@@ -42,21 +44,23 @@ class SubCommand extends Command {
         const menu = await getMenu(moment(), false, true);
         await message.author.send(embed(menu, moment()));
       } else {
-        Logger.info(`User ${message.author.id} aka ${message.author.username} unsubscribed to the lunch menu.`)
+        Logger.info(
+          `User ${message.author.id} aka ${message.author.username} unsubscribed to the lunch menu.`
+        );
 
         user.enabled = false;
         await user.save();
         await message.reply("Du har tagits bort från listan :outbox_tray:");
       }
-    } catch(error) {
-      console.log(error)
+    } catch (error) {
+      console.log(error);
       message.channel.send({
-        "embed": {
-          "title": ":warning: Något gick fel.",
-          "description": error.message,
-          "color": 16776960
-        }
-      })
+        embed: {
+          title: ":warning: Något gick fel.",
+          description: error.message,
+          color: 16776960,
+        },
+      });
     }
   }
 }

@@ -10,9 +10,9 @@ export function errorCalendar() {
   const cal = ical({ domain: "eatery.nero2k.com", name: "Eatery Lunchmeny" });
 
   cal.prodId({
-    company: 'nero2k.com',
-    product: 'lunchbot',
-    language: 'SV'
+    company: "nero2k.com",
+    product: "lunchbot",
+    language: "SV",
   });
 
   cal.createEvent({

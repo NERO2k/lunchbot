@@ -26,22 +26,26 @@ class MenuCommand extends Command {
   async exec(message, args) {
     try {
       const date = moment(args.date, args.format);
-      Logger.info(`User ${message.author.id} aka ${message.author.username} fetched the menu for week ${date.format("WW")}.`)
+      Logger.info(
+        `User ${message.author.id} aka ${
+          message.author.username
+        } fetched the menu for week ${date.format("WW")}.`
+      );
 
       const res = await getMenu(date, false, true);
 
       const embedCode = embed(res, date);
 
       message.channel.send(embedCode);
-    } catch(error) {
-      console.log(error)
+    } catch (error) {
+      console.log(error);
       message.channel.send({
-        "embed": {
-          "title": ":warning: Något gick fel.",
-          "description": error.message,
-          "color": 16776960
-        }
-      })
+        embed: {
+          title: ":warning: Något gick fel.",
+          description: error.message,
+          color: 16776960,
+        },
+      });
     }
   }
 }

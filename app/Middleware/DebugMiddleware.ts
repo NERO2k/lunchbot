@@ -12,7 +12,9 @@ export default class DebugMiddleware {
     if (query.key === Env.get("WEBSITE_DEBUG_KEY")) {
       await next();
     } else {
-      throw new Exception("Felsökningsnyckeln krävs för att komma åt den här sidan.");
+      throw new Exception(
+        "Felsökningsnyckeln krävs för att komma åt den här sidan."
+      );
     }
   }
 }

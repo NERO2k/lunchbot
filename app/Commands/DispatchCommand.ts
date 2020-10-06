@@ -17,15 +17,15 @@ class DispatchCommand extends Command {
       const data = await getMenu(moment(), false, true);
       await dispatch(message.client, data, moment());
       await message.reply("Ran schedule job.");
-    } catch(error) {
+    } catch (error) {
       console.log(error);
       message.channel.send({
-        "embed": {
-          "title": ":warning: Något gick fel.",
-          "description": error.message,
-          "color": 16776960
-        }
-      })
+        embed: {
+          title: ":warning: Något gick fel.",
+          description: error.message,
+          color: 16776960,
+        },
+      });
     }
   }
 }

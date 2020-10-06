@@ -26,7 +26,9 @@ class LinkCommand extends Command {
       );
 
       if (!server.enabled) {
-        Logger.info(`User ${message.author.id} aka ${message.author.username} connected ${message.guild.id} aka ${message.guild.name} to the lunch dispatch.`)
+        Logger.info(
+          `User ${message.author.id} aka ${message.author.username} connected ${message.guild.id} aka ${message.guild.name} to the lunch dispatch.`
+        );
         server.enabled = true;
         await server.save();
         await message.reply("Kanalen är nu ansluten :bulb:");
@@ -34,20 +36,22 @@ class LinkCommand extends Command {
         const menu = await getMenu(moment(), false, true);
         await message.channel.send(embed(menu, moment()));
       } else {
-        Logger.info(`User ${message.author.id} aka ${message.author.username} disconnected ${message.guild.id} aka ${message.guild.name} to the lunch dispatch.`)
+        Logger.info(
+          `User ${message.author.id} aka ${message.author.username} disconnected ${message.guild.id} aka ${message.guild.name} to the lunch dispatch.`
+        );
         server.enabled = false;
         await server.save();
         message.reply("Kanalen är inte längre ansluten :electric_plug:");
       }
-    } catch(error) {
+    } catch (error) {
       console.log(error);
       message.channel.send({
-        "embed": {
-          "title": ":warning: Något gick fel.",
-          "description": error.message,
-          "color": 16776960
-        }
-      })
+        embed: {
+          title: ":warning: Något gick fel.",
+          description: error.message,
+          color: 16776960,
+        },
+      });
     }
   }
 }

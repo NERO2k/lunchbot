@@ -20,7 +20,8 @@ export default class WebController {
     if (!date.isValid())
       throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
-    if (!params.url) throw new Exception("Ingen hämtningsadress tillhandahålls.");
+    if (!params.url)
+      throw new Exception("Ingen hämtningsadress tillhandahålls.");
 
     return fetch(date, params.url, false);
   }
