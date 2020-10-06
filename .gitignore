@@ -5,3 +5,4 @@ coverage
 .DS_STORE
 .env
 .idea
+yarn-error.log
