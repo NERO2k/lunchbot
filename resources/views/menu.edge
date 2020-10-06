@@ -44,15 +44,15 @@
     </style>
   </head>
   <body class="antialiased font-sans bg-gray-800 opacity-0">
-    <div class="p-8 bg-gray-800 lg:pb-4">
+    <div class="bg-gray-800">
       <div class="lg:flex lg:items-center lg:justify-between">
-        <div class="flex-1 min-w-0">
+        <div class="flex-1 min-w-0 p-8 lg:pb-4 sm:pr-0">
           <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl md:leading-9">
             EATERY KISTA NOD — MENY VECKA {{week_number}}
           </h2>
         </div>
         @if(tv !== true)
-        <div class="mt-4 flex lg:mt-0 lg:ml-4 overflow-auto hide-scroll text-center">
+        <div class="flex overflow-auto hide-scroll text-center lg:pt-8 md:pr-8 pb-4 pl-6 sm:pb-8 lg:pb-4">
           <span class="shadow-sm rounded-md">
             <a href="https://discordapp.com/oauth2/authorize?client_id=642020950853943306&scope=bot&permissions=67226688" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-400 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-600 active:bg-indigo-600 transition duration-150 ease-in-out">
               Discord Bot
@@ -73,7 +73,7 @@
               API Docs
             </a>
           </span>
-          <span class="ml-3 shadow-sm rounded-md">
+          <span class="ml-3 shadow-sm rounded-md pr-6 md:pr-0">
             <a href="https://github.com/NERO2k/lunchbot" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-gray-600 hover:bg-gray-500 focus:outline-none focus:shadow-outline-gray focus:border-gray-700 active:bg-gray-700 transition duration-150 ease-in-out">
               Github Sida
             </a>
@@ -94,7 +94,7 @@
       </div>
       @endeach
     </div>
-  <footer class="mb-10 md:mb-0">
+  <footer>
     <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
       @if(tv !== true)
       <div class="flex justify-center space-x-6 md:order-2">
@@ -107,7 +107,7 @@
       </div>
       @endif
       <div class="mt-8 md:mt-0 md:order-1">
-        <p class="text-center text-base leading-6 text-gray-400 {{tv === true ? 'float-left' : ''}}">
+        <p class="text-center text-base leading-6 text-gray-400 lg:float-left">
           &copy; {{year}} William Helmenius. Alla rättigheter förbehållna.
         </p>
       </div>
