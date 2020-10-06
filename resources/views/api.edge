@@ -4,105 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lunchbot API</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet">
   <style>
     html, body {
-      background-color: #F7F8FA;
-      font-family: 'Poppins', sans-serif;
-      height: 100vh;
-      color: #46444c;
-      position: relative;
+      margin: 0px;
+      height: 100%;
     }
-
-    body:before {
-      content: '';
-      background: #5A45FF;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      position: absolute;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    a {
-      color: #5A45FF;
-      text-decoration: none;
-    }
-
-    main {
-      max-width: 700px;
-      margin: auto;
-      height: 100vh;
-      padding: 0 30px;
-      align-items: center;
-      display: flex;
-      justify-content: center;
-    }
-
-    .title {
-      font-size: 50px;
-      line-height: 50px;
-      margin-bottom: 10px;
-      color: #17161A;
-    }
-
-    p {
-      margin-bottom: 20px;
-    }
-
-    main ul {
-      list-style: none;
-    }
-
-    main li {
-      margin-bottom: 5px;
-      position: relative;
-      padding-left: 25px;
-    }
-
-    main li:before {
-      content: '—';
-      position: absolute;
-      left: 0;
-    }
-
-    main code {
-      font-size: 16px;
-      background: #e6e2ff;
+    embed {
+      height: 100%;
+      width: 100%;
     }
   </style>
 </head>
 <body>
-
-  <main>
-    <div>
-      <h1 class="title"> Lunchbot API </h1>
-
-      <ul>
-        <li>
-          Hämta den konverterade tiff lunchmenybilden från <code>/api/image?date=&format=</code>
-        </li>
-
-        <li>
-          Hämta den råa käll lunchmenybilden från <code>/api/image/source?date=&format=</code>
-        </li>
-
-        <li>
-          Hämta den råa lunchmenysträngen från <code>/api/text?date=&format=</code>
-        </li>
-
-        <li>
-          Hämta den lunchmeny json data från <code>/api/json?date=&format=</code>
-        </li>
-      </ul>
-      <small>För att hämta lunchmenyn från vecka 30, 2019 skulle du till exempel göra</small>
-      <code>https://eatery.nero2k.com/api/json?date=2019-45&format=YYYY-WW</code>
-    </div>
-  </main>
+  <embed src="https://william-helmenius.gitbook.io/lunchbot"/>
 </body>
 </html>
