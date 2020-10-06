@@ -7,7 +7,7 @@ export async function getMenu(date, allowFetch, cache): Promise<object> {
   if (!hasWeekImage(date) || !cache) {
     if (allowFetch !== true)
       throw new Exception(
-        "You are not allowed to fetch menus that aren't cached. Please contact the server administrator."
+        "Du får inte hämta menyer som inte är cachade. Kontakta server administratören om du tror något har gått fel."
       );
     const imageURL = await image(null);
     await fetch(date, imageURL, !cache);

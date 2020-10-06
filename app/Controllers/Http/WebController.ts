@@ -15,7 +15,7 @@ export default class WebController {
     );
 
     if (!date.isValid())
-      throw new Exception("Date / Date format provided is invalid.");
+      throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
     const data = await getMenu(date, false, true);
 

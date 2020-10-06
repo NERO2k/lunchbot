@@ -21,7 +21,7 @@ export default class ApiController {
     const date = moment(params.date, params.format);
 
     if (!date.isValid())
-      throw new Exception("Date / Date format provided is invalid.");
+      throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
     if (!(await isWeekStringified(date))) {
       await getMenu(date, false, true);
@@ -32,7 +32,7 @@ export default class ApiController {
       return "Downloading file...";
     }
 
-    throw new Exception("Requested week is not stored on the server.");
+    throw new Exception("Begärd vecka sparas inte på servern.");
   }
 
   public async json({ request }) {
@@ -40,7 +40,7 @@ export default class ApiController {
     const date = moment(params.date, params.format);
 
     if (!date.isValid())
-      throw new Exception("Date / Date format provided is invalid.");
+      throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
     if (!(await isWeekParsed(date))) {
       await getMenu(date, false, true);
@@ -53,7 +53,7 @@ export default class ApiController {
       return data.toString().replace(/\\r/g, "");
     }
 
-    throw new Exception("Requested week is not stored on the server.");
+    throw new Exception("Begärd vecka sparas inte på servern.");
   }
 
   public async image({ request, response }) {
@@ -61,7 +61,7 @@ export default class ApiController {
     const date = moment(params.date, params.format);
 
     if (!date.isValid())
-      throw new Exception("Date / Date format provided is invalid.");
+      throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
     if (await hasWeekImage(date)) {
       response.attachment(
@@ -70,7 +70,7 @@ export default class ApiController {
       );
       return "Downloading file...";
     }
-    throw new Exception("Requested week is not stored on the server.");
+    throw new Exception("Begärd vecka sparas inte på servern.");
   }
 
   public async source_image({ request, response }) {
@@ -78,7 +78,7 @@ export default class ApiController {
     const date = moment(params.date, params.format);
 
     if (!date.isValid())
-      throw new Exception("Date / Date format provided is invalid.");
+      throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
     if (await hasWeekImage(date)) {
       const file = await FileType.fromFile(
@@ -94,6 +94,6 @@ export default class ApiController {
       }
       return "Downloading file...";
     }
-    throw new Exception("Requested week is not stored on the server.");
+    throw new Exception("Begärd vecka sparas inte på servern.");
   }
 }

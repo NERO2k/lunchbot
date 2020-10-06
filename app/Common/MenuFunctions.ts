@@ -23,7 +23,7 @@ export async function image(url): Promise<string> {
           ""
         );
   }
-  throw new Exception("Failed scrape image url from http body.");
+  throw new Exception("Det gick inte att skrapa webbadressen från http body.");
 }
 
 export async function fetch(date, url, temp): Promise<boolean> {
@@ -47,7 +47,7 @@ export async function fetch(date, url, temp): Promise<boolean> {
 
     return true;
   } else {
-    throw new Exception("Week has already been written to drive.");
+    throw new Exception("Veckan har redan skrivits till hårddisken.");
   }
 }
 

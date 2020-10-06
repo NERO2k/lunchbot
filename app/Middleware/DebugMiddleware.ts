@@ -7,12 +7,12 @@ export default class DebugMiddleware {
     const query = ctx.request.all();
     if (!Env.get("WEBSITE_DEBUG_KEY"))
       throw new Exception(
-        "A debug key has not been set. Please add one to your .env file."
+        "En felsökningsnyckel har inte ställts in. Lägg till en i din .env-fil."
       );
     if (query.key === Env.get("WEBSITE_DEBUG_KEY")) {
       await next();
     } else {
-      throw new Exception("The debug key is required to access this page.");
+      throw new Exception("Felsökningsnyckeln krävs för att komma åt den här sidan.");
     }
   }
 }

@@ -18,9 +18,9 @@ export default class WebController {
     const date = moment(params.date, params.format);
 
     if (!date.isValid())
-      throw new Exception("Date / Date format provided is invalid.");
+      throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
-    if (!params.url) throw new Exception("No fetch url provided.");
+    if (!params.url) throw new Exception("Ingen hämtningsadress tillhandahålls.");
 
     return fetch(date, params.url, false);
   }
@@ -40,7 +40,7 @@ export default class WebController {
     const date = moment(params.date, params.format);
 
     if (!date.isValid())
-      throw new Exception("Date / Date format provided is invalid.");
+      throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
     return getMenu(date, true, true);
   }
