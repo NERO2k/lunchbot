@@ -45,6 +45,13 @@ export async function getCalendar() {
 
 export async function generateCalendar(): Promise<string> {
   const cal = ical({ domain: "eatery.nero2k.com", name: "Eatery Lunchmeny" });
+
+  cal.prodId({
+    company: "nero2k.com",
+    product: "lunchbot",
+    language: "SV",
+  });
+
   let listedWeeks = [];
 
   return new Promise((resolve) => {
