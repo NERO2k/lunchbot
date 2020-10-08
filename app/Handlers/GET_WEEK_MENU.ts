@@ -1,12 +1,13 @@
-import { Simple, Table } from "@assistant/conversation";
+import { ConversationV3, Simple, Table } from "@assistant/conversation";
 import { resolvedToDate } from "App/Common/AssistantHelpers";
 import moment from "moment";
 import { getMenu } from "App/Common/HelperFunctions";
 import { engDayCast } from "../../config/words";
+import Menu from "App/Types/Menu";
 
-export default async function (params, conv) {
-  let data;
-  let rowData = [];
+export default async function (params: any, conv: ConversationV3) {
+  let data: Menu;
+  let rowData: any[] = [];
 
   if (!params.device.capabilities.includes("RICH_RESPONSE")) {
     conv.add(
@@ -31,16 +32,14 @@ export default async function (params, conv) {
     return;
   }
 
-  Object.keys(data.menu).forEach((value) => {
+  Object.keys(data.menu).forEach((value: string) => {
     const day = engDayCast[value] || value;
     rowData.push({
       cells: [
         {
-          // @ts-ignore
           text: day.toUpperCase(),
         },
         {
-          // @ts-ignore
           text: data.menu[value].join(" \n\n"),
         },
       ],

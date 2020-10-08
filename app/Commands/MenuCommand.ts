@@ -3,6 +3,7 @@ import { getMenu } from "App/Common/HelperFunctions";
 import { embed } from "App/Common/DiscordHelpers";
 import moment from "moment/";
 import Logger from "@ioc:Adonis/Core/Logger";
+import { Message } from "discord.js";
 
 class MenuCommand extends Command {
   constructor() {
@@ -23,7 +24,7 @@ class MenuCommand extends Command {
     });
   }
 
-  async exec(message, args) {
+  async exec(message: Message, args: any) {
     try {
       const date = moment(args.date, args.format);
       Logger.info(

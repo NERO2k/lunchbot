@@ -4,6 +4,7 @@ import { getMenu } from "App/Common/HelperFunctions";
 import moment from "moment/";
 import { embed } from "App/Common/DiscordHelpers";
 import Logger from "@ioc:Adonis/Core/Logger";
+import { Message } from "discord.js";
 
 class SubCommand extends Command {
   constructor() {
@@ -12,7 +13,7 @@ class SubCommand extends Command {
     });
   }
 
-  async exec(message) {
+  async exec(message: Message) {
     try {
       if (message.channel.type !== "dm") {
         const userCheck = await User.findBy("user_id", message.author.id);

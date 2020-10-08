@@ -2,6 +2,7 @@ import { Command } from "discord-akairo";
 import { getMenu } from "App/Common/HelperFunctions";
 import { dispatch } from "App/Common/DiscordHelpers";
 import moment from "moment/";
+import { Message } from "discord.js";
 
 class DispatchCommand extends Command {
   constructor() {
@@ -11,7 +12,7 @@ class DispatchCommand extends Command {
     });
   }
 
-  async exec(message) {
+  async exec(message: Message) {
     try {
       await message.reply("Running schedule job.");
       const data = await getMenu(moment(), false, true);

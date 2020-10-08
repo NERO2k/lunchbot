@@ -1,16 +1,19 @@
 import fs from "fs";
 import { Exception } from "@poppinss/utils";
 import Env from "@ioc:Adonis/Core/Env";
-import tesseract from "node-tesseract-ocr/";
-import moment from "moment/";
+import moment, { Moment } from "moment/";
 import { blockedWords, sweDayCast, weekDays } from "../../config/words";
 import sharp from "sharp";
 import got from "got";
-import strtr from "locutus/php/strings/strtr";
 import { schemaVersion } from "../../config/schema";
+import Menu from "App/Types/Menu";
+const strtr = require("locutus/php/strings/strtr");
+const tesseract = require("node-tesseract-ocr");
 
-export async function image(url): Promise<string> {
-  const page_url = url ? url : Env.get("EATERY_LUNCH_URL");
+export async function image(url: string | null): Promise<string> {
+  const page_url: string = url
+    ? url
+    : (Env.get("EATERY_LUNCH_URL") || "").toString();
 
   const request = await got(page_url);
   const imgRex = /<img.*?src="(.*?)"[^>]+>/g;
@@ -27,7 +30,11 @@ export async function image(url): Promise<string> {
   throw new Exception("Det gick inte att skrapa webbadressen från http body.");
 }
 
-export async function fetch(date, url, temp): Promise<boolean> {
+export async function fetch(
+  date: Moment,
+  url: string,
+  temp: boolean
+): Promise<boolean> {
   const filePath = temp
     ? "../tmp/eatery.tif.tmp"
     : `../tmp/eatery-${date.format("YYYY-WW")}.tif`;
@@ -52,7 +59,7 @@ export async function fetch(date, url, temp): Promise<boolean> {
   }
 }
 
-export async function ocr(file_path): Promise<string> {
+export async function ocr(file_path: string): Promise<string> {
   const config = {
     lang: "swe",
     oem: 3,
@@ -62,18 +69,18 @@ export async function ocr(file_path): Promise<string> {
   return new Promise((resolve) =>
     tesseract
       .recognize(file_path, config)
-      .then((text) => {
+      .then((text: string) => {
         resolve(text);
       })
-      .catch((error) => {
+      .catch((error: string) => {
         throw error;
       })
   );
 }
 
-export async function parse(text): Promise<object> {
-  let data = { menu: {} };
-  let currentDay;
+export async function parse(text: string): Promise<object> {
+  let data = <Menu>(<any>{ menu: {} });
+  let currentDay: string = "";
 
   const splitLines = text.replace(/\r/g, "").split("\n");
   const cleanLines = splitLines
@@ -94,7 +101,7 @@ export async function parse(text): Promise<object> {
   data["actual_year"] = Number(moment().format("YYYY"));
   for (let i = 0; i < cleanLines.length; i++) {
     if (!data["listed_week"]) {
-      let listedWeek = (cleanLines[i].match(/\d+/g) || [null]).map(Number)[0];
+      let listedWeek = (cleanLines[i].match(/\d+/g) || [""]).map(Number)[0];
       if (listedWeek < 53) {
         data["listed_week"] = listedWeek;
       }
@@ -112,20 +119,20 @@ export async function parse(text): Promise<object> {
           );
         })
       ) {
-        if (currentDay) {
+        if (currentDay !== "") {
           let menuDayLine = /[.!?]$/.test(cleanLines[i])
             ? cleanLines[i]
             : cleanLines[i] + ".";
           data.menu[currentDay].push(menuDayLine);
         }
       } else {
-        let day = strtr(
+        let day: string = strtr(
           cleanLines[i].toLowerCase().replace(/[^a-öA-Ö0-9]/, ""),
           "åäö",
           "aao"
         );
         currentDay = sweDayCast[day] || day;
-        data.menu[currentDay] = data[currentDay] || [];
+        data.menu[currentDay] = data.menu[currentDay] || [];
       }
     }
   }

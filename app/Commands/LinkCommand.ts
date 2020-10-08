@@ -4,6 +4,7 @@ import moment from "moment";
 import { embed } from "App/Common/DiscordHelpers";
 import Server from "App/Models/Server";
 import Logger from "@ioc:Adonis/Core/Logger";
+import { Message } from "discord.js";
 
 class LinkCommand extends Command {
   constructor() {
@@ -14,7 +15,8 @@ class LinkCommand extends Command {
     });
   }
 
-  async exec(message) {
+  async exec(message: Message) {
+    if (!message.guild) return;
     try {
       const server = await Server.firstOrCreate(
         { channel_id: message.channel.id },

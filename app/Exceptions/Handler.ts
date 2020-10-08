@@ -16,6 +16,8 @@
 import Logger from "@ioc:Adonis/Core/Logger";
 import HttpExceptionHandler from "@ioc:Adonis/Core/HttpExceptionHandler";
 import Env from "@ioc:Adonis/Core/Env";
+import { Exception } from "@poppinss/utils";
+import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 
 export default class ExceptionHandler extends HttpExceptionHandler {
   protected statusPages = {
@@ -23,7 +25,7 @@ export default class ExceptionHandler extends HttpExceptionHandler {
     "500..599": "errors.server-error",
   };
 
-  public async handle(error, ctx) {
+  public async handle(error: Exception, ctx: HttpContextContract) {
     if (Env.get("NODE_ENV") !== "development")
       return ctx.response.send(error.message);
     return super.handle(error, ctx);

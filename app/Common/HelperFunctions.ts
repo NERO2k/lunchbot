@@ -1,15 +1,22 @@
 import {
   hasWeekImage,
   isWeekParsed,
-  isWeekStringified, isWeekUpdated
+  isWeekStringified,
+  isWeekUpdated,
 } from "./MenuHelpers";
 import { promises as fs } from "fs";
 import { ocr, fetch, image, parse } from "./MenuFunctions";
 import { Exception } from "@poppinss/utils";
+import { Moment } from "moment";
+import Menu from "App/Types/Menu";
 
-export async function getMenu(date, allowFetch, cache): Promise<object> {
+export async function getMenu(
+  date: Moment,
+  allowFetch: boolean,
+  cache: boolean
+): Promise<Menu> {
   if (!hasWeekImage(date) || !cache) {
-    if (allowFetch !== true)
+    if (!allowFetch)
       throw new Exception(
         "Du får inte hämta menyer som inte är cachade. Kontakta server administratören om du tror något har gått fel."
       );
@@ -36,7 +43,11 @@ export async function getMenu(date, allowFetch, cache): Promise<object> {
     menuString = cacheString.toString();
   }
   let menuObject: object;
-  if ((!isWeekParsed(date) || !cache) || (!await isWeekUpdated(date) && cache) ) {
+  if (
+    !isWeekParsed(date) ||
+    !cache ||
+    (!(await isWeekUpdated(date)) && cache)
+  ) {
     menuObject = await parse(menuString);
     await fs.writeFile(
       !cache
@@ -52,5 +63,5 @@ export async function getMenu(date, allowFetch, cache): Promise<object> {
     );
     menuObject = JSON.parse(menuText.toString());
   }
-  return menuObject;
+  return menuObject as Menu;
 }

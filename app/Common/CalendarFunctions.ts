@@ -20,7 +20,7 @@ export function errorCalendar() {
     end: moment().endOf("week"),
     allDay: true,
     summary: `Lunchbot ERROR`,
-    // @ts-ignore
+
     description:
       "Failed to fetch the calendar, please contact NERO2k (William Helmenius) or wait 12 hours.",
   });
@@ -52,7 +52,7 @@ export async function generateCalendar(): Promise<string> {
     language: "SV",
   });
 
-  let listedWeeks = [];
+  let listedWeeks: { [key: string]: boolean } = {};
 
   return new Promise((resolve) => {
     glob(
@@ -78,7 +78,7 @@ export async function generateCalendar(): Promise<string> {
                 allDay: true,
                 summary: `Eatery ${day}`,
                 location: `EATERY KISTA NOD — MENY VECKA ${json.listed_week}`,
-                // @ts-ignore
+
                 description: json.menu[key].join("\n"),
                 url: `https://eatery.nero2k.com?date=${momentDay.format(
                   "WW"

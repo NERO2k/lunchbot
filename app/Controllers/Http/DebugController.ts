@@ -1,4 +1,3 @@
-// import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import moment from "moment/";
 import { Exception } from "@poppinss/utils";
 import { fetch, image, ocr, parse } from "App/Common/MenuFunctions";
@@ -7,13 +6,14 @@ import User from "App/Models/User";
 import Server from "App/Models/Server";
 import { generateCalendar } from "App/Common/CalendarFunctions";
 import * as fs from "fs/promises";
+import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 
 export default class WebController {
-  public async image({ params }) {
+  public async image({ params }: HttpContextContract) {
     return image(params.url);
   }
 
-  public async fetch({ request }) {
+  public async fetch({ request }: HttpContextContract) {
     const params = request.all();
     const date = moment(params.date, params.format);
 
@@ -26,17 +26,17 @@ export default class WebController {
     return fetch(date, params.url, false);
   }
 
-  public async ocr({ request }) {
+  public async ocr({ request }: HttpContextContract) {
     const params = request.all();
     return await ocr(params.file);
   }
 
-  public async parse({ request }) {
+  public async parse({ request }: HttpContextContract) {
     const params = request.all();
     return parse(params.text);
   }
 
-  public async process({ request }) {
+  public async process({ request }: HttpContextContract) {
     const params = request.all();
     const date = moment(params.date, params.format);
 
@@ -46,7 +46,7 @@ export default class WebController {
     return getMenu(date, true, true);
   }
 
-  public async addUser({ request }) {
+  public async addUser({ request }: HttpContextContract) {
     const params = request.all();
 
     const user = await User.firstOrCreate(
@@ -65,7 +65,7 @@ export default class WebController {
     return user;
   }
 
-  public async addServer({ request }) {
+  public async addServer({ request }: HttpContextContract) {
     const params = request.all();
 
     const server = await Server.firstOrCreate(

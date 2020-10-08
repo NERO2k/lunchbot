@@ -1,11 +1,13 @@
-import Discord from "discord.js";
+import Discord, { Client, TextChannel } from "discord.js";
 import { engDayCast } from "../../config/words";
 import Env from "@ioc:Adonis/Core/Env";
 import User from "App/Models/User";
 import Server from "App/Models/Server";
 import Logger from "@ioc:Adonis/Core/Logger";
+import Menu from "App/Types/Menu";
+import { Moment } from "moment";
 
-export function embed(data, date) {
+export function embed(data: Menu, date: Moment) {
   const embed = new Discord.MessageEmbed()
     .setFooter(
       `Lunchbot – Få lunchmenyn direkt i dina DM:s, skriv kommandot <sub.`,
@@ -29,7 +31,9 @@ export function embed(data, date) {
   return embed;
 }
 
-export async function dispatch(instance, data, date) {
+export async function dispatch(instance: Client, data: Menu, date: Moment) {
+  if (!instance.user) return;
+
   const users = await User.all();
   const servers = await Server.all();
 
@@ -37,17 +41,24 @@ export async function dispatch(instance, data, date) {
 
   for (const user of users) {
     try {
-      const userObject = await instance.users.fetch(user.user_id);
-      const userChannel = await instance.channels.fetch(user.channel_id);
+      const userObject: Discord.User = await instance.users.fetch(
+        <string>user.user_id
+      );
+      const userChannel: TextChannel = <TextChannel>(
+        await instance.channels.fetch(<string>user.channel_id)
+      );
       const messageCollection = await userChannel.messages.fetch({
         limit: 1,
       });
       const latestMessage = messageCollection.first();
       if (
+        latestMessage &&
         latestMessage.author.id === instance.user.id &&
         latestMessage.embeds.length > 0 &&
+        latestMessage.embeds[0].title &&
         latestMessage.embeds[0].title.includes("EATERY") &&
-        latestMessage.embeds[0].title.match(/\d+/g)[0] !== data.listed_week
+        (latestMessage.embeds[0].title.match(/\d+/g) || [])[0] !==
+          data.listed_week.toString()
       ) {
         await latestMessage.edit(embedData);
         Logger.info(
@@ -67,15 +78,19 @@ export async function dispatch(instance, data, date) {
 
   for (const server of servers) {
     try {
-      const guildChannel = await instance.channels.fetch(server.channel_id);
+      const guildChannel: TextChannel = <TextChannel>(
+        await instance.channels.fetch(<string>server.channel_id)
+      );
       const messageCollection = await guildChannel.messages.fetch({ limit: 1 });
       const latestMessage = messageCollection.first();
       if (
         latestMessage &&
         latestMessage.author.id === instance.user.id &&
         latestMessage.embeds.length > 0 &&
+        latestMessage.embeds[0].title &&
         latestMessage.embeds[0].title.includes("EATERY") &&
-        latestMessage.embeds[0].title.match(/\d+/g)[0] !== data.listed_week
+        (latestMessage.embeds[0].title.match(/\d+/g) || [])[0] !==
+          data.listed_week.toString()
       ) {
         await latestMessage.edit(embedData);
         Logger.info(

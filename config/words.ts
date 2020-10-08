@@ -1,4 +1,4 @@
-export const blockedWords = [
+export const blockedWords: Array<string> = [
   "borgarfsjordsgatan",
   "borgarfsjordgatan",
   "kista",
@@ -7,7 +7,7 @@ export const blockedWords = [
   "trevlig",
 ];
 
-export const weekDays = [
+export const weekDays: Array<string> = [
   "måndag",
   "mandag",
   "tisdag",
@@ -27,7 +27,7 @@ export const weekDays = [
   "sunday",
 ];
 
-export const sweDayCast = {
+export const sweDayCast: { [key: string]: string } = {
   måndag: "monday",
   mandag: "monday",
   tisdag: "tuesday",
@@ -40,7 +40,7 @@ export const sweDayCast = {
   sondag: "sunday",
 };
 
-export const engDayCast = {
+export const engDayCast: { [key: string]: string } = {
   monday: "måndag",
   tuesday: "tisdag",
   wednesday: "onsdag",

@@ -9,11 +9,10 @@ class LunchBot extends AkairoClient {
   constructor() {
     super(
       {
-        // @ts-ignore
-        ownerID: Env.get("DISCORD_BOT_OWNER"),
+        ownerID: (Env.get("DISCORD_BOT_OWNER") || "").toString(),
       },
       {
-        disableEveryone: true,
+        disableMentions: "everyone",
       }
     );
     this.commandHandler = new CommandHandler(this, {
@@ -28,14 +27,16 @@ class LunchBot extends AkairoClient {
 }
 
 const lunchBot = new LunchBot();
-// @ts-ignore
-lunchBot.login(Env.get("DISCORD_BOT_TOKEN"));
+
+if (Env.get("DISCORD_BOT_TOKEN"))
+  lunchBot.login((Env.get("DISCORD_BOT_TOKEN") || "").toString());
 
 lunchBot.once("ready", () => {
-  // @ts-ignore
-  Logger.info(`started discord bot as ${lunchBot.user.tag}`);
-  // @ts-ignore
-  lunchBot.user.setActivity("<lunch | <sub | <help");
+  if (lunchBot.user) {
+    Logger.info(`started discord bot as ${lunchBot.user.tag}`);
+
+    lunchBot.user.setActivity("<lunch | <sub | <help");
+  }
 });
 
 Event.on("new:menu", async (msg) => {

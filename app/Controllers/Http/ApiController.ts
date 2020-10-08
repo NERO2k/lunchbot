@@ -1,3 +1,4 @@
+import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import {
   hasWeekImage,
   isWeekParsed,
@@ -9,11 +10,11 @@ import { getMenu } from "App/Common/HelperFunctions";
 import FileType from "file-type";
 
 export default class ApiController {
-  public async index({ view }) {
+  public async index({ view }: HttpContextContract) {
     return view.render("api");
   }
 
-  public async text({ request, response }) {
+  public async text({ request, response }: HttpContextContract) {
     const params = request.all();
     const date = moment(params.date, params.format);
 
@@ -32,7 +33,7 @@ export default class ApiController {
     throw new Exception("Begärd vecka sparas inte på servern.");
   }
 
-  public async json({ request }) {
+  public async json({ request }: HttpContextContract) {
     const params = request.all();
     const date = moment(params.date, params.format);
 
@@ -44,14 +45,13 @@ export default class ApiController {
     }
 
     if (await isWeekParsed(date)) {
-      const data = await getMenu(date, false, true);
-      return data;
+      return await getMenu(date, false, true);
     }
 
     throw new Exception("Begärd vecka sparas inte på servern.");
   }
 
-  public async image({ request, response }) {
+  public async image({ request, response }: HttpContextContract) {
     const params = request.all();
     const date = moment(params.date, params.format);
 
@@ -68,7 +68,7 @@ export default class ApiController {
     throw new Exception("Begärd vecka sparas inte på servern.");
   }
 
-  public async source_image({ request, response }) {
+  public async source_image({ request, response }: HttpContextContract) {
     const params = request.all();
     const date = moment(params.date, params.format);
 
