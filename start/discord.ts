@@ -9,7 +9,7 @@ class LunchBot extends AkairoClient {
   constructor() {
     super(
       {
-        ownerID: (Env.get("DISCORD_BOT_OWNER") || "").toString(),
+        ownerID: <string>Env.get("DISCORD_BOT_OWNER"),
       },
       {
         disableMentions: "everyone",
@@ -29,7 +29,7 @@ class LunchBot extends AkairoClient {
 const lunchBot = new LunchBot();
 
 if (Env.get("DISCORD_BOT_TOKEN"))
-  lunchBot.login((Env.get("DISCORD_BOT_TOKEN") || "").toString());
+  lunchBot.login(<string>Env.get("DISCORD_BOT_TOKEN"));
 
 lunchBot.once("ready", () => {
   if (lunchBot.user) {

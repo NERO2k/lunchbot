@@ -11,9 +11,7 @@ const strtr = require("locutus/php/strings/strtr");
 const tesseract = require("node-tesseract-ocr");
 
 export async function image(url: string | null): Promise<string> {
-  const page_url: string = url
-    ? url
-    : (Env.get("EATERY_LUNCH_URL") || "").toString();
+  const page_url: string = url ? url : <string>Env.get("EATERY_LUNCH_URL");
 
   const request = await got(page_url);
   const imgRex = /<img.*?src="(.*?)"[^>]+>/g;
