@@ -12,8 +12,9 @@ const ls = spawn("node", ["../start/cron.js"]);
 ls.stdout.on("data", async (stdout) => {
   let type = stdout.toString().replace(/(\r\n|\n|\r)/gm, "");
   if (type === "execute") {
-    let listedWeekMismatch = false;
     let date = moment();
+    let listedWeekMismatch = false;
+    let dateAgeMismatch = false;
     const data = await getMenu(date, true, false);
     const listedWeek = moment(data["listed_week"], "WW");
 
@@ -22,14 +23,23 @@ ls.stdout.on("data", async (stdout) => {
       date = listedWeek;
     }
 
+    if (date.format("WW") > listedWeek.format("WW")) {
+      dateAgeMismatch = true;
+      return;
+    }
+
     if (!hasWeekImage(listedWeek)) {
+      if (dateAgeMismatch) {
+        Logger.warn("Requested menu is older than current week. Ignoring.");
+        return;
+      }
       if (listedWeekMismatch) {
         Logger.info(
           `Found new menu for week ${listedWeek.format(
             "WW"
           )} but current week is ${date.format("WW")}.`
         );
-        Logger.warn("writing menu as eatery listed week.");
+        Logger.warn("Writing menu as eatery listed week.");
       }
       Logger.info(
         `New menu found for week ${data["listed_week"]}, writing to disk and updating calendar.`
@@ -41,6 +51,10 @@ ls.stdout.on("data", async (stdout) => {
     } else {
       const menu = await getMenu(date, false, true);
       if (JSON.stringify(menu["menu"]) !== JSON.stringify(data["menu"])) {
+        if (dateAgeMismatch) {
+          Logger.warn("Requested menu is older than current week. Ignoring.");
+          return;
+        }
         if (listedWeekMismatch) {
           Logger.info(
             `Found updated menu for week ${listedWeek.format(
