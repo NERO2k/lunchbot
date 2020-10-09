@@ -1,7 +1,7 @@
 const discord = require("node-schedule");
 require("dotenv").config({ path: "../.env" });
 
-console.log("subprocess is now running.");
+process.stdout.write("subprocess is now running.");
 
 const timeout =
   process.env.NODE_ENV === "development" ? "*/10 * * * * *" : "*/5 * * * *";
