@@ -51,13 +51,14 @@ export async function dispatch(instance: Client, data: Menu, date: Moment) {
         limit: 1,
       });
       const latestMessage = messageCollection.first();
+
       if (
         latestMessage &&
         latestMessage.author.id === instance.user.id &&
         latestMessage.embeds.length > 0 &&
         latestMessage.embeds[0].title &&
         latestMessage.embeds[0].title.includes("EATERY") &&
-        (latestMessage.embeds[0].title.match(/\d+/g) || [])[0] !==
+        (latestMessage.embeds[0].title.match(/\d+/g) || [])[0].toString() ===
           data.listed_week.toString()
       ) {
         await latestMessage.edit(embedData);
@@ -89,7 +90,7 @@ export async function dispatch(instance: Client, data: Menu, date: Moment) {
         latestMessage.embeds.length > 0 &&
         latestMessage.embeds[0].title &&
         latestMessage.embeds[0].title.includes("EATERY") &&
-        (latestMessage.embeds[0].title.match(/\d+/g) || [])[0] !==
+        (latestMessage.embeds[0].title.match(/\d+/g) || [])[0].toString() ===
           data.listed_week.toString()
       ) {
         await latestMessage.edit(embedData);
