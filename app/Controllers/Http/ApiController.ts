@@ -121,7 +121,10 @@ export default class ApiController {
       throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
     if (await isWeekParsed(date)) {
-      let returnT = '<div class="eatery-body">';
+      let returnT = `
+      <div class="eatery-body">
+      <div class="eatery-week" id="eatery-${date.format("WW")}">EATERY KISTA NOD — MENY VECKA ${date.format("WW")}</div>
+      `;
       const data = await getMenu(date, false, true);
 
       Object.keys(data.menu).forEach((value) => {
@@ -164,7 +167,7 @@ export default class ApiController {
     throw new Exception("Begärd vecka sparas inte på servern.");
   }
 
-  public async embed_text({ request }: HttpContextContract) {
+  public async embed({ request }: HttpContextContract) {
     const params = request.all();
     const date = moment(params.date, params.format);
 
