@@ -21,7 +21,7 @@ You as a user can access Lunchbot through the screens in school primarily, but y
 
 - The [Lunchbot website](https://eatery.nero2k.com).
 - The Discord bot [(invite link)](https://discordapp.com/oauth2/authorize?client_id=642020950853943306&scope=bot&permissions=67226688).
-- The [Google Assistant integration](https://assistant.google.com/services/invoke/uid/000000b1f05caed4?hl=sv)
+- The [Google Assistant integration](https://assistant.google.com/services/a/uid/000000b1f05caed4?hl=sv)
 - Or the Google Calendar extension. [Click to add.](https://calendar.google.com/calendar/r?cid=is2oe8gf2gscki6q1eo299i5m9lo0dr2@import.calendar.google.com)
 
 ## 💻 Web API

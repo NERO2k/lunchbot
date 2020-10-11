@@ -26,8 +26,12 @@ Route.get("/calendar", "WebController.calendar");
 Route.get("/api", "ApiController.index");
 
 Route.any("/api/image", "ApiController.image");
-Route.any("/api/image/source", "ApiController.source_image");
+Route.any("/api/image/ocr", "ApiController.source_image");
 Route.any("/api/text", "ApiController.text");
+Route.any("/api/text/markdown", "ApiController.markdown_text");
+Route.any("/api/text/html", "ApiController.html_text");
+Route.any("/api/text/raw", "ApiController.raw_text");
+Route.any("/api/text/embed", "ApiController.embed_text");
 Route.any("/api/json", "ApiController.json");
 
 Route.any("/assistant", "AssistantController.call");
