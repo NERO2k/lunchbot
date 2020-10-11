@@ -10,7 +10,7 @@ import Menu from "App/Types/Menu";
 const strtr = require("locutus/php/strings/strtr");
 const tesseract = require("node-tesseract-ocr");
 
-export async function image(url: string | null, body: string | undefined): Promise<string> {
+export async function image(url: string | null, body: string | null): Promise<string> {
   const page_url: string = url ? url : <string>Env.get("EATERY_LUNCH_URL");
 
   if (!body) {

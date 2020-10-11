@@ -20,7 +20,7 @@ export async function getMenu(
       throw new Exception(
         "Du får inte hämta menyer som inte är cachade. Kontakta server administratören om du tror något har gått fel."
       );
-    const imageURL = await image(null);
+    const imageURL = await image(null, null);
     await fetch(date, imageURL, !cache);
   }
   let menuString: string;

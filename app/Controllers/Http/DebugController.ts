@@ -10,7 +10,7 @@ import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 
 export default class WebController {
   public async image({ params }: HttpContextContract) {
-    return image(params.url);
+    return image(params.url, null);
   }
 
   public async fetch({ request }: HttpContextContract) {
