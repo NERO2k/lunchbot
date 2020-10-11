@@ -134,9 +134,9 @@
   $(document).ready(function(){
     $("body").removeClass("opacity-0");
     $('.grid').isotope( 'reloadItems' ).isotope();
+    @if(tv !== true)
     $("html").css("overflow", "auto");
     $("grid").css("overflow", "auto");
-    @if(tv !== true)
     $("body").hide().fadeIn(1000, function() {
       $('.grid').isotope( 'reloadItems' ).isotope();
     });
