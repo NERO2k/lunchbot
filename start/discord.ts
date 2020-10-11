@@ -33,7 +33,7 @@ if (Env.get("DISCORD_BOT_TOKEN"))
 
 lunchBot.once("ready", () => {
   if (lunchBot.user) {
-    Logger.info(`started discord bot as ${lunchBot.user.tag}`);
+    Logger.info(`Started Discord Bot as ${lunchBot.user.tag}.`);
 
     lunchBot.user.setActivity("<lunch | <sub | <help");
   }
