@@ -122,7 +122,7 @@ export default class ApiController {
 
     if (await isWeekParsed(date)) {
       let returnT = `
-      <div class="eatery-body">
+      <div class="eatery-body" id="eatery-${date.format("YYYY")}">
       <div class="eatery-week" id="eatery-${date.format("WW")}">EATERY KISTA NOD — MENY VECKA ${date.format("WW")}</div>
       `;
       const data = await getMenu(date, false, true);
