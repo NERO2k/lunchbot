@@ -21,15 +21,12 @@ export default class WebController {
     const momentInstance = moment();
     const viewData = {
       tv: Boolean(params.tv),
+      embed: Boolean(params.embed),
       year: moment().year(),
       zoom: Number(params.zoom ? params.zoom : params.tv ? 1.55 : 1),
-
       menu: data.menu,
-
       week_number: data.listed_week,
-
       engDayCast: engDayCast,
-
       current_menu: data.menu[momentInstance.format("dddd").toLowerCase()],
     };
     return view.render("menu", viewData);
