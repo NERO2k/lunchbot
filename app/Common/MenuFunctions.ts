@@ -10,13 +10,17 @@ import Menu from "App/Types/Menu";
 const strtr = require("locutus/php/strings/strtr");
 const tesseract = require("node-tesseract-ocr");
 
-export async function image(url: string | null): Promise<string> {
+export async function image(url: string | null, body: string | undefined): Promise<string> {
   const page_url: string = url ? url : <string>Env.get("EATERY_LUNCH_URL");
 
-  const request = await got(page_url);
+  if (!body) {
+    const request = await got(page_url);
+    body = request.body;
+  }
+
   const imgRex = /<img.*?src="(.*?)"[^>]+>/g;
   let img;
-  while ((img = imgRex.exec(request.body))) {
+  while ((img = imgRex.exec(body))) {
     if (img[1].match("[iI][0-9-]?[0-9-]?\\.[wW][pP]\\.[cC][oO][mM]"))
       return img[1]
         .substring(0, img[1].indexOf("?"))

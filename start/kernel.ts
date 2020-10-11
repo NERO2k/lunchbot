@@ -39,5 +39,6 @@ Server.middleware.register(["Adonis/Core/BodyParserMiddleware"]);
 |
 */
 Server.middleware.registerNamed({
+  dev: "App/Middleware/DevMiddleware",
   debug: "App/Middleware/DebugMiddleware",
 });

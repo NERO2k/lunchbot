@@ -46,7 +46,7 @@ export default class WebController {
     return getMenu(date, true, true);
   }
 
-  public async addUser({ request }: HttpContextContract) {
+  public async add_user({ request }: HttpContextContract) {
     const params = request.all();
 
     const user = await User.firstOrCreate(
@@ -65,7 +65,7 @@ export default class WebController {
     return user;
   }
 
-  public async addServer({ request }: HttpContextContract) {
+  public async add_server({ request }: HttpContextContract) {
     const params = request.all();
 
     const server = await Server.firstOrCreate(
@@ -88,7 +88,7 @@ export default class WebController {
     return server;
   }
 
-  public async regenerateCalendar() {
+  public async regenerate_calendar() {
     const calendar = await generateCalendar();
     await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
     return calendar;

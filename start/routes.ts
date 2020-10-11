@@ -36,6 +36,8 @@ Route.any("/api/json", "ApiController.json");
 
 Route.any("/assistant", "AssistantController.call");
 
+Route.any("/test/eatery_website", "TestController.eatery_website").middleware("dev");
+
 Route.any("/debug/dump", "DebugController.dump").middleware("debug");
 
 Route.any("/debug/image", "DebugController.image").middleware("debug");
@@ -43,11 +45,11 @@ Route.any("/debug/fetch", "DebugController.fetch").middleware("debug");
 Route.any("/debug/ocr", "DebugController.ocr").middleware("debug");
 Route.any("/debug/parse", "DebugController.parse").middleware("debug");
 
-Route.any("/debug/addUser", "DebugController.addUser").middleware("debug");
-Route.any("/debug/addServer", "DebugController.addServer").middleware("debug");
+Route.any("/debug/add_user", "DebugController.add_user").middleware("debug");
+Route.any("/debug/add_server", "DebugController.add_server").middleware("debug");
 
 Route.any("/debug/process", "DebugController.process").middleware("debug");
 Route.any(
-  "/debug/regenerateCalendar",
-  "DebugController.regenerateCalendar"
+  "/debug/regenerate_calendar",
+  "DebugController.regenerate_calendar"
 ).middleware("debug");
