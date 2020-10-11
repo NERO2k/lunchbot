@@ -14,7 +14,6 @@ ls.stdout.on("data", async (stdout) => {
   if (type === "execute") {
     let date = moment();
     let listedWeekMismatch = false;
-    let dateAgeMismatch = false;
     const data = await getMenu(date, true, false);
     const listedWeek = moment(data["listed_week"], "WW");
 
@@ -23,16 +22,7 @@ ls.stdout.on("data", async (stdout) => {
       date = listedWeek;
     }
 
-    if (date.format("WW") > listedWeek.format("WW")) {
-      dateAgeMismatch = true;
-      return;
-    }
-
     if (!hasWeekImage(listedWeek)) {
-      if (dateAgeMismatch) {
-        Logger.warn("Requested menu is older than current week. Ignoring.");
-        return;
-      }
       if (listedWeekMismatch) {
         Logger.info(
           `Found new menu for week ${listedWeek.format(
@@ -51,10 +41,6 @@ ls.stdout.on("data", async (stdout) => {
     } else {
       const menu = await getMenu(date, false, true);
       if (JSON.stringify(menu["menu"]) !== JSON.stringify(data["menu"])) {
-        if (dateAgeMismatch) {
-          Logger.warn("Requested menu is older than current week. Ignoring.");
-          return;
-        }
         if (listedWeekMismatch) {
           Logger.info(
             `Found updated menu for week ${listedWeek.format(
