@@ -22,6 +22,8 @@ export default class WebController {
     const viewData = {
       tv: Boolean(params.tv),
       embed: Boolean(params.embed),
+      animation: !Boolean(params.animation),
+      scroll: Boolean(params.scroll),
       year: moment().year(),
       zoom: Number(params.zoom ? params.zoom : params.tv ? 1.55 : 1),
       menu: data.menu,

@@ -134,7 +134,7 @@
   $(document).ready(function(){
     $("body").removeClass("opacity-0");
     $('.grid').isotope( 'reloadItems' ).isotope();
-    @if(tv !== true)
+    @if(tv !== true && animation !== false)
     $("html").css("overflow", "auto");
     $("grid").css("overflow", "auto");
     $("body").hide().fadeIn(1000, function() {
