@@ -1,6 +1,6 @@
 import moment from "moment";
 import { Exception } from "@poppinss/utils";
-import { getMenu } from "App/Common/HelperFunctions";
+import {booleanParse, getMenu} from "App/Common/HelperFunctions";
 import { engDayCast } from "../../../config/words";
 import { getCalendar } from "App/Common/CalendarFunctions";
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
@@ -20,12 +20,12 @@ export default class WebController {
 
     const momentInstance = moment();
     const viewData = {
-      tv: Boolean(params.tv),
-      embed: Boolean(params.embed),
-      animation: !Boolean(params.animation),
-      scroll: Boolean(params.scroll),
+      tv: booleanParse(params.tv, false),
+      embed: booleanParse(params.tv, false) ? true : booleanParse(params.embed, false),
+      animation: booleanParse(params.tv, false) ? false : booleanParse(params.animation, true),
+      scroll: booleanParse(params.tv, false) ? true : booleanParse(params.scroll, true),
       year: moment().year(),
-      zoom: Number(params.zoom ? params.zoom : params.tv ? 1.55 : 1),
+      zoom: Number(params.zoom ? params.zoom : booleanParse(params.tv, false) ? 1.55 : 1),
       menu: data.menu,
       week_number: data.listed_week,
       engDayCast: engDayCast,

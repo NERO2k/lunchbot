@@ -65,3 +65,9 @@ export async function getMenu(
   }
   return menuObject as Menu;
 }
+
+const falseRegx = /^(?:f(?:alse)?|no?|0+)$/i;
+export function booleanParse(val : any, undef: boolean) {
+  if (val === undefined) return undef;
+  return !falseRegx.test(val) && !!val;
+}
