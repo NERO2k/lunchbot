@@ -29,6 +29,7 @@ export default class WebController {
       zoom: Number(params.zoom ? params.zoom : booleanParse(params.tv, false) ? 1.55 : 1),
       menu: data.menu,
       week_number: data.listed_week,
+      current_day: momentInstance.format("dddd").toLowerCase(),
       current_menu: data.menu[momentInstance.format("dddd").toLowerCase()],
     };
     return view.render("menu", viewData);

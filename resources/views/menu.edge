@@ -93,7 +93,7 @@
   </div>
   <div class="grid lg:m-2" style="overflow: hidden;">
     @each((data, name) in menu)
-    <div class="grid-item w-full lg:w-1/2" id="eatery-{{name}}"">
+    <div class="grid-item w-full lg:w-1/2{{(current_day === name) ? " current-day" : ""}}" id="eatery-{{name}}">
       <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 md:m-0 lg:m-2 lg:rounded-md rounded-none">
         <strong class="d-block text-gray-dark">{{engDayCast[name].toUpperCase() || engDayCast[name].toUpperCase()}}</strong>
         <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -145,6 +145,13 @@
       $('.grid').isotope( 'reloadItems' ).isotope();
     });
     @endif
+
+    if ($(location).attr('hash') === "#eatery-today")
+    {
+      const $container = $("html,body");
+      const $scrollTo = $('.current-day');
+      $container.animate({scrollTop: $scrollTo.offset().top - $container.offset().top + $container.scrollTop(), scrollLeft: 0},50);
+    }
   });
   $(window).load(function(){
     $('.grid').isotope( 'reloadItems' ).isotope();
