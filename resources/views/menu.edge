@@ -93,11 +93,11 @@
   </div>
   <div class="grid lg:m-2" style="overflow: hidden;">
     @each((data, name) in menu)
-    <div class="grid-item w-full lg:w-1/2">
+    <div class="grid-item w-full lg:w-1/2" id="eatery-{{name}}"">
       <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 md:m-0 lg:m-2 lg:rounded-md rounded-none">
         <strong class="d-block text-gray-dark">{{engDayCast[name].toUpperCase() || engDayCast[name].toUpperCase()}}</strong>
         <h3 class="text-lg leading-6 font-medium text-gray-900">
-          {{{data.join("<br/>")}}}
+          {{data.join("<br/>")}}
         </h3>
       </div>
     </div>
@@ -134,10 +134,12 @@
   $(document).ready(function(){
     $("body").removeClass("opacity-0");
     $('.grid').isotope( 'reloadItems' ).isotope();
+
     @if(scroll !== false)
     $("html").css("overflow", "auto");
     $("grid").css("overflow", "auto");
     @endif
+
     @if(animation !== false)
     $("body").hide().fadeIn(1000, function() {
       $('.grid').isotope( 'reloadItems' ).isotope();
