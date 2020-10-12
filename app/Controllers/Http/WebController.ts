@@ -24,7 +24,7 @@ export default class WebController {
       tv: booleanParse(params.tv, false),
       embed: booleanParse(params.tv, false) ? true : booleanParse(params.embed, false),
       animation: booleanParse(params.tv, false) ? false : booleanParse(params.animation, true),
-      scroll: booleanParse(params.tv, false) ? true : booleanParse(params.scroll, true),
+      scroll: booleanParse(params.tv, false) ? false : booleanParse(params.scroll, true),
       year: moment().year(),
       zoom: Number(params.zoom ? params.zoom : booleanParse(params.tv, false) ? 1.55 : 1),
       menu: data.menu,
