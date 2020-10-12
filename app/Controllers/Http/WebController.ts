@@ -20,6 +20,7 @@ export default class WebController {
 
     const momentInstance = moment();
     const viewData = {
+      engDayCast: engDayCast,
       tv: booleanParse(params.tv, false),
       embed: booleanParse(params.tv, false) ? true : booleanParse(params.embed, false),
       animation: booleanParse(params.tv, false) ? false : booleanParse(params.animation, true),
@@ -28,7 +29,6 @@ export default class WebController {
       zoom: Number(params.zoom ? params.zoom : booleanParse(params.tv, false) ? 1.55 : 1),
       menu: data.menu,
       week_number: data.listed_week,
-      engDayCast: engDayCast,
       current_menu: data.menu[momentInstance.format("dddd").toLowerCase()],
     };
     return view.render("menu", viewData);
