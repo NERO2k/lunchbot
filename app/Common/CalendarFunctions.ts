@@ -5,6 +5,7 @@ import * as fs from "fs/promises";
 import fsS from "fs";
 import { glob } from "glob";
 import path from "path";
+import {fileToDateString, getMenu} from "App/Common/HelperFunctions";
 
 export function errorCalendar() {
   const cal = ical({ domain: "eatery.nero2k.com", name: "Eatery Lunchmeny" });
@@ -60,8 +61,9 @@ export async function generateCalendar(): Promise<string> {
       {},
       async (_err, files) => {
         for (const path1 of files) {
-          const data = await fs.readFile(path1);
-          let json = JSON.parse(data.toString());
+          const fileDate = moment(fileToDateString(path1), "YYYY-WW")
+          let json = await getMenu(fileDate, false, true);
+
           if (!listedWeeks[`${json.listed_week}-${json.actual_year}`]) {
             await Object.keys(json.menu).forEach((key) => {
               let day =

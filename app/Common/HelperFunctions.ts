@@ -71,3 +71,7 @@ export function booleanParse(val : any, undef: boolean) {
   if (val === undefined) return undef;
   return !falseRegx.test(val) && !!val;
 }
+
+export function fileToDateString(data: string) {
+  return data.split("eatery-")[1].split(".source")[0];
+}

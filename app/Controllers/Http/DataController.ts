@@ -1,11 +1,10 @@
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import {glob} from "glob";
 import path from "path";
-import {image, ocr} from "App/Common/MenuFunctions";
 import moment from "moment";
 import {Exception} from "@poppinss/utils";
 import {hasWeekImage, hasWeekSourceImage, isWeekParsed, isWeekStringified} from "App/Common/MenuHelpers";
-import {getMenu} from "App/Common/HelperFunctions";
+import {fileToDateString, getMenu} from "App/Common/HelperFunctions";
 
 export default class DataController {
   public async menus_available() {
@@ -20,9 +19,7 @@ export default class DataController {
     });
     const mappedData = data.map((data: string) => data.replace(/^.*[\\\/]/, ''));
 
-    const dateMappedData = mappedData.map((data: string) => {
-      return data.split("eatery-")[1].split(".source")[0];
-    })
+    const dateMappedData = mappedData.map((data: string) => fileToDateString(data))
 
     return dateMappedData;
   }
