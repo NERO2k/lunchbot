@@ -37,7 +37,6 @@ Route.any("/api/data/menu/available", "DataController.menus_available");
 Route.any("/api/data/menu/details", "DataController.menu_details");
 Route.any("/api/data/stats", "DataController.statistics");
 
-
 Route.any("/assistant", "AssistantController.call");
 
 Route.any("/test/eatery_website", "TestController.eatery_website").middleware("dev");
@@ -53,6 +52,7 @@ Route.any("/debug/add_user", "DebugController.add_user").middleware("debug");
 Route.any("/debug/add_server", "DebugController.add_server").middleware("debug");
 
 Route.any("/debug/process", "DebugController.process").middleware("debug");
+Route.any("/debug/dispatch", "DebugController.dispatch").middleware("debug");
 Route.any(
   "/debug/regenerate_calendar",
   "DebugController.regenerate_calendar"

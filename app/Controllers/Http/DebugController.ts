@@ -7,6 +7,7 @@ import Server from "App/Models/Server";
 import { generateCalendar } from "App/Common/CalendarFunctions";
 import * as fs from "fs/promises";
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
+import Event from "@ioc:Adonis/Core/Event";
 
 export default class WebController {
   public async image({ params }: HttpContextContract) {
@@ -99,5 +100,12 @@ export default class WebController {
       users: await User.all(),
       servers: await Server.all(),
     };
+  }
+
+  public async dispatch() {
+    const date = moment();
+    const data = await getMenu(date, false, true);
+    await Event.emit("new:menu", { data, date });
+    return "Ran schedule job.";
   }
 }

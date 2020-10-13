@@ -16,7 +16,8 @@
     "./start/routes",
     "./start/kernel",
     "./start/fetcher",
-    "./start/discord"
+    "./start/discord",
+    "./start/websocket"
   ],
   "providers": [
     "./providers/AppProvider",
