@@ -34,7 +34,7 @@ export default class WebController {
 
   public async parse({ request }: HttpContextContract) {
     const params = request.all();
-    return parse(params.text);
+    return parse(params.text, moment());
   }
 
   public async process({ request }: HttpContextContract) {

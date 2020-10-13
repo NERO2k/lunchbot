@@ -10,7 +10,7 @@ export default class WebController {
     const params = request.all();
     const date = moment(
       params.date || params.week + params.year || moment().format("WW-YYYY"),
-      params.format || "WWYYYY"
+      params.format || "WW-YYYY"
     );
 
     if (!date.isValid())

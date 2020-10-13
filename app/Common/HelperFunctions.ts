@@ -48,7 +48,7 @@ export async function getMenu(
     !cache ||
     (!(await isWeekUpdated(date)) && cache)
   ) {
-    menuObject = await parse(menuString);
+    menuObject = await parse(menuString, date);
     await fs.writeFile(
       !cache
         ? "../tmp/eatery.json.tmp"

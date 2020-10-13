@@ -62,7 +62,7 @@ export async function generateCalendar(): Promise<string> {
       async (_err, files) => {
         for (const path1 of files) {
           const fileDate = moment(fileToDateString(path1), "YYYY-WW")
-          let json = await getMenu(fileDate, false, true);
+          const json = await getMenu(fileDate, false, true);
 
           if (!listedWeeks[`${json.listed_week}-${json.actual_year}`]) {
             await Object.keys(json.menu).forEach((key) => {
