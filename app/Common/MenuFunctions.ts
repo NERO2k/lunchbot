@@ -97,7 +97,7 @@ export async function parse(text: string, date: Moment): Promise<object> {
       });
       return count !== split.length;
     });
-  
+
   data["schema_version"] = schemaVersion;
 
   for (let i = 0; i < cleanLines.length; i++) {
