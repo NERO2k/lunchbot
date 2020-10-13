@@ -9,6 +9,7 @@ import { ocr, fetch, image, parse } from "./MenuFunctions";
 import { Exception } from "@poppinss/utils";
 import { Moment } from "moment";
 import Menu from "App/Types/Menu";
+import Logger from "@ioc:Adonis/Core/Logger";
 
 export async function getMenu(
   date: Moment,
@@ -43,11 +44,14 @@ export async function getMenu(
     menuString = cacheString.toString();
   }
   let menuObject: object;
+  const weekUpdated = await isWeekUpdated(date);
   if (
     !isWeekParsed(date) ||
     !cache ||
-    (!(await isWeekUpdated(date)) && cache)
+    (!(weekUpdated) && cache)
   ) {
+    if (!weekUpdated)
+      Logger.warn(`Menu from ${date.format("YYYY-WW")} is using an old schema version. Updating.`)
     menuObject = await parse(menuString, date);
     await fs.writeFile(
       !cache

@@ -59,7 +59,7 @@ export async function dispatch(instance: Client, data: Menu, date: Moment) {
         latestMessage.embeds[0].title &&
         latestMessage.embeds[0].title.includes("EATERY") &&
         (latestMessage.embeds[0].title.match(/\d+/g) || [])[0].toString() ===
-          data.listed_week.toString()
+        (data.listed_week || []).toString()
       ) {
         await latestMessage.edit(embedData);
         Logger.info(
@@ -91,7 +91,7 @@ export async function dispatch(instance: Client, data: Menu, date: Moment) {
         latestMessage.embeds[0].title &&
         latestMessage.embeds[0].title.includes("EATERY") &&
         (latestMessage.embeds[0].title.match(/\d+/g) || [])[0].toString() ===
-          data.listed_week.toString()
+        (data.listed_week || []).toString()
       ) {
         await latestMessage.edit(embedData);
         Logger.info(

@@ -97,12 +97,9 @@ export async function parse(text: string, date: Moment): Promise<object> {
       });
       return count !== split.length;
     });
-
+  
   data["schema_version"] = schemaVersion;
-  data["iteration_week"] = Number(moment().format("WW"));
-  data["iteration_year"] = Number(moment().format("YYYY"));
-  data["actual_week"] = Number(date.format("WW"));
-  data["actual_year"] = Number(date.format("YYYY"));
+
   for (let i = 0; i < cleanLines.length; i++) {
     if (!data["listed_week"]) {
       let listedWeek = (cleanLines[i].match(/\d+/g) || [""]).map(Number)[0];
@@ -140,6 +137,11 @@ export async function parse(text: string, date: Moment): Promise<object> {
       }
     }
   }
+
+  data["iteration_week"] = Number(moment().format("WW"));
+  data["iteration_year"] = Number(moment().format("YYYY"));
+  data["actual_week"] = Number(date.format("WW"));
+  data["actual_year"] = Number(date.format("YYYY"));
 
   return data;
 }
