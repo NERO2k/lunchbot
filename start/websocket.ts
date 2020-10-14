@@ -20,7 +20,10 @@ Event.on("new:menu", async (msg) => {
   Logger.warn("WS Dispatcher is now running.");
   wss.clients.forEach(function each(client) {
     if (client.readyState === WebSocket.OPEN) {
-      client.send(JSON.stringify(msg.data));
+      client.send(JSON.stringify({
+        "event": "menu_update",
+        "data": msg.data
+      }));
     }
   });
   Logger.warn("WS Dispatcher has now finished.");
