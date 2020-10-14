@@ -4,9 +4,14 @@ import { schemaVersion } from "../../config/schema";
 import { Moment } from "moment";
 
 export async function isWeekUpdated(date: Moment): Promise<boolean> {
-  const rawData = await fsA.readFile(
-    `../tmp/eatery-${date.format("YYYY-WW")}.json`
-  );
+  let rawData:Buffer;
+  try {
+    rawData = await fsA.readFile(
+      `../tmp/eatery-${date.format("YYYY-WW")}.json`
+    );
+  } catch {
+    return true;
+  }
   const data = JSON.parse(rawData.toString());
   return data.schema_version === schemaVersion;
 }

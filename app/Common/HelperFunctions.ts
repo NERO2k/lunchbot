@@ -44,12 +44,13 @@ export async function getMenu(
     menuString = cacheString.toString();
   }
   let menuObject: object;
+  const weekUpdated = await isWeekUpdated(date);
   if (
     !isWeekParsed(date) ||
     !cache ||
-    (!(await isWeekUpdated(date)) && cache)
+    (!(weekUpdated) && cache)
   ) {
-    if (!(await isWeekUpdated(date)) && cache)
+    if (!weekUpdated && cache)
       Logger.warn(`Menu from ${date.format("YYYY-WW")} is using an old schema version. Updating.`)
     menuObject = await parse(menuString, date);
     await fs.writeFile(
