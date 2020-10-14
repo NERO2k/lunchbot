@@ -33,8 +33,8 @@ Route.any("/api/text/html", "ApiController.html_text");
 Route.any("/api/text/raw", "ApiController.raw_text");
 Route.any("/api/embed", "ApiController.embed");
 Route.any("/api/json", "ApiController.json");
-Route.any("/api/data/menu/available", "DataController.menus_available");
-Route.any("/api/data/menu/details", "DataController.menu_details");
+Route.any("/api/data/available", "DataController.menus_available");
+Route.any("/api/data/details", "DataController.menu_details");
 Route.any("/api/data/stats", "DataController.statistics");
 
 Route.any("/assistant", "AssistantController.call");
