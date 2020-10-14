@@ -44,6 +44,8 @@ export default class DataController {
         listed_week: data.listed_week,
         actual_year: data.actual_year,
         actual_week: data.actual_week,
+        iteration_year: data.iteration_year,
+        iteration_week: data.iteration_week
       },
       available: {
         json: jsonData,
