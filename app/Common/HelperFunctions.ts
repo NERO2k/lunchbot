@@ -50,7 +50,7 @@ export async function getMenu(
     !cache ||
     (!(weekUpdated) && cache)
   ) {
-    if (!weekUpdated && cache)
+    if (!(await isWeekUpdated(date)) && cache)
       Logger.warn(`Menu from ${date.format("YYYY-WW")} is using an old schema version. Updating.`)
     menuObject = await parse(menuString, date);
     await fs.writeFile(
