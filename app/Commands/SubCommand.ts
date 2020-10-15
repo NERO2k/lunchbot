@@ -14,22 +14,30 @@ class SubCommand extends Command {
   }
 
   async exec(message: Message) {
+    let channel_id;
+
     try {
       if (message.channel.type !== "dm") {
         const userCheck = await User.findBy("user_id", message.author.id);
         if (!userCheck) {
-          await message.reply(
-            "På grund av Discord API restriktioner så måste detta kommandot användas i din DM kanal med Lunchbot."
-          );
-          return;
+          const channelIDFetch = await message.author.send({
+            embed: {
+              title: ":warning: Hämtar Discord kanal ID.",
+              color: 16776960,
+            },
+          });
+          channel_id = channelIDFetch.channel.id;
+          await channelIDFetch.delete();
         }
+      } else {
+        channel_id = message.channel.id;
       }
 
       const user = await User.firstOrCreate(
         { user_id: message.author.id },
         {
           user_id: message.author.id,
-          channel_id: message.channel.id,
+          channel_id: channel_id,
           enabled: false,
         }
       );
