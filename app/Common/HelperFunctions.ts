@@ -10,6 +10,7 @@ import { Exception } from "@poppinss/utils";
 import { Moment } from "moment";
 import Menu from "App/Types/Menu";
 import Logger from "@ioc:Adonis/Core/Logger";
+import Event from "@ioc:Adonis/Core/Event";
 
 export async function getMenu(
   date: Moment,
@@ -50,9 +51,14 @@ export async function getMenu(
     !cache ||
     (!(weekUpdated) && cache)
   ) {
-    if (!weekUpdated && cache)
+    if (!weekUpdated && cache) {
       Logger.warn(`Menu from ${date.format("YYYY-WW")} is using an old schema version. Updating.`)
+    }
     menuObject = await parse(menuString, date);
+    if (!weekUpdated && cache) {
+      await Event.emit("update:menu", { data: menuObject, date });
+      Logger.warn(`Sending WS update requests.`)
+    }
     await fs.writeFile(
       !cache
         ? "../tmp/eatery.json.tmp"
@@ -78,4 +84,14 @@ export function booleanParse(val : any, undef: boolean) {
 
 export function fileToDateString(data: string) {
   return data.split("eatery-")[1].split(".source")[0];
+}
+
+export function parseData(str: string) {
+  let json;
+  try {
+    json = JSON.parse(str);
+  } catch (e) {
+    return str;
+  }
+  return json;
 }
