@@ -19,7 +19,21 @@ export default class DataController {
     });
     const mappedData = data.map((data: string) => data.replace(/^.*[\\\/]/, ''));
 
-    const dateMappedData = mappedData.map((data: string) => fileToDateString(data))
+    let dateMappedData:any = {}
+    for (let i = 0; i < mappedData.length; i++) {
+      const strDate = fileToDateString(mappedData[i])
+      const date = moment(strDate, "YYYY-WW");
+      const data = await getMenu(date, false, true)
+
+      dateMappedData[strDate] = {
+        schema_version: data.schema_version,
+        listed_week: data.listed_week,
+        actual_year: data.actual_year,
+        actual_week: data.actual_week,
+        iteration_year: data.iteration_year,
+        iteration_week: data.iteration_week
+      }
+    }
 
     return dateMappedData;
   }
