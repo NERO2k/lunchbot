@@ -148,12 +148,10 @@
   });
   $(window).load(function(){
     $('.grid').isotope( 'reloadItems' ).isotope();
-    if ($(location).attr('hash') === "#eatery-today")
-    {
-      const $container = $("html,body");
-      const $scrollTo = $('.current-day');
-      $container.scrollTop($scrollTo.offset().top - $container.offset().top + $container.scrollTop());
-    }
+    setTimeout(function() {
+      if ($(location).attr('hash') === "#eatery-today")
+        $("html,body").scrollTop($('.current-day').offset().top);
+    }, 0);
   });
 </script>
 </html>
