@@ -139,7 +139,7 @@ export default class ApiController {
       const header = (day:string, single:boolean) => `
       <div class="eatery-body" id="eatery-${date.format("YYYY")}">
       <div class="eatery-week" id="eatery-${date.format("WW")}">EATERY KISTA NOD — MENY ${single ? engDayCast[day].toUpperCase()+" " || day.toUpperCase()+" " : " "}VECKA ${date.format("WW")}</div>`;
-      const entries = (value:string) => '<div class="eatery-entry">' + data.menu[value].join('</div><div class="eatery-entry">') + '</div>'
+      const entries = (value:string) => '<div class="eatery-entry">' + (data.menu[value] || []).join('</div><div class="eatery-entry">') + '</div>'
       const template = (value:string, day:string, single:boolean) => {
         const dayStr = `<div class="eatery-day">${day.toUpperCase()}</div>`
         return `<div class="eatery-container" id="eatery-${value}">
