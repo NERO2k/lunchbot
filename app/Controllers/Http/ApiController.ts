@@ -28,7 +28,7 @@ export default class ApiController {
       if (params.single !== "true")
         return data;
       let mixObj: any = {...data};
-      mixObj.menu = data.menu[date.format("dddd").toLowerCase()]
+      mixObj.menu = data.menu[date.format("dddd").toLowerCase()] || []
       return mixObj;
     }
 
