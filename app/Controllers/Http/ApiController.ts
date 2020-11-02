@@ -84,14 +84,18 @@ export default class ApiController {
       throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
     if (await isWeekParsed(date)) {
-      let returnT = "EATERY KISTA NOD — MENY VECKA "+date.format("WW")+"\n\n";
       const data = await getMenu(date, false, true);
-      Object.keys(data.menu).forEach((value) => {
-        const day = engDayCast[value] || value;
-        returnT += day.toUpperCase()+'\n';
-        returnT += data.menu[value].join("\n")+'\n\n';
-      });
-      return returnT;
+      if (params.single !== "true") {
+        let returnT = "EATERY KISTA NOD — MENY VECKA "+date.format("WW")+"\n\n";
+        Object.keys(data.menu).forEach((value) => {
+          const day = engDayCast[value] || value;
+          returnT += day.toUpperCase()+'\n';
+          returnT += data.menu[value].join("\n")+'\n\n';
+        });
+        return returnT;
+      }
+      const day = date.format("dddd").toLowerCase();
+      return `EATERY KISTA NOD — MENY ${engDayCast[day].toUpperCase() || day.toUpperCase()} VECKA ${date.format("WW")}\n\n${(data.menu[day] || []).join("\n")}`;
     }
 
     throw new Exception("Begärd vecka sparas inte på servern.");
@@ -105,14 +109,18 @@ export default class ApiController {
       throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
     if (await isWeekParsed(date)) {
-      let returnT = "# EATERY KISTA NOD — MENY VECKA "+date.format("WW")+"\n---\n";
       const data = await getMenu(date, false, true);
-      Object.keys(data.menu).forEach((value) => {
-        const day = engDayCast[value] || value;
-        returnT += "##### "+day.toUpperCase()+'\n - ';
-        returnT += data.menu[value].join("\n - ")+'\n\n';
-      });
-      return returnT;
+      if (params.single !== "true") {
+        let returnT = "# EATERY KISTA NOD — MENY VECKA " + date.format("WW") + "\n---\n";
+        Object.keys(data.menu).forEach((value) => {
+          const day = engDayCast[value] || value;
+          returnT += "##### " + day.toUpperCase() + '\n - ';
+          returnT += data.menu[value].join("\n - ") + '\n\n';
+        });
+        return returnT;
+      }
+      const day = date.format("dddd").toLowerCase();
+      return `EATERY KISTA NOD — MENY ${engDayCast[day].toUpperCase() || day.toUpperCase()} VECKA ${date.format("WW")}\n\n${data.menu[day] ? " - " : ""}${(data.menu[day] || []).join("\n - ")}`;
     }
 
     throw new Exception("Begärd vecka sparas inte på servern.");
@@ -126,28 +134,34 @@ export default class ApiController {
       throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
     if (await isWeekParsed(date)) {
-      let returnT = `
-      <div class="eatery-body" id="eatery-${date.format("YYYY")}">
-      <div class="eatery-week" id="eatery-${date.format("WW")}">EATERY KISTA NOD — MENY VECKA ${date.format("WW")}</div>
-      `;
       const data = await getMenu(date, false, true);
 
-      Object.keys(data.menu).forEach((value) => {
-        const day = engDayCast[value] || value;
+      const header = (day:string, single:boolean) => `
+      <div class="eatery-body" id="eatery-${date.format("YYYY")}">
+      <div class="eatery-week" id="eatery-${date.format("WW")}">EATERY KISTA NOD — MENY ${single ? engDayCast[day].toUpperCase()+" " || day.toUpperCase()+" " : " "}VECKA ${date.format("WW")}</div>`;
+      const entries = (value:string) => '<div class="eatery-entry">' + data.menu[value].join('</div><div class="eatery-entry">') + '</div>'
+      const template = (value:string, day:string, single:boolean) => {
+        const dayStr = `<div class="eatery-day">${day.toUpperCase()}</div>`
+        return `<div class="eatery-container" id="eatery-${value}">
+            ${!single ? dayStr : ""}
+            <div class="eatery-menu">
+              ${entries(value)}
+            </div>
+          </div>`
+      }
 
-        const entries = '<div class="eatery-entry">'+data.menu[value].join('</div><div class="eatery-entry">')+'</div>'
+      if (params.single !== "true") {
+        let loopT = header("", false)
+        Object.keys(data.menu).forEach((value) => {
+          const day = engDayCast[value] || value;
+          loopT += template(value, day, false);
+        });
+        return loopT + '</div>';
+      }
 
-        const template =
-        `<div class="eatery-container" id="eatery-${value}">
-          <div class="eatery-day">${day.toUpperCase()}</div>
-          <div class="eatery-menu">
-            ${entries}
-          </div>
-        </div>`
-        returnT += template;
-      });
-
-      return returnT+'</div>';
+      const day = date.format("dddd").toLowerCase();
+      const sweDay = engDayCast[day] || day;
+      return header(day, true)+template(day, sweDay, true)+"</div>";
     }
 
     throw new Exception("Begärd vecka sparas inte på servern.");
