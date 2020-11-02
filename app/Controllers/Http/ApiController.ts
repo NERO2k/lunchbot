@@ -24,7 +24,12 @@ export default class ApiController {
       throw new Exception("Datum / datumformat som anges är ogiltigt.");
 
     if (await isWeekParsed(date)) {
-      return await getMenu(date, false, true);
+      const data = await getMenu(date, false, true);
+      if (params.single !== "true")
+        return data;
+      let mixObj: any = {...data};
+      mixObj.menu = data.menu[date.format("dddd").toLowerCase()]
+      return mixObj;
     }
 
     throw new Exception("Begärd vecka sparas inte på servern.");
