@@ -47,7 +47,7 @@ Event.on("new:menu", async (msg) => {
 });
 
 Event.on("update:menu", async (msg) => {
-  if (msg.data.listed_week === moment().format("WW")) {
+  if (msg.date.format("WW") === moment().format("WW")) {
     Logger.warn("Update Dispatcher is now running.");
     await dispatch(lunchBot, msg.data, msg.date);
     Logger.warn("Update Dispatcher has now finished.");
