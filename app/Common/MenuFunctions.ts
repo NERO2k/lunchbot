@@ -126,7 +126,7 @@ export async function parse(text: string, date: Moment): Promise<object> {
             : cleanLines[i] + ".";
           // Add week based menu items.
           if (menuDayLine.toLowerCase().split(" ")[0] === "veckans") {
-            currentDay = "special"
+            currentDay = "other"
             data.menu[currentDay] = data.menu[currentDay] || [];
           }
           // Push current line to todays menu.
