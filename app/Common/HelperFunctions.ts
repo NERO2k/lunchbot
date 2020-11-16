@@ -56,10 +56,6 @@ export async function getMenu(
       Logger.warn(`Menu from ${date.format("YYYY-WW")} is using an old schema version. Updating.`)
     }
     menuObject = await parse(menuString, date);
-    if (!weekUpdated && cache) {
-      Logger.warn(`Sending WS update requests.`)
-      await Event.emit("update:menu", { data: menuObject, date });
-    }
     await fs.writeFile(
       !cache
         ? "../tmp/eatery.json.tmp"
@@ -67,6 +63,8 @@ export async function getMenu(
       JSON.stringify(menuObject)
     );
     if (!weekUpdated && cache) {
+      Logger.warn(`Sending WS update requests.`)
+      await Event.emit("update:menu", { data: menuObject, date });
       Logger.warn(`Generating updated calendar.`)
       deleteCalendar();
       const calendar = await generateCalendar();
