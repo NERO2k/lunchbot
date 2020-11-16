@@ -44,3 +44,9 @@ Event.on("new:menu", async (msg) => {
   await dispatch(lunchBot, msg.data, msg.date);
   Logger.warn("Dispatcher has now finished.");
 });
+
+Event.on("update:menu", async (msg) => {
+  Logger.warn("Update Dispatcher is now running.");
+  await dispatch(lunchBot, msg.data, msg.date);
+  Logger.warn("Update Dispatcher has now finished.");
+});
