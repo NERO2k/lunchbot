@@ -57,10 +57,6 @@ export async function getMenu(
     }
     menuObject = await parse(menuString, date);
     if (!weekUpdated && cache) {
-      Logger.warn(`Generating updated calendar.`)
-      deleteCalendar();
-      const calendar = await generateCalendar(<Menu>menuObject);
-      await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
       Logger.warn(`Sending WS update requests.`)
       await Event.emit("update:menu", { data: menuObject, date });
     }
@@ -70,6 +66,12 @@ export async function getMenu(
         : `../tmp/eatery-${date.format("YYYY-WW")}.json`,
       JSON.stringify(menuObject)
     );
+    if (!weekUpdated && cache) {
+      Logger.warn(`Generating updated calendar.`)
+      deleteCalendar();
+      const calendar = await generateCalendar();
+      await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
+    }
   } else {
     const menuText = await fs.readFile(
       !cache

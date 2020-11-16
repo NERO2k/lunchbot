@@ -6,7 +6,6 @@ import fsS from "fs";
 import { glob } from "glob";
 import path from "path";
 import {fileToDateString, getMenu} from "App/Common/HelperFunctions";
-import Menu from "App/Types/Menu";
 
 export function errorCalendar() {
   const cal = ical({ domain: "eatery.nero2k.com", name: "Eatery Lunchmeny" });
@@ -45,7 +44,7 @@ export async function getCalendar() {
   return errorCalendar();
 }
 
-export async function generateCalendar(data:Menu | null = null): Promise<string> {
+export async function generateCalendar(): Promise<string> {
   const cal = ical({ domain: "eatery.nero2k.com", name: "Eatery Lunchmeny" });
 
   cal.prodId({
@@ -63,7 +62,7 @@ export async function generateCalendar(data:Menu | null = null): Promise<string>
       async (_err, files) => {
         for (const path1 of files) {
           const fileDate = moment(fileToDateString(path1), "YYYY-WW")
-          const json = data || await getMenu(fileDate, false, true);
+          const json = await getMenu(fileDate, false, true);
 
           if (!listedWeeks[`${json.listed_week}-${json.actual_year}`]) {
             await Object.keys(json.menu).forEach((key:string) => {
