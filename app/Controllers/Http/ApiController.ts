@@ -95,7 +95,7 @@ export default class ApiController {
         return returnT;
       }
       const day = date.format("dddd").toLowerCase();
-      return `EATERY KISTA NOD — MENY ${engDayCast[day].toUpperCase() || day.toUpperCase()} VECKA ${date.format("WW")}\n\n${(data.menu[day] || []).join("\n")}`;
+      return `EATERY KISTA NOD — MENY ${engDayCast[day].toUpperCase() || day.toUpperCase()} VECKA ${date.format("WW")}\n\n${(data.menu[day] || []).join("\n")}` + (data.menu["special"] ? "\n\n"+data.menu["special"].join("\n") : "");
     }
 
     throw new Exception("Begärd vecka sparas inte på servern.");
@@ -120,7 +120,7 @@ export default class ApiController {
         return returnT;
       }
       const day = date.format("dddd").toLowerCase();
-      return `EATERY KISTA NOD — MENY ${engDayCast[day].toUpperCase() || day.toUpperCase()} VECKA ${date.format("WW")}\n\n${data.menu[day] ? " - " : ""}${(data.menu[day] || []).join("\n - ")}`;
+      return `EATERY KISTA NOD — MENY ${engDayCast[day].toUpperCase() || day.toUpperCase()} VECKA ${date.format("WW")}\n\n${data.menu[day] ? " - " : ""}${(data.menu[day] || []).join("\n - ")}` + (data.menu["special"] ? "\n\n - "+data.menu["special"].join("\n - ") : "");
     }
 
     throw new Exception("Begärd vecka sparas inte på servern.");
@@ -161,7 +161,7 @@ export default class ApiController {
 
       const day = date.format("dddd").toLowerCase();
       const sweDay = engDayCast[day] || day;
-      return header(day, true)+template(day, sweDay, true)+"</div>";
+      return header(day, true)+template(day, sweDay, true)+template("special", day, true)+"</div>";
     }
 
     throw new Exception("Begärd vecka sparas inte på servern.");
