@@ -1,11 +1,12 @@
 import ical from "ical-generator";
 import moment from "moment";
-import { engDayCast } from "../../config/words";
+import {engDayCast} from "../../config/words";
 import * as fs from "fs/promises";
 import fsS from "fs";
 import { glob } from "glob";
 import path from "path";
 import {fileToDateString, getMenu} from "App/Common/HelperFunctions";
+import Menu from "App/Types/Menu";
 
 export function errorCalendar() {
   const cal = ical({ domain: "eatery.nero2k.com", name: "Eatery Lunchmeny" });
@@ -44,7 +45,7 @@ export async function getCalendar() {
   return errorCalendar();
 }
 
-export async function generateCalendar(): Promise<string> {
+export async function generateCalendar(data:Menu | null = null): Promise<string> {
   const cal = ical({ domain: "eatery.nero2k.com", name: "Eatery Lunchmeny" });
 
   cal.prodId({
@@ -62,31 +63,33 @@ export async function generateCalendar(): Promise<string> {
       async (_err, files) => {
         for (const path1 of files) {
           const fileDate = moment(fileToDateString(path1), "YYYY-WW")
-          const json = await getMenu(fileDate, false, true);
+          const json = data || await getMenu(fileDate, false, true);
 
           if (!listedWeeks[`${json.listed_week}-${json.actual_year}`]) {
-            await Object.keys(json.menu).forEach((key) => {
+            await Object.keys(json.menu).forEach((key:string) => {
               let day =
                 engDayCast[key].charAt(0).toUpperCase() +
-                  engDayCast[key].slice(1) ||
+                engDayCast[key].slice(1) ||
                 key.charAt(0).toUpperCase() + key.slice(1);
               let momentDay = moment(
                 `${key}-${json.listed_week}-${json.actual_year}`,
                 "dddd-ww-yyyy"
               );
-              cal.createEvent({
-                start: momentDay.startOf("day"),
-                end: momentDay.endOf("day"),
-                allDay: true,
-                summary: `Eatery ${day}`,
-                location: `EATERY KISTA NOD — MENY VECKA ${json.listed_week}`,
+              if (momentDay.isValid()) {
+                cal.createEvent({
+                  start: momentDay.startOf("day"),
+                  end: momentDay.endOf("day"),
+                  allDay: true,
+                  summary: `Eatery ${day}`,
+                  location: `EATERY KISTA NOD — MENY VECKA ${json.listed_week}`,
 
-                description: json.menu[key].join("\n")+json.menu["other"] ? "\n\n"+json.menu["other"].join("\n") : "",
-                url: `https://eatery.nero2k.com?date=${momentDay.format(
-                  "WW"
-                )}-${momentDay.year()}&format=WW-YYYY`,
-              });
-              listedWeeks[`${json.listed_week}-${json.actual_year}`] = true;
+                  description: json.menu[key].join("\n")+(json.menu["other"] ? "\n\n"+json.menu["other"].join("\n") : ""),
+                  url: `https://eatery.nero2k.com?date=${momentDay.format(
+                    "WW"
+                  )}-${momentDay.year()}&format=WW-YYYY`,
+                });
+                listedWeeks[`${json.listed_week}-${json.actual_year}`] = true;
+              }
             });
           }
         }
@@ -97,5 +100,6 @@ export async function generateCalendar(): Promise<string> {
 }
 
 export function deleteCalendar(): void {
+  if (fsS.existsSync(`../tmp/eatery-calendar.ical`))
   fsS.unlinkSync(`../tmp/eatery-calendar.ical`);
 }

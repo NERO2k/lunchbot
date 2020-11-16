@@ -11,6 +11,7 @@ import { Moment } from "moment";
 import Menu from "App/Types/Menu";
 import Logger from "@ioc:Adonis/Core/Logger";
 import Event from "@ioc:Adonis/Core/Event";
+import {deleteCalendar, generateCalendar} from "App/Common/CalendarFunctions";
 
 export async function getMenu(
   date: Moment,
@@ -56,8 +57,12 @@ export async function getMenu(
     }
     menuObject = await parse(menuString, date);
     if (!weekUpdated && cache) {
-      await Event.emit("update:menu", { data: menuObject, date });
+      Logger.warn(`Generating updated calendar.`)
+      deleteCalendar();
+      const calendar = await generateCalendar(<Menu>menuObject);
+      await fs.writeFile("../tmp/eatery-calendar.ical", calendar);
       Logger.warn(`Sending WS update requests.`)
+      await Event.emit("update:menu", { data: menuObject, date });
     }
     await fs.writeFile(
       !cache
