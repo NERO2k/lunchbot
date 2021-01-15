@@ -56,6 +56,10 @@ export async function getMenu(
       Logger.warn(`Menu from ${date.format("YYYY-WW")} is using an old schema version. Updating.`)
     }
     menuObject = await parse(menuString, date);
+    if (Object.keys((menuObject as Menu)["menu"]).length <= 0)
+      throw new Exception(
+        "Information möter inte kraven för att klassificeras som en meny."
+      );
     await fs.writeFile(
       !cache
         ? "../tmp/eatery.json.tmp"

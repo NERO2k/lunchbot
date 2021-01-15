@@ -46,8 +46,8 @@ export async function fetch(
 
     await got.stream(url).pipe(sharpStream);
 
-    const contrast = 1;
-    const brightness = 5;
+    const contrast = 5;
+    const brightness = 1;
 
     await sharpStream.toFile(filePath.replace(".tif", ".source"));
     await sharpStream.linear(contrast, -(128 * contrast) + 128);
