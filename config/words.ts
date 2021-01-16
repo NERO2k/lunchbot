@@ -5,6 +5,8 @@ export const blockedWords: Array<string> = [
   "bröd",
   "eaterykortet",
   "trevlig",
+  "tycker",
+  "betygsskärm"
 ];
 
 export const weekDays: Array<string> = [
