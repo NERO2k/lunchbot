@@ -6,6 +6,9 @@
 
 > Lunchbot, the over engineered lunch menu.
 
+## This project is no longer maintained. 
+For an updated fork please visit [the new maintainers github repo.](https://github.com/Shzku/lunchbot)
+
 ## Quick Start
 
 ```sh
