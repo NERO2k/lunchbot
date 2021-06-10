@@ -34,7 +34,7 @@
     "file-type": "^15.0.0",
     "got": "^11.6.0",
     "ical-generator": "^1.15.0",
-    "locutus": "^2.0.12",
+    "locutus": "^2.0.15",
     "luxon": "^1.25.0",
     "moment": "^2.27.0",
     "node-schedule": "^1.3.2",
